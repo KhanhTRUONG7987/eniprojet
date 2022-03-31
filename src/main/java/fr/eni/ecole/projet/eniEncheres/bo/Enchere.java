@@ -20,6 +20,7 @@ public class Enchere {
 	private Integer montantEnchere;
 	private Integer noArticle;
 	private Integer noUtilisateur;
+	
 	/**
 	 * Getter pour noEnchere.
 	 * @return the noEnchere

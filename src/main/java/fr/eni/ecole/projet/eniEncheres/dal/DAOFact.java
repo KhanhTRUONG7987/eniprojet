@@ -15,5 +15,9 @@ public class DAOFact {
 	public static UtilisateurDAO getUtilisateurDAO() {
 		return new UtilisateurDAOMock();
 	}
+
+	public static CategorieDAO getCategorieDAO() {
+		return new CategorieDAOMock();
+	}
 	
 }

@@ -5,7 +5,7 @@ import java.util.List;
 
 import fr.eni.ecole.projet.eniEncheres.bo.Categorie;
 
-public class CategorieDAOMock {
+public class CategorieDAOMock implements CategorieDAO {
 
 	private static Integer cpt=0;
 	private List<Categorie> lstCategorie = new ArrayList<>();
@@ -18,7 +18,11 @@ public class CategorieDAOMock {
 	public List<Categorie> selectAll(){
 		return lstCategorie;
 	}
-	
-	public selectById 
+
+	@Override
+	public Categorie selectById(Integer id) throws DALException {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 }

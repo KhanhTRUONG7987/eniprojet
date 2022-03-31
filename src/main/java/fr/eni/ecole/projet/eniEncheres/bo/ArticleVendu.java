@@ -24,27 +24,20 @@ public class ArticleVendu {
 	private LocalDate dateFinEncheres;
 	private Integer miseAPrix;
 	private Integer prixVente;
+	private Utilisateur utilisateur;
+	private Categorie categorie;
 	private String etatVente;
 	private List<Enchere> lstEncheres = new ArrayList<Enchere>();
 	
-	/**
-	 * Constructeur.
-	 */
+	
 	public ArticleVendu() {
 		super();
 	}
-	/**
-	 * Constructeur.
-	 * @param nomArticle
-	 * @param description
-	 * @param dateDebutEncheres
-	 * @param dateFinEncheres
-	 * @param miseAPrix
-	 * @param prixVente
-	 * @param etatVente
-	 */
+	
+	
+	
 	public ArticleVendu(String nomArticle, String description, LocalDate dateDebutEncheres, LocalDate dateFinEncheres,
-			Integer miseAPrix, Integer prixVente, String etatVente) {
+			Integer miseAPrix, Integer prixVente, Utilisateur utilisateur, Categorie categorie, String etatVente) {
 		super();
 		this.nomArticle = nomArticle;
 		this.description = description;
@@ -52,31 +45,24 @@ public class ArticleVendu {
 		this.dateFinEncheres = dateFinEncheres;
 		this.miseAPrix = miseAPrix;
 		this.prixVente = prixVente;
+		this.utilisateur = utilisateur;
+		this.categorie = categorie;
 		this.etatVente = etatVente;
 	}
-	/**
-	 * Constructeur.
-	 * @param noArticle
-	 * @param nomArticle
-	 * @param description
-	 * @param dateDebutEncheres
-	 * @param dateFinEncheres
-	 * @param miseAPrix
-	 * @param prixVente
-	 * @param etatVente
-	 */
-	public ArticleVendu(Integer noArticle, String nomArticle, String description, LocalDate dateDebutEncheres,
-			LocalDate dateFinEncheres, Integer miseAPrix, Integer prixVente, String etatVente) {
+
+	public ArticleVendu(String nomArticle, String description, LocalDate dateDebutEncheres, LocalDate dateFinEncheres,
+			Integer miseAPrix, Utilisateur utilisateur, Categorie categorie, String etatVente) {
 		super();
-		this.noArticle = noArticle;
 		this.nomArticle = nomArticle;
 		this.description = description;
 		this.dateDebutEncheres = dateDebutEncheres;
 		this.dateFinEncheres = dateFinEncheres;
 		this.miseAPrix = miseAPrix;
-		this.prixVente = prixVente;
+		this.utilisateur = utilisateur;
+		this.categorie = categorie;
 		this.etatVente = etatVente;
 	}
+
 	/**
 	 * Getter pour noArticle.
 	 * @return the noArticle
@@ -188,33 +174,117 @@ public class ArticleVendu {
 	 */
 	public void setEtatVente(String etatVente) {
 		this.etatVente = etatVente;
-	}
+	}	
+	
 	/**
-	*{@inheritedDoc}
-	*/
+	 * @return the noUtilisateur
+	 */
+	public Utilisateur getUtilisateur() {
+		return utilisateur;
+	}
+	
+	/**
+	 * @param noUtilisateur the noUtilisateur to set
+	 */
+	public void setUtilisateur(Utilisateur utilisateur) {
+		this.utilisateur = utilisateur;
+	}
+
+	/**
+	 * @return the noCategorie
+	 */
+	public Categorie getCategorie() {
+		return categorie;
+	}
+
+	/**
+	 * @param noCategorie the noCategorie to set
+	 */
+	public void setCategorie(Categorie categorie) {
+		this.categorie = categorie;
+	}
+
+	/**
+	 * @return the lstEncheres
+	 */
+	public List<Enchere> getLstEncheres() {
+		return lstEncheres;
+	}
+	
+	/**
+	 * @param lstEncheres the lstEncheres to set
+	 */
+	public void setLstEncheres(List<Enchere> lstEncheres) {
+		this.lstEncheres = lstEncheres;
+	}
+
+
+
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("ArticleVendu [noArticle=");
-		builder.append(noArticle);
-		builder.append(", nomArticle=");
-		builder.append(nomArticle);
-		builder.append(", description=");
-		builder.append(description);
-		builder.append(", dateDebutEncheres=");
-		builder.append(dateDebutEncheres);
-		builder.append(", dateFinEncheres=");
-		builder.append(dateFinEncheres);
-		builder.append(", miseAPrix=");
-		builder.append(miseAPrix);
-		builder.append(", prixVente=");
-		builder.append(prixVente);
-		builder.append(", etatVente=");
-		builder.append(etatVente);
-		builder.append(", toString()=");
-		builder.append(super.toString());
+		builder.append("ArticleVendu [");
+		if (noArticle != null) {
+			builder.append("noArticle=");
+			builder.append(noArticle);
+			builder.append(", ");
+		}
+		if (nomArticle != null) {
+			builder.append("nomArticle=");
+			builder.append(nomArticle);
+			builder.append(", ");
+		}
+		if (description != null) {
+			builder.append("description=");
+			builder.append(description);
+			builder.append(", ");
+		}
+		if (dateDebutEncheres != null) {
+			builder.append("dateDebutEncheres=");
+			builder.append(dateDebutEncheres);
+			builder.append(", ");
+		}
+		if (dateFinEncheres != null) {
+			builder.append("dateFinEncheres=");
+			builder.append(dateFinEncheres);
+			builder.append(", ");
+		}
+		if (miseAPrix != null) {
+			builder.append("miseAPrix=");
+			builder.append(miseAPrix);
+			builder.append(", ");
+		}
+		if (prixVente != null) {
+			builder.append("prixVente=");
+			builder.append(prixVente);
+			builder.append(", ");
+		}
+		if (utilisateur != null) {
+			builder.append("noUtilisateur=");
+			builder.append(utilisateur);
+			builder.append(", ");
+		}
+		if (categorie != null) {
+			builder.append("noCategorie=");
+			builder.append(categorie);
+			builder.append(", ");
+		}
+		if (etatVente != null) {
+			builder.append("etatVente=");
+			builder.append(etatVente);
+			builder.append(", ");
+		}
+		if (lstEncheres != null) {
+			builder.append("lstEncheres=");
+			builder.append(lstEncheres);
+			builder.append(", ");
+		}
+		if (super.toString() != null) {
+			builder.append("toString()=");
+			builder.append(super.toString());
+		}
 		builder.append("]");
 		return builder.toString();
-	}	
+	}
 	
 }
