@@ -1,9 +1,10 @@
-package fr.eni.ecole.projet.eniEncheres.dal;
+package fr.eni.ecole.projet.eniEncheres.dal.article;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import fr.eni.ecole.projet.eniEncheres.bo.ArticleVendu;
+import fr.eni.ecole.projet.eniEncheres.dal.DALException;
 
 public class ArticleVenduDAOMock implements ArticleVenduDAO {
 	private List<ArticleVendu> lstArticles = new ArrayList<ArticleVendu>();
@@ -15,7 +16,7 @@ public class ArticleVenduDAOMock implements ArticleVenduDAO {
 
 	@Override
 	public void update(ArticleVendu article) throws DALException {
-
+		lstArticles.add(article);
 	}
 
 	@Override
@@ -24,10 +25,9 @@ public class ArticleVenduDAOMock implements ArticleVenduDAO {
 	}
 
 	@Override
-	public ArticleVendu selectById(Integer id) throws DALException {
+	public ArticleVendu selectById(Integer no_article) throws DALException {
 		ArticleVendu article = new ArticleVendu();		
-		lstArticles.get(id);
-		return null;
+		return article;
 	}
 
 }

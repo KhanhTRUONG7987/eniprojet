@@ -1,7 +1,7 @@
 /**
  * 
  */
-package fr.eni.ecole.projet.eniEncheres.dal;
+package fr.eni.ecole.projet.eniEncheres.dal.utilisateur;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,9 +1,10 @@
-package fr.eni.ecole.projet.eniEncheres.dal;
+package fr.eni.ecole.projet.eniEncheres.dal.categorie;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import fr.eni.ecole.projet.eniEncheres.bo.Categorie;
+import fr.eni.ecole.projet.eniEncheres.dal.DALException;
 
 public class CategorieDAOMock implements CategorieDAO {
 

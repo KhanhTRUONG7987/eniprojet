@@ -1,6 +1,8 @@
-package fr.eni.ecole.projet.eniEncheres.dal;
+package fr.eni.ecole.projet.eniEncheres.dal.categorie;
 
 import fr.eni.ecole.projet.eniEncheres.bo.Categorie;
+import fr.eni.ecole.projet.eniEncheres.dal.DALException;
+import fr.eni.ecole.projet.eniEncheres.dal.DAOFact;
 
 public class CategorieDAOTest {
 	private static CategorieDAO dao = DAOFact.getCategorieDAO();

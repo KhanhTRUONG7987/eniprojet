@@ -3,6 +3,11 @@
  */
 package fr.eni.ecole.projet.eniEncheres.dal;
 
+import fr.eni.ecole.projet.eniEncheres.dal.categorie.CategorieDAO;
+import fr.eni.ecole.projet.eniEncheres.dal.categorie.CategorieDAOMock;
+import fr.eni.ecole.projet.eniEncheres.dal.utilisateur.UtilisateurDAO;
+import fr.eni.ecole.projet.eniEncheres.dal.utilisateur.UtilisateurDAOMock;
+
 /**
  * Classe en charge de
  * @author tjolly2022

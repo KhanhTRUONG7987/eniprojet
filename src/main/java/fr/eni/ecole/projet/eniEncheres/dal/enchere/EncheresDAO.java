@@ -1,8 +1,9 @@
-package fr.eni.ecole.projet.eniEncheres.dal;
+package fr.eni.ecole.projet.eniEncheres.dal.enchere;
 
 import java.util.List;
 
 import fr.eni.ecole.projet.eniEncheres.bo.Enchere;
+import fr.eni.ecole.projet.eniEncheres.dal.DALException;
 
 public interface EncheresDAO {
 	
