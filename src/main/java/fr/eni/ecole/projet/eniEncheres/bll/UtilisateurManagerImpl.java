@@ -25,15 +25,18 @@ public class UtilisateurManagerImpl implements UtilisateurManager {
 	*/
 	
 	private UtilisateurDAO dao = DAOFact.getUtilisateurDAO();
+	
 	@Override
 	public void addUtilisateur(Utilisateur utilisateur) throws BLLException {
+		if(!(utilisateur.getMotDePasse()).equalsIgnoreCase((utilisateur).getConfirmation())) {
+			throw new BLLException("Password incorrect !");
+		}
 		try {
 			dao.insertUtilisateur(utilisateur);
 		} catch (DALException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+			throw new BLLException("! Erreur "+e.getMessage());
 		}
-		throw new BLLException("");
 
 	}
 
@@ -55,7 +58,6 @@ public class UtilisateurManagerImpl implements UtilisateurManager {
 		try {
 			return dao.findAll();
 		} catch (DALException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		throw new BLLException("");
@@ -89,7 +91,6 @@ public class UtilisateurManagerImpl implements UtilisateurManager {
 		try {
 			dao.updateUtilisateur(utilisateur);
 		} catch (DALException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		throw new BLLException("");
@@ -104,7 +105,6 @@ public class UtilisateurManagerImpl implements UtilisateurManager {
 		try {
 			dao.deleteUtilisateur(noUtilisateur);
 		} catch (DALException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		throw new BLLException("");

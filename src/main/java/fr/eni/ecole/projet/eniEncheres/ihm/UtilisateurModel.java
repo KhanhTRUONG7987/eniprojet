@@ -24,7 +24,7 @@ public class UtilisateurModel {
 	 * Constructeur.
 	 */
 	public UtilisateurModel() {
-		super();
+		super(); 
 	}
 	/**
 	 * Constructeur.
