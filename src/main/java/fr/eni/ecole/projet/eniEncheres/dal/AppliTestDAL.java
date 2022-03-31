@@ -1,5 +1,6 @@
 package fr.eni.ecole.projet.eniEncheres.dal;
 
+import fr.eni.ecole.projet.eniEncheres.bo.ArticleVendu;
 import fr.eni.ecole.projet.eniEncheres.bo.Utilisateur;
 
 public class AppliTestDAL {

@@ -34,11 +34,5 @@ public interface UtilisateurDAO {
 
 	public void deleteUtilisateur(Integer noUtilisateur) throws DALException;
 
-	/**
-	 * Méthode en charge de 
-	 * @param noUtilisateur
-	 * @return
-	 */
-	
 
 }

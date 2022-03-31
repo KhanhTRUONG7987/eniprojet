@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Utilisateur {
 
-	private Integer noUtilisateur;
+	private int noUtilisateur;
 	private String pseudo;
 	private String nom;
 	private String prenom;
@@ -19,17 +19,17 @@ public class Utilisateur {
 	private Boolean administrateur;
 	private List<ArticleVendu> lstArticlesVendus = new ArrayList<ArticleVendu>();
 	private List<Enchere> lstEncheres = new ArrayList<Enchere>();
-
+	
+	
 	/**
 	 * Constructeur.
 	 */
 	public Utilisateur() {
 		super();
 	}
-
+	
 	/**
 	 * Constructeur.
-	 * 
 	 * @param pseudo
 	 * @param nom
 	 * @param prenom
@@ -40,9 +40,10 @@ public class Utilisateur {
 	 * @param ville
 	 * @param motDePasse
 	 * @param credit
+	 * @param administrateur
 	 */
 	public Utilisateur(String pseudo, String nom, String prenom, String email, String telephone, String rue,
-			String codePostal, String ville, String motDePasse, Integer credit) {
+			String codePostal, String ville, String motDePasse, Integer credit, Boolean administrateur) {
 		super();
 		this.pseudo = pseudo;
 		this.nom = nom;
@@ -59,7 +60,6 @@ public class Utilisateur {
 
 	/**
 	 * Constructeur.
-	 * 
 	 * @param noUtilisateur
 	 * @param pseudo
 	 * @param nom
@@ -92,7 +92,6 @@ public class Utilisateur {
 
 	/**
 	 * Getter pour noUtilisateur.
-	 * 
 	 * @return the noUtilisateur
 	 */
 	public int getNoUtilisateur() {
@@ -101,7 +100,6 @@ public class Utilisateur {
 
 	/**
 	 * Setter pour noUtilisateur.
-	 * 
 	 * @param noUtilisateur the noUtilisateur to set
 	 */
 	public void setNoUtilisateur(int noUtilisateur) {
@@ -110,7 +108,6 @@ public class Utilisateur {
 
 	/**
 	 * Getter pour pseudo.
-	 * 
 	 * @return the pseudo
 	 */
 	public String getPseudo() {
@@ -119,7 +116,6 @@ public class Utilisateur {
 
 	/**
 	 * Setter pour pseudo.
-	 * 
 	 * @param pseudo the pseudo to set
 	 */
 	public void setPseudo(String pseudo) {
@@ -128,7 +124,6 @@ public class Utilisateur {
 
 	/**
 	 * Getter pour nom.
-	 * 
 	 * @return the nom
 	 */
 	public String getNom() {
@@ -137,7 +132,6 @@ public class Utilisateur {
 
 	/**
 	 * Setter pour nom.
-	 * 
 	 * @param nom the nom to set
 	 */
 	public void setNom(String nom) {
@@ -146,7 +140,6 @@ public class Utilisateur {
 
 	/**
 	 * Getter pour prenom.
-	 * 
 	 * @return the prenom
 	 */
 	public String getPrenom() {
@@ -155,7 +148,6 @@ public class Utilisateur {
 
 	/**
 	 * Setter pour prenom.
-	 * 
 	 * @param prenom the prenom to set
 	 */
 	public void setPrenom(String prenom) {
@@ -164,7 +156,6 @@ public class Utilisateur {
 
 	/**
 	 * Getter pour email.
-	 * 
 	 * @return the email
 	 */
 	public String getEmail() {
@@ -173,7 +164,6 @@ public class Utilisateur {
 
 	/**
 	 * Setter pour email.
-	 * 
 	 * @param email the email to set
 	 */
 	public void setEmail(String email) {
@@ -182,7 +172,6 @@ public class Utilisateur {
 
 	/**
 	 * Getter pour telephone.
-	 * 
 	 * @return the telephone
 	 */
 	public String getTelephone() {
@@ -191,7 +180,6 @@ public class Utilisateur {
 
 	/**
 	 * Setter pour telephone.
-	 * 
 	 * @param telephone the telephone to set
 	 */
 	public void setTelephone(String telephone) {
@@ -200,7 +188,6 @@ public class Utilisateur {
 
 	/**
 	 * Getter pour rue.
-	 * 
 	 * @return the rue
 	 */
 	public String getRue() {
@@ -209,7 +196,6 @@ public class Utilisateur {
 
 	/**
 	 * Setter pour rue.
-	 * 
 	 * @param rue the rue to set
 	 */
 	public void setRue(String rue) {
@@ -218,7 +204,6 @@ public class Utilisateur {
 
 	/**
 	 * Getter pour codePostal.
-	 * 
 	 * @return the codePostal
 	 */
 	public String getCodePostal() {
@@ -227,7 +212,6 @@ public class Utilisateur {
 
 	/**
 	 * Setter pour codePostal.
-	 * 
 	 * @param codePostal the codePostal to set
 	 */
 	public void setCodePostal(String codePostal) {
@@ -236,7 +220,6 @@ public class Utilisateur {
 
 	/**
 	 * Getter pour ville.
-	 * 
 	 * @return the ville
 	 */
 	public String getVille() {
@@ -245,7 +228,6 @@ public class Utilisateur {
 
 	/**
 	 * Setter pour ville.
-	 * 
 	 * @param ville the ville to set
 	 */
 	public void setVille(String ville) {
@@ -254,7 +236,6 @@ public class Utilisateur {
 
 	/**
 	 * Getter pour motDePasse.
-	 * 
 	 * @return the motDePasse
 	 */
 	public String getMotDePasse() {
@@ -263,7 +244,6 @@ public class Utilisateur {
 
 	/**
 	 * Setter pour motDePasse.
-	 * 
 	 * @param motDePasse the motDePasse to set
 	 */
 	public void setMotDePasse(String motDePasse) {
@@ -272,7 +252,6 @@ public class Utilisateur {
 
 	/**
 	 * Getter pour credit.
-	 * 
 	 * @return the credit
 	 */
 	public Integer getCredit() {
@@ -281,7 +260,6 @@ public class Utilisateur {
 
 	/**
 	 * Setter pour credit.
-	 * 
 	 * @param credit the credit to set
 	 */
 	public void setCredit(Integer credit) {
@@ -290,7 +268,6 @@ public class Utilisateur {
 
 	/**
 	 * Getter pour admin.
-	 * 
 	 * @return the admin
 	 */
 	public Boolean getAdministrateur() {
@@ -299,16 +276,14 @@ public class Utilisateur {
 
 	/**
 	 * Setter pour admin.
-	 * 
 	 * @param admin the admin to set
 	 */
 	public void setAdministrateur(Boolean administrateur) {
 		this.administrateur = administrateur;
 	}
-
+	
 	/**
 	 * Getter pour lstArticlesVendus.
-	 * 
 	 * @return the lstArticlesVendus
 	 */
 	public List<ArticleVendu> getLstArticlesVendus() {
@@ -317,7 +292,6 @@ public class Utilisateur {
 
 	/**
 	 * Setter pour lstArticlesVendus.
-	 * 
 	 * @param lstArticlesVendus the lstArticlesVendus to set
 	 */
 	public void setLstArticlesVendus(List<ArticleVendu> lstArticlesVendus) {
@@ -325,8 +299,8 @@ public class Utilisateur {
 	}
 
 	/**
-	 * {@inheritedDoc}
-	 */
+	*{@inheritedDoc}
+	*/
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
@@ -358,5 +332,5 @@ public class Utilisateur {
 		builder.append(super.toString());
 		builder.append("]");
 		return builder.toString();
-	}
+	}	
 }
