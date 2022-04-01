@@ -1,11 +1,12 @@
 /**
  * 
  */
-package fr.eni.ecole.projet.eniEncheres.dal;
+package fr.eni.ecole.projet.eniEncheres.dal.utilisateur;
 
 import java.util.List;
 
 import fr.eni.ecole.projet.eniEncheres.bo.Utilisateur;
+import fr.eni.ecole.projet.eniEncheres.dal.DALException;
 
 /**
  * Classe en charge de
@@ -34,11 +35,5 @@ public interface UtilisateurDAO {
 
 	public void deleteUtilisateur(Integer noUtilisateur) throws DALException;
 
-	/**
-	 * Méthode en charge de 
-	 * @param noUtilisateur
-	 * @return
-	 */
-	
 
 }

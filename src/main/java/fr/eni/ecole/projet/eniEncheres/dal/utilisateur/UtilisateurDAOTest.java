@@ -1,9 +1,11 @@
 /**
  * 
  */
-package fr.eni.ecole.projet.eniEncheres.dal;
+package fr.eni.ecole.projet.eniEncheres.dal.utilisateur;
 
 import fr.eni.ecole.projet.eniEncheres.bo.Utilisateur;
+import fr.eni.ecole.projet.eniEncheres.dal.DALException;
+import fr.eni.ecole.projet.eniEncheres.dal.DAOFact;
 
 /**
  * Classe en charge de

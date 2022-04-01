@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Utilisateur {
 
-	private Integer noUtilisateur;
+	private int noUtilisateur;
 	private String pseudo;
 	private String nom;
 	private String prenom;
@@ -22,12 +22,14 @@ public class Utilisateur {
 	
 	private List<ArticleVendu> lstArticlesVendus = new ArrayList<ArticleVendu>();
 	private List<Enchere> lstEncheres = new ArrayList<Enchere>();
+
 	/**
 	 * Constructeur.
 	 */
 	public Utilisateur() {
 		super();
 	}
+
 	/**
 	 * Constructeur.
 	 * @param noUtilisateur
@@ -116,6 +118,7 @@ public class Utilisateur {
 	public Utilisateur(String pseudo, String nom, String prenom, String email, String telephone, String rue,
 			String codePostal, String ville, String motDePasse, String confirmation, Integer credit,
 			Boolean administrateur) {
+
 		super();
 		this.pseudo = pseudo;
 		this.nom = nom;
@@ -463,6 +466,4 @@ public class Utilisateur {
 		builder.append("]");
 		return builder.toString();
 	}
-	
-	
 }

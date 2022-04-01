@@ -8,7 +8,7 @@ import java.util.List;
 import fr.eni.ecole.projet.eniEncheres.bo.Utilisateur;
 import fr.eni.ecole.projet.eniEncheres.dal.DALException;
 import fr.eni.ecole.projet.eniEncheres.dal.DAOFact;
-import fr.eni.ecole.projet.eniEncheres.dal.UtilisateurDAO;
+import fr.eni.ecole.projet.eniEncheres.dal.utilisateur.UtilisateurDAO;
 
 /**
  * Classe en charge de
