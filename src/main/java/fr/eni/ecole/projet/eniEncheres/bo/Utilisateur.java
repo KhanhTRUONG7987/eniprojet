@@ -15,19 +15,91 @@ public class Utilisateur {
 	private String codePostal;
 	private String ville;
 	private String motDePasse;
+	private String motDePasseNouveau;
+	private String confirmation;
 	private Integer credit;
 	private Boolean administrateur;
+	
 	private List<ArticleVendu> lstArticlesVendus = new ArrayList<ArticleVendu>();
 	private List<Enchere> lstEncheres = new ArrayList<Enchere>();
-	
-	
+
 	/**
 	 * Constructeur.
 	 */
 	public Utilisateur() {
 		super();
 	}
-	
+
+	/**
+	 * Constructeur.
+	 * @param noUtilisateur
+	 * @param pseudo
+	 * @param nom
+	 * @param prenom
+	 * @param email
+	 * @param telephone
+	 * @param rue
+	 * @param codePostal
+	 * @param ville
+	 * @param motDePasse
+	 * @param confirmation
+	 * @param credit
+	 * @param administrateur
+	 */
+	public Utilisateur(Integer noUtilisateur, String pseudo, String nom, String prenom, String email, String telephone,
+			String rue, String codePostal, String ville, String motDePasse, String confirmation, Integer credit,
+			Boolean administrateur) {
+		super();
+		this.noUtilisateur = noUtilisateur;
+		this.pseudo = pseudo;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.email = email;
+		this.telephone = telephone;
+		this.rue = rue;
+		this.codePostal = codePostal;
+		this.ville = ville;
+		this.motDePasse = motDePasse;
+		this.confirmation = confirmation;
+		this.credit = credit;
+		this.administrateur = administrateur;
+	}
+	/**
+	 * Constructeur.
+	 * @param noUtilisateur
+	 * @param pseudo
+	 * @param nom
+	 * @param prenom
+	 * @param email
+	 * @param telephone
+	 * @param rue
+	 * @param codePostal
+	 * @param ville
+	 * @param motDePasse
+	 * @param motDePasseNouveau
+	 * @param confirmation
+	 * @param credit
+	 * @param administrateur
+	 */
+	public Utilisateur(Integer noUtilisateur, String pseudo, String nom, String prenom, String email, String telephone,
+			String rue, String codePostal, String ville, String motDePasse, String motDePasseNouveau,
+			String confirmation, Integer credit, Boolean administrateur) {
+		super();
+		this.noUtilisateur = noUtilisateur;
+		this.pseudo = pseudo;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.email = email;
+		this.telephone = telephone;
+		this.rue = rue;
+		this.codePostal = codePostal;
+		this.ville = ville;
+		this.motDePasse = motDePasse;
+		this.motDePasseNouveau = motDePasseNouveau;
+		this.confirmation = confirmation;
+		this.credit = credit;
+		this.administrateur = administrateur;
+	}
 	/**
 	 * Constructeur.
 	 * @param pseudo
@@ -39,11 +111,14 @@ public class Utilisateur {
 	 * @param codePostal
 	 * @param ville
 	 * @param motDePasse
+	 * @param confirmation
 	 * @param credit
 	 * @param administrateur
 	 */
 	public Utilisateur(String pseudo, String nom, String prenom, String email, String telephone, String rue,
-			String codePostal, String ville, String motDePasse, Integer credit, Boolean administrateur) {
+			String codePostal, String ville, String motDePasse, String confirmation, Integer credit,
+			Boolean administrateur) {
+
 		super();
 		this.pseudo = pseudo;
 		this.nom = nom;
@@ -54,10 +129,45 @@ public class Utilisateur {
 		this.codePostal = codePostal;
 		this.ville = ville;
 		this.motDePasse = motDePasse;
+		this.confirmation = confirmation;
 		this.credit = credit;
 		this.administrateur = administrateur;
 	}
-
+	/**
+	 * Constructeur.
+	 * @param pseudo
+	 * @param nom
+	 * @param prenom
+	 * @param email
+	 * @param telephone
+	 * @param rue
+	 * @param codePostal
+	 * @param ville
+	 * @param motDePasse
+	 * @param motDePasseNouveau
+	 * @param confirmation
+	 * @param credit
+	 * @param administrateur
+	 */
+	public Utilisateur(String pseudo, String nom, String prenom, String email, String telephone, String rue,
+			String codePostal, String ville, String motDePasse, String motDePasseNouveau, String confirmation,
+			Integer credit, Boolean administrateur) {
+		super();
+		this.pseudo = pseudo;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.email = email;
+		this.telephone = telephone;
+		this.rue = rue;
+		this.codePostal = codePostal;
+		this.ville = ville;
+		this.motDePasse = motDePasse;
+		this.motDePasseNouveau = motDePasseNouveau;
+		this.confirmation = confirmation;
+		this.credit = credit;
+		this.administrateur = administrateur;
+	}
+	
 	/**
 	 * Constructeur.
 	 * @param noUtilisateur
@@ -73,7 +183,7 @@ public class Utilisateur {
 	 * @param credit
 	 * @param administrateur
 	 */
-	public Utilisateur(int noUtilisateur, String pseudo, String nom, String prenom, String email, String telephone,
+	public Utilisateur(Integer noUtilisateur, String pseudo, String nom, String prenom, String email, String telephone,
 			String rue, String codePostal, String ville, String motDePasse, Integer credit, Boolean administrateur) {
 		super();
 		this.noUtilisateur = noUtilisateur;
@@ -89,23 +199,20 @@ public class Utilisateur {
 		this.credit = credit;
 		this.administrateur = administrateur;
 	}
-
 	/**
 	 * Getter pour noUtilisateur.
 	 * @return the noUtilisateur
 	 */
-	public int getNoUtilisateur() {
+	public Integer getNoUtilisateur() {
 		return noUtilisateur;
 	}
-
 	/**
 	 * Setter pour noUtilisateur.
 	 * @param noUtilisateur the noUtilisateur to set
 	 */
-	public void setNoUtilisateur(int noUtilisateur) {
+	public void setNoUtilisateur(Integer noUtilisateur) {
 		this.noUtilisateur = noUtilisateur;
 	}
-
 	/**
 	 * Getter pour pseudo.
 	 * @return the pseudo
@@ -113,7 +220,6 @@ public class Utilisateur {
 	public String getPseudo() {
 		return pseudo;
 	}
-
 	/**
 	 * Setter pour pseudo.
 	 * @param pseudo the pseudo to set
@@ -121,7 +227,6 @@ public class Utilisateur {
 	public void setPseudo(String pseudo) {
 		this.pseudo = pseudo;
 	}
-
 	/**
 	 * Getter pour nom.
 	 * @return the nom
@@ -129,7 +234,6 @@ public class Utilisateur {
 	public String getNom() {
 		return nom;
 	}
-
 	/**
 	 * Setter pour nom.
 	 * @param nom the nom to set
@@ -137,7 +241,6 @@ public class Utilisateur {
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
-
 	/**
 	 * Getter pour prenom.
 	 * @return the prenom
@@ -145,7 +248,6 @@ public class Utilisateur {
 	public String getPrenom() {
 		return prenom;
 	}
-
 	/**
 	 * Setter pour prenom.
 	 * @param prenom the prenom to set
@@ -153,7 +255,6 @@ public class Utilisateur {
 	public void setPrenom(String prenom) {
 		this.prenom = prenom;
 	}
-
 	/**
 	 * Getter pour email.
 	 * @return the email
@@ -161,7 +262,6 @@ public class Utilisateur {
 	public String getEmail() {
 		return email;
 	}
-
 	/**
 	 * Setter pour email.
 	 * @param email the email to set
@@ -169,7 +269,6 @@ public class Utilisateur {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
 	/**
 	 * Getter pour telephone.
 	 * @return the telephone
@@ -177,7 +276,6 @@ public class Utilisateur {
 	public String getTelephone() {
 		return telephone;
 	}
-
 	/**
 	 * Setter pour telephone.
 	 * @param telephone the telephone to set
@@ -185,7 +283,6 @@ public class Utilisateur {
 	public void setTelephone(String telephone) {
 		this.telephone = telephone;
 	}
-
 	/**
 	 * Getter pour rue.
 	 * @return the rue
@@ -193,7 +290,6 @@ public class Utilisateur {
 	public String getRue() {
 		return rue;
 	}
-
 	/**
 	 * Setter pour rue.
 	 * @param rue the rue to set
@@ -201,7 +297,6 @@ public class Utilisateur {
 	public void setRue(String rue) {
 		this.rue = rue;
 	}
-
 	/**
 	 * Getter pour codePostal.
 	 * @return the codePostal
@@ -209,7 +304,6 @@ public class Utilisateur {
 	public String getCodePostal() {
 		return codePostal;
 	}
-
 	/**
 	 * Setter pour codePostal.
 	 * @param codePostal the codePostal to set
@@ -217,7 +311,6 @@ public class Utilisateur {
 	public void setCodePostal(String codePostal) {
 		this.codePostal = codePostal;
 	}
-
 	/**
 	 * Getter pour ville.
 	 * @return the ville
@@ -225,7 +318,6 @@ public class Utilisateur {
 	public String getVille() {
 		return ville;
 	}
-
 	/**
 	 * Setter pour ville.
 	 * @param ville the ville to set
@@ -233,7 +325,6 @@ public class Utilisateur {
 	public void setVille(String ville) {
 		this.ville = ville;
 	}
-
 	/**
 	 * Getter pour motDePasse.
 	 * @return the motDePasse
@@ -241,7 +332,6 @@ public class Utilisateur {
 	public String getMotDePasse() {
 		return motDePasse;
 	}
-
 	/**
 	 * Setter pour motDePasse.
 	 * @param motDePasse the motDePasse to set
@@ -249,7 +339,34 @@ public class Utilisateur {
 	public void setMotDePasse(String motDePasse) {
 		this.motDePasse = motDePasse;
 	}
-
+	/**
+	 * Getter pour motDePasseNouveau.
+	 * @return the motDePasseNouveau
+	 */
+	public String getMotDePasseNouveau() {
+		return motDePasseNouveau;
+	}
+	/**
+	 * Setter pour motDePasseNouveau.
+	 * @param motDePasseNouveau the motDePasseNouveau to set
+	 */
+	public void setMotDePasseNouveau(String motDePasseNouveau) {
+		this.motDePasseNouveau = motDePasseNouveau;
+	}
+	/**
+	 * Getter pour confirmation.
+	 * @return the confirmation
+	 */
+	public String getConfirmation() {
+		return confirmation;
+	}
+	/**
+	 * Setter pour confirmation.
+	 * @param confirmation the confirmation to set
+	 */
+	public void setConfirmation(String confirmation) {
+		this.confirmation = confirmation;
+	}
 	/**
 	 * Getter pour credit.
 	 * @return the credit
@@ -257,7 +374,6 @@ public class Utilisateur {
 	public Integer getCredit() {
 		return credit;
 	}
-
 	/**
 	 * Setter pour credit.
 	 * @param credit the credit to set
@@ -265,23 +381,20 @@ public class Utilisateur {
 	public void setCredit(Integer credit) {
 		this.credit = credit;
 	}
-
 	/**
-	 * Getter pour admin.
-	 * @return the admin
+	 * Getter pour administrateur.
+	 * @return the administrateur
 	 */
 	public Boolean getAdministrateur() {
 		return administrateur;
 	}
-
 	/**
-	 * Setter pour admin.
-	 * @param admin the admin to set
+	 * Setter pour administrateur.
+	 * @param administrateur the administrateur to set
 	 */
 	public void setAdministrateur(Boolean administrateur) {
 		this.administrateur = administrateur;
 	}
-	
 	/**
 	 * Getter pour lstArticlesVendus.
 	 * @return the lstArticlesVendus
@@ -289,7 +402,6 @@ public class Utilisateur {
 	public List<ArticleVendu> getLstArticlesVendus() {
 		return lstArticlesVendus;
 	}
-
 	/**
 	 * Setter pour lstArticlesVendus.
 	 * @param lstArticlesVendus the lstArticlesVendus to set
@@ -297,7 +409,20 @@ public class Utilisateur {
 	public void setLstArticlesVendus(List<ArticleVendu> lstArticlesVendus) {
 		this.lstArticlesVendus = lstArticlesVendus;
 	}
-
+	/**
+	 * Getter pour lstEncheres.
+	 * @return the lstEncheres
+	 */
+	public List<Enchere> getLstEncheres() {
+		return lstEncheres;
+	}
+	/**
+	 * Setter pour lstEncheres.
+	 * @param lstEncheres the lstEncheres to set
+	 */
+	public void setLstEncheres(List<Enchere> lstEncheres) {
+		this.lstEncheres = lstEncheres;
+	}
 	/**
 	*{@inheritedDoc}
 	*/
@@ -324,13 +449,21 @@ public class Utilisateur {
 		builder.append(ville);
 		builder.append(", motDePasse=");
 		builder.append(motDePasse);
+		builder.append(", motDePasseNouveau=");
+		builder.append(motDePasseNouveau);
+		builder.append(", confirmation=");
+		builder.append(confirmation);
 		builder.append(", credit=");
 		builder.append(credit);
 		builder.append(", administrateur=");
 		builder.append(administrateur);
+		builder.append(", lstArticlesVendus=");
+		builder.append(lstArticlesVendus);
+		builder.append(", lstEncheres=");
+		builder.append(lstEncheres);
 		builder.append(", toString()=");
 		builder.append(super.toString());
 		builder.append("]");
 		return builder.toString();
-	}	
+	}
 }

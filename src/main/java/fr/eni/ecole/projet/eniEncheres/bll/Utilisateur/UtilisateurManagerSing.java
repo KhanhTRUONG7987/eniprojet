@@ -1,7 +1,9 @@
 /**
  * 
  */
-package fr.eni.ecole.projet.eniEncheres.bll.Utilisateur;
+
+package fr.eni.ecole.projet.eniEncheres.bll.utilisateur;
+
 
 /**
  * Classe en charge de
