@@ -16,7 +16,8 @@ public class CategorieDAOTest {
 		
 		dao.selectAll().forEach(System.out::println);
 		
-		dao.selectById();
+		System.out.println();
+		System.out.println(dao.selectById(1));
 	}
 	
 }

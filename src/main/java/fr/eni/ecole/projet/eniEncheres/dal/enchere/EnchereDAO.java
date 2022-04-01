@@ -6,6 +6,7 @@ package fr.eni.ecole.projet.eniEncheres.dal.enchere;
 import java.util.List;
 
 import fr.eni.ecole.projet.eniEncheres.bo.Enchere;
+import fr.eni.ecole.projet.eniEncheres.dal.DALException;
 
 /**
  * Classe en charge de
@@ -16,10 +17,10 @@ import fr.eni.ecole.projet.eniEncheres.bo.Enchere;
  *
  */
 public interface EnchereDAO {
-	public void insertEnchere (Enchere enchere);
-	public void selectEnchere (Enchere enchere);
-	public void delete (Enchere enchere);
-	public void update (Enchere enchere);
-	public List<Enchere> selectAll();
+	public void insertEnchere (Enchere enchere)throws DALException;
+	public void selectEnchere (Integer enchere)throws DALException;
+	public void delete (Enchere enchere)throws DALException;
+	public void update (Enchere enchere)throws DALException;
+	public List<Enchere> selectAll()throws DALException;
 
 }

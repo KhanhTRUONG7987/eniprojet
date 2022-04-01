@@ -93,6 +93,13 @@ public class Categorie {
 	public void setLstArticlesVendus(List<ArticleVendu> lstArticlesVendus) {
 		this.lstArticlesVendus = lstArticlesVendus;
 	}
+
+	@Override
+	public String toString() {
+		return "Categorie [noCategorie=" + noCategorie + ", libelle=" + libelle + ", lstArticlesVendus="
+				+ lstArticlesVendus + "]";
+	}
+	
 	
 	
 }

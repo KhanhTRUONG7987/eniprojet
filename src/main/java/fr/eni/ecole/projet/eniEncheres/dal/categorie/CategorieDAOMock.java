@@ -22,8 +22,14 @@ public class CategorieDAOMock implements CategorieDAO {
 
 	@Override
 	public Categorie selectById(Integer id) throws DALException {
-		// TODO Auto-generated method stub
-		return null;
+		Categorie categorieTest = new Categorie();
+		categorieTest.setNoCategorie(id);
+		for (Categorie categorie : lstCategorie) {
+			if (categorieTest.getNoCategorie() == categorie.getNoCategorie()) {
+				categorieTest = categorie;
+			}
+		}		
+		return categorieTest;
 	}
 	
 }

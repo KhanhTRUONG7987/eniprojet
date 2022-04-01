@@ -3,8 +3,11 @@
  */
 package fr.eni.ecole.projet.eniEncheres.dal;
 
+import fr.eni.ecole.projet.eniEncheres.dal.article.ArticleVenduDAO;
+import fr.eni.ecole.projet.eniEncheres.dal.article.ArticleVenduDAOMock;
 import fr.eni.ecole.projet.eniEncheres.dal.categorie.CategorieDAO;
 import fr.eni.ecole.projet.eniEncheres.dal.categorie.CategorieDAOMock;
+import fr.eni.ecole.projet.eniEncheres.dal.enchere.EnchereDAO;
 import fr.eni.ecole.projet.eniEncheres.dal.utilisateur.UtilisateurDAO;
 import fr.eni.ecole.projet.eniEncheres.dal.utilisateur.UtilisateurDAOMock;
 
@@ -24,5 +27,18 @@ public class DAOFact {
 	public static CategorieDAO getCategorieDAO() {
 		return new CategorieDAOMock();
 	}
+	
+	public static EnchereDAO getEnchereDAO() {
+		return new EnchereDAOMock();
+	}
+	
+	public static ArticleVenduDAO getArticleVenduDAO() {
+		return new ArticleVenduDAOMock();
+	}
+	
+	public static RetraitDAO getRetraitDAO() {
+		return new RetraitDAOMock();
+	}
+	
 	
 }

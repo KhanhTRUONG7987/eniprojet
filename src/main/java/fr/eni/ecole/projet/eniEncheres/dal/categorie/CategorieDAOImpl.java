@@ -13,35 +13,36 @@ import fr.eni.ecole.projet.eniEncheres.dal.DALException;
 import fr.eni.ecole.projet.eniEncheres.dal.util.ConnectionProvider;
 
 public class CategorieDAOImpl implements CategorieDAO {
-	private final String SELECT = "SELECT noCategorie, libelle FROM categorie";
-	private final String INSERT = "INSERT libelle FROM categorie";
-	private final String SELECTBYID = "SELECT libelle FROM categorie WHERE noCategorie = ?";
-	
+	private final String SELECT = "SELECT no_categorie, libelle FROM categories";
+	private final String INSERT = "INSERT libelle FROM categories";
+	private final String SELECTBYID = "SELECT libelle FROM categories WHERE no_categorie = ?";
+
 	@Override
 	public void insert(Categorie categorie) throws DALException {
-		try(Connection con = ConnectionProvider.getConnection()) {
+		try (Connection con = ConnectionProvider.getConnection()) {
 			PreparedStatement stmt = con.prepareStatement(INSERT, Statement.RETURN_GENERATED_KEYS);
 			stmt.setString(2, categorie.getLibelle());
 			int nb = stmt.executeUpdate();
-			if(nb > 0) {
+			if (nb > 0) {
 				ResultSet rs = stmt.getGeneratedKeys();
-				if(rs.next()) {
+				if (rs.next()) {
 					categorie.setNoCategorie(rs.getInt(1));
 				}
 			}
 		} catch (SQLException e) {
+			throw new DALException("Problème dans la fonction INSERT");
 		}
 	}
 
 	@Override
 	public List<Categorie> selectAll() throws DALException {
 		List<Categorie> result = new ArrayList<Categorie>();
-		try(Connection con = ConnectionProvider.getConnection()) {
+		try (Connection con = ConnectionProvider.getConnection()) {
 			PreparedStatement stmt = con.prepareStatement(SELECT);
 			ResultSet rs = stmt.executeQuery();
-			while(rs.next()) {
-				Categorie categorie = new Categorie(rs.getInt("noCategorie"), rs.getString("Libelle"));
-				categorie.setNoCategorie(rs.getInt("noCategorie"));
+			while (rs.next()) {
+				Categorie categorie = new Categorie(rs.getInt("no_categorie"), rs.getString("libelle"));
+				categorie.setNoCategorie(rs.getInt("no_categorie"));
 				result.add(categorie);
 			}
 		} catch (SQLException e) {
@@ -51,25 +52,23 @@ public class CategorieDAOImpl implements CategorieDAO {
 	}
 
 	@Override
-	public Categorie selectById(Integer id) throws DALException {
+	public Categorie selectById(Integer no_categorie) throws DALException {
 		Categorie categorie = new Categorie();
 		try (Connection con = ConnectionProvider.getConnection()) {
-		PreparedStatement stmt = con.prepareStatement(SELECTBYID);
-		stmt.setInt(1, id);
-		ResultSet rs = stmt.executeQuery();
-		if(rs.next()) {
-			if(rs.getInt("no_article") == id) {
-				
+			PreparedStatement stmt = con.prepareStatement(SELECTBYID);
+			stmt.setInt(1, no_categorie);
+			ResultSet rs = stmt.executeQuery();
+			while (rs.next()) {
+				categorie.setNoCategorie(rs.getInt("no_categorie"));
+				categorie.setLibelle(rs.getString("libelle"));
+
 			}
-		}
-			
-		} catch (Exception e) {
+
+		} catch (SQLException e) {
 			throw new DALException("Problème de Select by Id");
 		}
-		
+
 		return categorie;
 	}
-	
-	
 
 }
