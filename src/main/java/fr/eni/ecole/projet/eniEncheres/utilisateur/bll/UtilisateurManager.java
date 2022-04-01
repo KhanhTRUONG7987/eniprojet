@@ -1,7 +1,7 @@
 /**
  * 
  */
-package fr.eni.ecole.projet.eniEncheres.bll;
+package fr.eni.ecole.projet.eniEncheres.utilisateur.bll;
 
 import java.util.List;
 

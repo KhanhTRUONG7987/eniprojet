@@ -1,4 +1,4 @@
-package fr.eni.ecole.projet.eniEncheres.ihm;
+package fr.eni.ecole.projet.eniEncheres.ihm.utilisateur;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -7,10 +7,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import fr.eni.ecole.projet.eniEncheres.bll.BLLException;
-import fr.eni.ecole.projet.eniEncheres.bll.UtilisateurManager;
-import fr.eni.ecole.projet.eniEncheres.bll.UtilisateurManagerSing;
 import fr.eni.ecole.projet.eniEncheres.bo.Utilisateur;
+import fr.eni.ecole.projet.eniEncheres.utilisateur.bll.BLLException;
+import fr.eni.ecole.projet.eniEncheres.utilisateur.bll.UtilisateurManager;
+import fr.eni.ecole.projet.eniEncheres.utilisateur.bll.UtilisateurManagerSing;
 
 /**
  * Servlet implementation class LoginServlet

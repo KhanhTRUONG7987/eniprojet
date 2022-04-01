@@ -1,13 +1,13 @@
 /**
  * 
  */
-package fr.eni.ecole.projet.eniEncheres.bll;
+package fr.eni.ecole.projet.eniEncheres.utilisateur.bll;
 
 import java.util.List;
 
 import fr.eni.ecole.projet.eniEncheres.bo.Utilisateur;
 import fr.eni.ecole.projet.eniEncheres.dal.DALException;
-import fr.eni.ecole.projet.eniEncheres.dal.DAOFact;
+import fr.eni.ecole.projet.eniEncheres.dal.utilisateur.DAOFact;
 import fr.eni.ecole.projet.eniEncheres.dal.utilisateur.UtilisateurDAO;
 
 /**
