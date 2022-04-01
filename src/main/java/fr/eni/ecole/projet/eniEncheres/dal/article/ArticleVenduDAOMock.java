@@ -18,7 +18,7 @@ public class ArticleVenduDAOMock implements ArticleVenduDAO {
 
 	@Override
 	public void update(ArticleVendu article) throws DALException {
-		lstArticles.add(article);
+		lstArticles.set(article.getNoArticle(), article);
 	}
 
 	@Override

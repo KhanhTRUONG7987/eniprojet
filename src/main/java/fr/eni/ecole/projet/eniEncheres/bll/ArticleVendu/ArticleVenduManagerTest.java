@@ -2,7 +2,7 @@ package fr.eni.ecole.projet.eniEncheres.bll.ArticleVendu;
 
 import java.time.LocalDate;
 
-import fr.eni.ecole.projet.eniEncheres.bll.Utilisateur.BLLException;
+import fr.eni.ecole.projet.eniEncheres.bll.utilisateur.BLLException;
 import fr.eni.ecole.projet.eniEncheres.bo.ArticleVendu;
 
 public class ArticleVenduManagerTest {
