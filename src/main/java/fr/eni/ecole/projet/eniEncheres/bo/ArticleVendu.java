@@ -24,20 +24,18 @@ public class ArticleVendu {
 	private LocalDate dateFinEncheres;
 	private Integer miseAPrix;
 	private Integer prixVente;
-	private Utilisateur utilisateur;
-	private Categorie categorie;
+	private Integer noUtilisateur;
+	private Integer noCategorie;
 	private String etatVente;
 	private List<Enchere> lstEncheres = new ArrayList<Enchere>();
 	
 	
 	public ArticleVendu() {
 		super();
-	}
-	
-	
+	}	
 	
 	public ArticleVendu(String nomArticle, String description, LocalDate dateDebutEncheres, LocalDate dateFinEncheres,
-			Integer miseAPrix, Integer prixVente, Utilisateur utilisateur, Categorie categorie, String etatVente) {
+			Integer miseAPrix, Integer prixVente, Integer noUtilisateur, Integer noCategorie, String etatVente) {
 		super();
 		this.nomArticle = nomArticle;
 		this.description = description;
@@ -45,21 +43,21 @@ public class ArticleVendu {
 		this.dateFinEncheres = dateFinEncheres;
 		this.miseAPrix = miseAPrix;
 		this.prixVente = prixVente;
-		this.utilisateur = utilisateur;
-		this.categorie = categorie;
+		this.noUtilisateur = noUtilisateur;
+		this.noCategorie = noCategorie;
 		this.etatVente = etatVente;
 	}
 
 	public ArticleVendu(String nomArticle, String description, LocalDate dateDebutEncheres, LocalDate dateFinEncheres,
-			Integer miseAPrix, Utilisateur utilisateur, Categorie categorie, String etatVente) {
+			Integer miseAPrix, Integer noUtilisateur, Integer noCategorie, String etatVente) {
 		super();
 		this.nomArticle = nomArticle;
 		this.description = description;
 		this.dateDebutEncheres = dateDebutEncheres;
 		this.dateFinEncheres = dateFinEncheres;
 		this.miseAPrix = miseAPrix;
-		this.utilisateur = utilisateur;
-		this.categorie = categorie;
+		this.noUtilisateur = noUtilisateur;
+		this.noCategorie = noCategorie;
 		this.etatVente = etatVente;
 	}
 
@@ -179,29 +177,29 @@ public class ArticleVendu {
 	/**
 	 * @return the noUtilisateur
 	 */
-	public Utilisateur getUtilisateur() {
-		return utilisateur;
+	public Integer getNoUtilisateur() {
+		return noUtilisateur;
 	}
 	
 	/**
 	 * @param noUtilisateur the noUtilisateur to set
 	 */
-	public void setUtilisateur(Utilisateur utilisateur) {
-		this.utilisateur = utilisateur;
+	public void setNoUtilisateur(Integer noUtilisateur) {
+		this.noUtilisateur = noUtilisateur;
 	}
 
 	/**
 	 * @return the noCategorie
 	 */
-	public Categorie getCategorie() {
-		return categorie;
+	public Integer getNoCategorie() {
+		return noCategorie;
 	}
 
 	/**
 	 * @param noCategorie the noCategorie to set
 	 */
-	public void setCategorie(Categorie categorie) {
-		this.categorie = categorie;
+	public void setNoCategorie(Integer noCategorie) {
+		this.noCategorie = noCategorie;
 	}
 
 	/**
@@ -259,14 +257,14 @@ public class ArticleVendu {
 			builder.append(prixVente);
 			builder.append(", ");
 		}
-		if (utilisateur != null) {
+		if (noUtilisateur != null) {
 			builder.append("noUtilisateur=");
-			builder.append(utilisateur);
+			builder.append(noUtilisateur);
 			builder.append(", ");
 		}
-		if (categorie != null) {
+		if (noCategorie != null) {
 			builder.append("noCategorie=");
-			builder.append(categorie);
+			builder.append(noCategorie);
 			builder.append(", ");
 		}
 		if (etatVente != null) {
@@ -274,15 +272,7 @@ public class ArticleVendu {
 			builder.append(etatVente);
 			builder.append(", ");
 		}
-		if (lstEncheres != null) {
-			builder.append("lstEncheres=");
-			builder.append(lstEncheres);
-			builder.append(", ");
-		}
-		if (super.toString() != null) {
-			builder.append("toString()=");
-			builder.append(super.toString());
-		}
+
 		builder.append("]");
 		return builder.toString();
 	}

@@ -71,6 +71,13 @@ public class Retrait {
 	public void setVille(String ville) {
 		this.ville = ville;
 	}
+		
+	public Integer getNoArticle() {
+		return noArticle;
+	}
+	public void setNoArticle(Integer noArticle) {
+		this.noArticle = noArticle;
+	}
 	/**
 	*{@inheritedDoc}
 	*/

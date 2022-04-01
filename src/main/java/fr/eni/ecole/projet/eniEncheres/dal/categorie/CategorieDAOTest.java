@@ -11,7 +11,7 @@ public class CategorieDAOTest {
 		
 		dao.insert(new Categorie(1, "Informatique"));
 		dao.insert(new Categorie(2, "Ameublement"));
-		dao.insert(new Categorie(3, "Vêtements"));
+		dao.insert(new Categorie(3, "Vetements"));
 		dao.insert(new Categorie(4, "Sport & Loisir"));
 		
 		dao.selectAll().forEach(System.out::println);

@@ -70,7 +70,7 @@ public class UtilisateurDAOMock implements UtilisateurDAO {
 	*/
 	@Override
 	public void updateUtilisateur(Utilisateur utilisateur) {
-		lstUtilisateurs.add(utilisateur);
+		lstUtilisateurs.set(utilisateur.getNoUtilisateur(), utilisateur);
 	}
 
 	/**

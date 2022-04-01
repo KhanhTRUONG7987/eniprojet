@@ -36,9 +36,10 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 	
 	/**
 	*{@inheritedDoc}
+	 * @throws DALException 
 	*/
 	@Override
-	public boolean authenticate(String email, String motDePasse) {
+	public boolean authenticate(String email, String motDePasse) throws DALException {
 		Boolean result = false; //set result to false
 		try (Connection con = ConnectionProvider.getConnection()){
 			
@@ -58,6 +59,7 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+			throw new DALException("Problème de login");
 		}
 		return result;
 		
@@ -65,9 +67,10 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 
 	/**
 	*{@inheritedDoc}
+	 * @throws DALException 
 	*/
 	@Override
-	public void insertUtilisateur(Utilisateur utilisateur) {
+	public void insertUtilisateur(Utilisateur utilisateur) throws DALException {
 		try (Connection con = ConnectionProvider.getConnection()){
 			PreparedStatement stmt = con.prepareStatement(INSERT, Statement.RETURN_GENERATED_KEYS);
 			stmt.setString(1, utilisateur.getPseudo());
@@ -79,8 +82,9 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 			stmt.setString(7, utilisateur.getCodePostal());
 			stmt.setString(8, utilisateur.getVille());
 			stmt.setString(9, utilisateur.getMotDePasse());
-			stmt.setInt(10, utilisateur.getCredit());
-			stmt.setBoolean(11, utilisateur.getAdministrateur());
+			stmt.setString(10, utilisateur.getConfirmation());
+			stmt.setInt(11, utilisateur.getCredit());
+			stmt.setBoolean(12, utilisateur.getAdministrateur());
 			
 			int nb = stmt.executeUpdate();
 			if (nb > 0) {
@@ -92,15 +96,17 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
+			throw new DALException("Problème d'inserer");
 		}
 
 	}
 
 	/**
 	*{@inheritedDoc}
+	 * @throws DALException 
 	*/
 	@Override
-	public void truncateTableUtilisateur(Utilisateur utilisateur) {
+	public void truncateTableUtilisateur(Utilisateur utilisateur) throws DALException {
 		try (Connection con = ConnectionProvider.getConnection()){
 			PreparedStatement stmt = con.prepareStatement(TRUNCATE, Statement.RETURN_GENERATED_KEYS);
 			stmt.executeUpdate(TRUNCATE);
@@ -109,15 +115,17 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
+			throw new DALException("Problème de truncater");
 		}
 
 	}
 
 	/**
 	*{@inheritedDoc}
+	 * @throws DALException 
 	*/
 	@Override
-	public List<Utilisateur> findAll() {
+	public List<Utilisateur> findAll() throws DALException {
 		List<Utilisateur> lstUtilisateurs = new ArrayList<Utilisateur>();
 		
 		try (Connection con = ConnectionProvider.getConnection()){
@@ -137,6 +145,7 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 				utilisateur.setCodePostal(rs.getString("codePostal"));
 				utilisateur.setVille(rs.getString("ville"));
 				utilisateur.setMotDePasse(rs.getString("motDePasse"));
+				utilisateur.setConfirmation(rs.getString("confirmation"));
 				utilisateur.setCredit(rs.getInt("credit"));
 				utilisateur.setAdministrateur(rs.getBoolean("administrateur"));
 			
@@ -145,15 +154,17 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+			throw new DALException("Problème de selecter");
 		}
 		return lstUtilisateurs               ;
 	}
 	
 	/**
 	*{@inheritedDoc}
+	 * @throws DALException 
 	*/
 	@Override
-	public Utilisateur getUtilisateurByID(Integer noUtilisateur) {
+	public Utilisateur getUtilisateurByID(Integer noUtilisateur) throws DALException {
 		Utilisateur utilisateur = null;
 		
 		try (Connection con = ConnectionProvider.getConnection()){
@@ -173,21 +184,24 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 				utilisateur.setCodePostal(rs.getString("codePostal"));
 				utilisateur.setVille(rs.getString("ville"));
 				utilisateur.setMotDePasse(rs.getString("motDePasse"));
+				utilisateur.setConfirmation(rs.getString("confirmation"));
 				utilisateur.setCredit(rs.getInt("credit"));
 				utilisateur.setAdministrateur(rs.getBoolean("administrateur"));
 			}
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
+			throw new DALException("Problème de selecter by ID");
 		}
 		return utilisateur;
 	}
 	
 	/**
 	*{@inheritedDoc}
+	 * @throws DALException 
 	*/
 	@Override
-	public Utilisateur getUtilisateurByPseudo(String pseudo) {
+	public Utilisateur getUtilisateurByPseudo(String pseudo) throws DALException {
 		
 		Utilisateur utilisateur = null;
 		
@@ -208,21 +222,24 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 				utilisateur.setCodePostal(rs.getString("codePostal"));
 				utilisateur.setVille(rs.getString("ville"));
 				utilisateur.setMotDePasse(rs.getString("motDePasse"));
+				utilisateur.setConfirmation(rs.getString("confirmation"));
 				utilisateur.setCredit(rs.getInt("credit"));
 				utilisateur.setAdministrateur(rs.getBoolean("administrateur"));
 			}
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
+			throw new DALException("Problème de selecter by pseudo");
 		}
 		return utilisateur;
 	}
 
 	/**
 	*{@inheritedDoc}
+	 * @throws DALException 
 	*/
 	@Override
-	public void updateUtilisateur(Utilisateur utilisateur) {
+	public void updateUtilisateur(Utilisateur utilisateur) throws DALException {
 		try (Connection con = ConnectionProvider.getConnection()){
 			PreparedStatement stmt = con.prepareStatement(UPDATE, Statement.RETURN_GENERATED_KEYS);
 			
@@ -235,13 +252,15 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 			stmt.setString(7, utilisateur.getCodePostal());
 			stmt.setString(8, utilisateur.getVille());
 			stmt.setString(9, utilisateur.getMotDePasse());
-			stmt.setInt(10, utilisateur.getCredit());
-			stmt.setBoolean(11, utilisateur.getAdministrateur());
+			stmt.setString(10, utilisateur.getConfirmation());
+			stmt.setInt(11, utilisateur.getCredit());
+			stmt.setBoolean(12, utilisateur.getAdministrateur());
 			
 			System.out.println("Utilisateur avec noId " + utilisateur.getNoUtilisateur() + "est mis à jour");
 		
 		} catch (SQLException e) {
 			e.printStackTrace();
+			throw new DALException("Problème de mise à jour");
 		}
 		
 
