@@ -130,7 +130,6 @@ public class ArticleVenduDAOImpl implements ArticleVenduDAO {
 				Date dateDebutEncheres = rs.getDate("date_debut_encheres");
 				Date dateFinEncheres = rs.getDate("date_fin_encheres");
 				
-				article = new ArticleVendu();
 				article.setNoArticle(rs.getInt("no_article"));
 				article.setNomArticle(rs.getString("nom_article"));
 				article.setDescription(rs.getString("description"));

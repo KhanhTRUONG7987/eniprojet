@@ -1,7 +1,7 @@
 /**
  * 
  */
-package fr.eni.ecole.projet.eniEncheres.bll;
+package fr.eni.ecole.projet.eniEncheres.bll.Utilisateur;
 
 import fr.eni.ecole.projet.eniEncheres.bo.Utilisateur;
 

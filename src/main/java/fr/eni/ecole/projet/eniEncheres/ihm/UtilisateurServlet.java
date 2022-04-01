@@ -7,8 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import fr.eni.ecole.projet.eniEncheres.bll.UtilisateurManager;
-import fr.eni.ecole.projet.eniEncheres.bll.UtilisateurManagerSing;
+import fr.eni.ecole.projet.eniEncheres.bll.Utilisateur.UtilisateurManager;
+import fr.eni.ecole.projet.eniEncheres.bll.Utilisateur.UtilisateurManagerSing;
 import fr.eni.ecole.projet.eniEncheres.bo.Utilisateur;
 
 /**

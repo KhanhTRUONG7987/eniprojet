@@ -1,8 +1,9 @@
-package fr.eni.ecole.projet.eniEncheres.bll;
+package fr.eni.ecole.projet.eniEncheres.bll.ArticleVendu;
 
 import java.time.LocalDate;
 import java.util.List;
 
+import fr.eni.ecole.projet.eniEncheres.bll.Utilisateur.BLLException;
 import fr.eni.ecole.projet.eniEncheres.bo.ArticleVendu;
 import fr.eni.ecole.projet.eniEncheres.dal.DALException;
 import fr.eni.ecole.projet.eniEncheres.dal.DAOFact;
@@ -38,7 +39,7 @@ public class ArticleVenduManagerImpl implements ArticleVenduManager{
 	}
 
 	@Override
-	public void deletArticle(ArticleVendu article) throws BLLException {
+	public void deleteArticle(ArticleVendu article) throws BLLException {
 		try {
 			dao.deleteVente(article);
 		} catch (DALException e) {

@@ -1,4 +1,4 @@
-package fr.eni.ecole.projet.eniEncheres.bll;
+package fr.eni.ecole.projet.eniEncheres.bll.ArticleVendu;
 
 public class ArticleVenduManagerSing {
 	private static ArticleVenduManager instance;

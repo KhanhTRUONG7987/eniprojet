@@ -32,9 +32,7 @@ public class ArticleVendu {
 	
 	public ArticleVendu() {
 		super();
-	}
-	
-	
+	}	
 	
 	public ArticleVendu(String nomArticle, String description, LocalDate dateDebutEncheres, LocalDate dateFinEncheres,
 			Integer miseAPrix, Integer prixVente, Integer noUtilisateur, Integer noCategorie, String etatVente) {
