@@ -13,28 +13,26 @@ import fr.eni.ecole.projet.eniEncheres.bll.utilisateur.UtilisateurManagerSing;
 import fr.eni.ecole.projet.eniEncheres.bo.Utilisateur;
 
 /**
- * Servlet implementation class servletUtilisateur
+ * Servlet implementation class MonProfilServlet
  */
-@WebServlet("/UtilisateurServlet")
-public class UtilisateurServlet extends HttpServlet {
+@WebServlet("/MonProfilServlet")
+public class MonProfilServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private UtilisateurManager manager = UtilisateurManagerSing.getInstance();
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public MonProfilServlet() {
+        super();
+        
+    }
 
 	/**
-	 * Default constructor.
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	public UtilisateurServlet() {
-		super();
-	}
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		UtilisateurModel model = new UtilisateurModel();
-		if (request.getParameter("BT_CREER") != null) {
+		if(request.getParameter("BT_MODIFIER") != null) {
 			Utilisateur utilisateur = new Utilisateur();
 			utilisateur.setPseudo(request.getParameter("pseudo"));
 			utilisateur.setNom(request.getParameter("nom"));
@@ -44,35 +42,26 @@ public class UtilisateurServlet extends HttpServlet {
 			utilisateur.setRue(request.getParameter("rue"));
 			utilisateur.setCodePostal(request.getParameter("codePostal"));
 			utilisateur.setVille(request.getParameter("ville"));
-			utilisateur.setMotDePasse(request.getParameter("motDePasse"));
-			utilisateur.setConfirmation(request.getParameter("confirmation"));
-
+			
 			try {
-				manager.addUtilisateur(utilisateur);
+				manager.updateUtilisateur(utilisateur);
 			} catch (BLLException e) {
 				e.printStackTrace();
 				model.setMessage("Erreur!: " + e.getMessage());
 			}
-			model.setCurrent(utilisateur); 
+			
+			model.setCurrent(utilisateur);
 		}
-	
-		try {
-			model.setLsUtilisateurs(manager.getAllUtilisateurs());
-		} catch (BLLException e) {
-			e.printStackTrace();
-			model.setMessage("!: " + e.getMessage());
-		}
-
 		request.setAttribute("model", model);
-		request.getRequestDispatcher("/WEB-INF/utilisateur.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/monprofil.jsp").forward(request, response);
+		
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

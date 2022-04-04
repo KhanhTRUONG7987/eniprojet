@@ -13,6 +13,7 @@ public class EnchereDAOTest {
 	public static void main(String[] args) throws DALException {
 		
 		dao.insert(new Enchere(1, LocalDateTime.of(0, 0, 0, 0, 0))));
+		
 	}
 
 }

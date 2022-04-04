@@ -8,6 +8,9 @@ import fr.eni.ecole.projet.eniEncheres.dal.article.ArticleVenduDAOMock;
 import fr.eni.ecole.projet.eniEncheres.dal.categorie.CategorieDAO;
 import fr.eni.ecole.projet.eniEncheres.dal.categorie.CategorieDAOMock;
 import fr.eni.ecole.projet.eniEncheres.dal.enchere.EnchereDAO;
+import fr.eni.ecole.projet.eniEncheres.dal.enchere.EnchereDAOMock;
+import fr.eni.ecole.projet.eniEncheres.dal.retrait.RetraitDAO;
+import fr.eni.ecole.projet.eniEncheres.dal.retrait.RetraitDAOMock;
 import fr.eni.ecole.projet.eniEncheres.dal.utilisateur.UtilisateurDAO;
 import fr.eni.ecole.projet.eniEncheres.dal.utilisateur.UtilisateurDAOMock;
 
