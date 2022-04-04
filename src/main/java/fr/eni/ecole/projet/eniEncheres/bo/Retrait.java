@@ -41,6 +41,7 @@ public class Retrait {
 	 * @param rue the rue to set
 	 */
 	public void setRue(String rue) {
+		
 		this.rue = rue;
 	}
 	/**

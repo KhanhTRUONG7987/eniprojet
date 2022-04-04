@@ -1,9 +1,10 @@
 package fr.eni.ecole.projet.eniEncheres.bll.ArticleVendu;
 
 import java.time.LocalDate;
+
 import java.util.List;
 
-import fr.eni.ecole.projet.eniEncheres.bll.utilisateur.BLLException;
+import fr.eni.ecole.projet.eniEncheres.bll.util.BLLException;
 import fr.eni.ecole.projet.eniEncheres.bo.ArticleVendu;
 import fr.eni.ecole.projet.eniEncheres.dal.DALException;
 import fr.eni.ecole.projet.eniEncheres.dal.DAOFact;
