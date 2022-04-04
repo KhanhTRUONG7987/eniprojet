@@ -17,8 +17,8 @@ import fr.eni.ecole.projet.eniEncheres.dal.DALException;
  *
  */
 public interface EnchereDAO {
-	public void insertEnchere (Enchere enchere)throws DALException;
-	public void selectEnchere (Integer enchere)throws DALException;
+	public void insert (Enchere enchere)throws DALException;
+	public Enchere selectById (Integer enchere)throws DALException;
 	public void delete (Enchere enchere)throws DALException;
 	public void update (Enchere enchere)throws DALException;
 	public List<Enchere> selectAll()throws DALException;

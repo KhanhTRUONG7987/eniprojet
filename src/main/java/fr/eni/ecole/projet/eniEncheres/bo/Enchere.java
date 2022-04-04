@@ -21,6 +21,23 @@ public class Enchere {
 	private Integer noArticle;
 	private Integer noUtilisateur;
 	
+	
+	public Enchere() {
+		super();
+	}
+	
+	
+	public Enchere(Integer noEnchere, LocalDateTime dateEnchere, Integer montantEnchere, Integer noArticle,
+			Integer noUtilisateur) {
+		super();
+		this.noEnchere = noEnchere;
+		this.dateEnchere = dateEnchere;
+		this.montantEnchere = montantEnchere;
+		this.noArticle = noArticle;
+		this.noUtilisateur = noUtilisateur;
+	}
+
+
 	/**
 	 * Getter pour noEnchere.
 	 * @return the noEnchere

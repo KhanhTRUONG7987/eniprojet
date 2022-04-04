@@ -11,14 +11,15 @@ public class EnchereDAOMock implements EnchereDAO{
 	private static Integer cpt = 0;
 	private List<Enchere> lstEncheres = new ArrayList<>();
 	@Override
-	public void insertEnchere(Enchere enchere) throws DALException {
+	public void insert(Enchere enchere) throws DALException {
 		enchere.setNoEnchere(cpt++);
 		lstEncheres.add(enchere);
 	}
 
-	public void selectEnchere(Integer enchere) throws DALException {
+	public Enchere selectById(Integer enchere) throws DALException {
 		Enchere enchereTest = new Enchere();
 		enchereTest.setNoEnchere(enchere);
+		return enchereTest;
 	}
 
 	public void delete(Enchere enchere) throws DALException {
