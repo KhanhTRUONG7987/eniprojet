@@ -50,6 +50,9 @@ public class Categorie {
 	 * Getter pour noCategorie.
 	 * @return the noCategorie
 	 */
+	/**
+	 * @return
+	 */
 	public Integer getNoCategorie() {
 		return noCategorie;
 	}
@@ -57,6 +60,9 @@ public class Categorie {
 	/**
 	 * Setter pour noCategorie.
 	 * @param noCategorie the noCategorie to set
+	 */
+	/**
+	 * @param noCategorie
 	 */
 	public void setNoCategorie(Integer noCategorie) {
 		this.noCategorie = noCategorie;
@@ -66,6 +72,9 @@ public class Categorie {
 	 * Getter pour libelle.
 	 * @return the libelle
 	 */
+	/**
+	 * @return
+	 */
 	public String getLibelle() {
 		return libelle;
 	}
@@ -73,6 +82,9 @@ public class Categorie {
 	/**
 	 * Setter pour libelle.
 	 * @param libelle the libelle to set
+	 */
+	/**
+	 * @param libelle
 	 */
 	public void setLibelle(String libelle) {
 		this.libelle = libelle;
@@ -82,6 +94,9 @@ public class Categorie {
 	 * Getter pour lstArticlesVendus.
 	 * @return the lstArticlesVendus
 	 */
+	/**
+	 * @return
+	 */
 	public List<ArticleVendu> getLstArticlesVendus() {
 		return lstArticlesVendus;
 	}
@@ -89,6 +104,9 @@ public class Categorie {
 	/**
 	 * Setter pour lstArticlesVendus.
 	 * @param lstArticlesVendus the lstArticlesVendus to set
+	 */
+	/**
+	 * @param lstArticlesVendus
 	 */
 	public void setLstArticlesVendus(List<ArticleVendu> lstArticlesVendus) {
 		this.lstArticlesVendus = lstArticlesVendus;

@@ -12,6 +12,9 @@ public class CategorieManagerImpl implements CategorieManager {
 
 	private CategorieDAO dao = DAOFact.getCategorieDAO();
 
+	/**
+	 *
+	 */
 	@Override
 	public void addCategorie(Categorie categorie) throws BLLException {
 		try {
@@ -21,6 +24,9 @@ public class CategorieManagerImpl implements CategorieManager {
 		}
 	}
 
+	/**
+	 *
+	 */
 	@Override
 	public List<Categorie> getAllCategorie() throws BLLException {
 		try {
@@ -30,6 +36,9 @@ public class CategorieManagerImpl implements CategorieManager {
 		}
 	}
 
+	/**
+	 *
+	 */
 	@Override
 	public Categorie getCategorie(Integer noCategorie) throws BLLException {
 		try { 

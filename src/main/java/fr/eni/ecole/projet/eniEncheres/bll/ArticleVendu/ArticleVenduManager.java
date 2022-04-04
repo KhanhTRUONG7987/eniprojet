@@ -2,7 +2,7 @@ package fr.eni.ecole.projet.eniEncheres.bll.ArticleVendu;
 
 import java.util.List;
 
-import fr.eni.ecole.projet.eniEncheres.bll.util.BLLException;
+import fr.eni.ecole.projet.eniEncheres.bll.BLLException;
 import fr.eni.ecole.projet.eniEncheres.bo.ArticleVendu;
 
 public interface ArticleVenduManager {

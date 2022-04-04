@@ -1,11 +1,9 @@
 /**
  * 
  */
-<<<<<<<< HEAD:src/main/java/fr/eni/ecole/projet/eniEncheres/bll/util/BLLException.java
-package fr.eni.ecole.projet.eniEncheres.bll.util;
-========
+
 package fr.eni.ecole.projet.eniEncheres.bll;
->>>>>>>> f4568ce5ab3bc136a7f1bf90bbee81f2c6e9b385:src/main/java/fr/eni/ecole/projet/eniEncheres/bll/BLLException.java
+
 
 /**
  * Classe en charge de

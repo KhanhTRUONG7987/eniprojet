@@ -1,30 +1,32 @@
-package fr.eni.ecole.projet.eniEncheres.ihm.utilisateur;
+package fr.eni.ecole.projet.eniEncheres.ihm.servlets;
 
 import java.io.IOException;
 
-import javax.servlet.ServletException;
+
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import fr.eni.ecole.projet.eniEncheres.bll.util.BLLException;
+import fr.eni.ecole.projet.eniEncheres.bll.BLLException;
 import fr.eni.ecole.projet.eniEncheres.bll.utilisateur.UtilisateurManager;
 import fr.eni.ecole.projet.eniEncheres.bll.utilisateur.UtilisateurManagerSing;
 import fr.eni.ecole.projet.eniEncheres.bo.Utilisateur;
+import fr.eni.ecole.projet.eniEncheres.ihm.models.UtilisateurModel;
 
 /**
- * Servlet implementation class servletUtilisateur
+ * Servlet implementation class ChangeMDPServlet
  */
-@WebServlet("/UtilisateurServlet")
-public class UtilisateurServlet extends HttpServlet {
+@WebServlet("/ChangeMDPServlet")
+public class ChangeMDPServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private UtilisateurManager manager = UtilisateurManagerSing.getInstance();
 
 	/**
-	 * Default constructor.
+	 * @see HttpServlet#HttpServlet()
 	 */
-	public UtilisateurServlet() {
+	public ChangeMDPServlet() {
 		super();
 	}
 
@@ -35,7 +37,7 @@ public class UtilisateurServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		UtilisateurModel model = new UtilisateurModel();
-		if (request.getParameter("BT_CREER") != null) {
+		if ((request.getParameter("BT_ENREGISTRER")) != null && (request.getParameter("BT_SUPPRIMER")) != null) {
 			Utilisateur utilisateur = new Utilisateur();
 			utilisateur.setPseudo(request.getParameter("pseudo"));
 			utilisateur.setNom(request.getParameter("nom"));
@@ -45,8 +47,10 @@ public class UtilisateurServlet extends HttpServlet {
 			utilisateur.setRue(request.getParameter("rue"));
 			utilisateur.setCodePostal(request.getParameter("codePostal"));
 			utilisateur.setVille(request.getParameter("ville"));
-			utilisateur.setMotDePasse(request.getParameter("motDePasse"));
+			utilisateur.setMotDePasse(request.getParameter("motDePasseActuel"));
+			utilisateur.setMotDePasseNouveau(request.getParameter("motDePasseNouveau"));
 			utilisateur.setConfirmation(request.getParameter("confirmation"));
+			// utilisateur.setCredit(request.getParameter("credit"));
 
 			try {
 				manager.addUtilisateur(utilisateur);
@@ -54,9 +58,9 @@ public class UtilisateurServlet extends HttpServlet {
 				e.printStackTrace();
 				model.setMessage("Erreur!: " + e.getMessage());
 			}
-			model.setCurrent(utilisateur); 
+			model.setCurrent(utilisateur);
 		}
-	
+
 		try {
 			model.setLsUtilisateurs(manager.getAllUtilisateurs());
 		} catch (BLLException e) {
@@ -65,7 +69,7 @@ public class UtilisateurServlet extends HttpServlet {
 		}
 
 		request.setAttribute("model", model);
-		request.getRequestDispatcher("/WEB-INF/utilisateur.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/changeMDP.jsp").forward(request, response);
 	}
 
 	/**
@@ -74,6 +78,7 @@ public class UtilisateurServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 
