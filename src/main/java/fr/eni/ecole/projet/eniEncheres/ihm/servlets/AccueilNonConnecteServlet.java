@@ -39,9 +39,6 @@ public class AccueilNonConnecteServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		CategorieModel categorieModel = new CategorieModel();
 		//ArticleModel articleModel = new ArticleModel();
-		if(request.getParameter("BT_INSCRIPTION_CONNEXION") !=null) {
-			
-		}
 		
 		if(request.getParameter("BT_RECHERCHER") !=null) {
 			Categorie categorie = new Categorie();

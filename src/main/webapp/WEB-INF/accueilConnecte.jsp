@@ -3,12 +3,15 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Accueil Non Connecté</title>
+<title>Accueil Utilisateur Connecté</title>
 </head>
 <body>
-	<form action="AccueilNonConnecteServlet" method="post">
+	<form action="AccueilUserConnecteServlet" method="post">
 	<h1 style="text-align": left;">ENI Enchères</h1>
-	<a href="http://localhost:8080/eniprojet/LoginServlet" value="S'inscrire - Se connecter">S'inscrire - Se connecter</a>
+	<a href="http://localhost:8080/eniprojet/AccueilConnecteServlet" value="Enchères">Enchères</a>
+	<a href="http://localhost:8080/eniprojet/NouvelleVenteServlet" value="Vendre un article">Vendre un article</a>
+	<a href="http://localhost:8080/eniprojet/ProfilServlet" value="Mon profil">Mon profil</a>
+	<a href="http://localhost:8080/eniprojet/AccueilNonConnecteServlet" value="Déconnexion">Déconnexion</a>
 	<h1 style="text-align: center;">Liste enchères</h1>
 	<h3 style="text-align : left;"> Filtres :</h3>
 	<input type="text" id="name" name="name" placeholder="Le nom de l'article contient" required minlength="1" maxlength="20" size="20"><br><br>
