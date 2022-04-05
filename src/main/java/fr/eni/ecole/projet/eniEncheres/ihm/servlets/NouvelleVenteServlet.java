@@ -1,4 +1,4 @@
-package fr.eni.ecole.projet.eniEncheres.ihm.enchere;
+package fr.eni.ecole.projet.eniEncheres.ihm.servlets;
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -17,6 +17,7 @@ import fr.eni.ecole.projet.eniEncheres.bll.Retrait.RetraitManager;
 import fr.eni.ecole.projet.eniEncheres.bll.Retrait.RetraitManagerSing;
 import fr.eni.ecole.projet.eniEncheres.bll.BLLException;
 import fr.eni.ecole.projet.eniEncheres.bo.ArticleVendu;
+import fr.eni.ecole.projet.eniEncheres.bo.Utilisateur;
 import fr.eni.ecole.projet.eniEncheres.ihm.models.ArticleVenduModel;
 
 /**
