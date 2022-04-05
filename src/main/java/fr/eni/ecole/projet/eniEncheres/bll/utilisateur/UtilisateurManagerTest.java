@@ -3,7 +3,7 @@
  */
 package fr.eni.ecole.projet.eniEncheres.bll.utilisateur;
 
-import fr.eni.ecole.projet.eniEncheres.bll.BLLException;
+import fr.eni.ecole.projet.eniEncheres.bll.util.BLLException;
 import fr.eni.ecole.projet.eniEncheres.bo.Utilisateur;
 
 /**

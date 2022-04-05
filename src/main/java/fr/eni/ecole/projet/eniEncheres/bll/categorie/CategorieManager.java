@@ -2,7 +2,7 @@ package fr.eni.ecole.projet.eniEncheres.bll.categorie;
 
 import java.util.List;
 
-import fr.eni.ecole.projet.eniEncheres.bll.BLLException;
+import fr.eni.ecole.projet.eniEncheres.bll.util.BLLException;
 import fr.eni.ecole.projet.eniEncheres.bo.Categorie;
 
 public interface CategorieManager {

@@ -1,6 +1,6 @@
 package fr.eni.ecole.projet.eniEncheres.bll.categorie;
 
-import fr.eni.ecole.projet.eniEncheres.bll.BLLException;
+import fr.eni.ecole.projet.eniEncheres.bll.util.BLLException;
 import fr.eni.ecole.projet.eniEncheres.bo.Categorie;
 
 public class CategorieManagerTest {
@@ -10,7 +10,7 @@ public class CategorieManagerTest {
 	public static void main(String[] args) throws BLLException {
 		manager.addCategorie(new Categorie(1, "Informatique"));
 		manager.addCategorie(new Categorie(2, "Ameublement"));
-		manager.addCategorie(new Categorie(3, "Vêtement"));
+		manager.addCategorie(new Categorie(3, "Vï¿½tement"));
 		manager.addCategorie(new Categorie(4, "Sport & Loisirs"));
 
 		manager.getAllCategorie().forEach(System.out::println);

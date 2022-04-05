@@ -49,9 +49,8 @@ public class AccueilNonConnecteServlet extends HttpServlet {
 			
 			try {
 				categorieManager.addCategorie(categorie);
-			} catch (BLLException e) {
+			} catch (fr.eni.ecole.projet.eniEncheres.bll.util.BLLException e) {
 				e.printStackTrace();
-				categorieModel.setMessage("Erreur ! : " + e.getMessage());
 			}
 			categorieModel.setCurrent(categorie);
 		}

@@ -8,24 +8,31 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import fr.eni.ecole.projet.eniEncheres.bll.ArticleVendu.ArticleVenduManager;
+import fr.eni.ecole.projet.eniEncheres.bll.ArticleVendu.ArticleVenduManagerSing;
+import fr.eni.ecole.projet.eniEncheres.bll.Retrait.RetraitManager;
+import fr.eni.ecole.projet.eniEncheres.bll.Retrait.RetraitManagerImpl;
+import fr.eni.ecole.projet.eniEncheres.bll.Retrait.RetraitManagerSing;
 import fr.eni.ecole.projet.eniEncheres.bll.util.BLLException;
 import fr.eni.ecole.projet.eniEncheres.bll.utilisateur.UtilisateurManager;
 import fr.eni.ecole.projet.eniEncheres.bll.utilisateur.UtilisateurManagerSing;
+import fr.eni.ecole.projet.eniEncheres.bo.ArticleVendu;
 import fr.eni.ecole.projet.eniEncheres.bo.Utilisateur;
-import fr.eni.ecole.projet.eniEncheres.ihm.models.UtilisateurModel;
+import fr.eni.ecole.projet.eniEncheres.ihm.models.ArticleVenduModel;
 
 /**
  * Servlet implementation class LoginServlet
  */
-@WebServlet("/LoginServlet")
-public class LoginServlet extends HttpServlet {
+@WebServlet("/NouvelleVenteServlet")
+public class NouvelleVenteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private UtilisateurManager manager = UtilisateurManagerSing.getInstance();
+	private RetraitManager retraitManger = RetraitManagerSing.getInstance();
+	private ArticleVenduManager articleManager = ArticleVenduManagerSing.getInstance();
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LoginServlet() {
+    public NouvelleVenteServlet() {
         super();
     }
 
@@ -33,18 +40,12 @@ public class LoginServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		UtilisateurModel model = new UtilisateurModel();
-		if (request.getParameter("BT_CONNEXION") != null) {
-			Utilisateur utilisateur = new Utilisateur();
-			utilisateur.setPseudo(request.getParameter("pseudo"));
-			utilisateur.setMotDePasse(request.getParameter("motDePasse"));
-			
-			manager.authenticate(utilisateur.getPseudo(), utilisateur.getMotDePasse());
-			model.setCurrent(utilisateur);
-		}
+		ArticleVenduModel model = new ArticleVenduModel();
+		
+
 		
 		request.setAttribute("model", model);
-		request.getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/nouvelleVente.jsp").forward(request, response);
 	}
 
 	/**

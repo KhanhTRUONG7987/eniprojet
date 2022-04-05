@@ -2,7 +2,7 @@ package fr.eni.ecole.projet.eniEncheres.bll.categorie;
 
 import java.util.List;
 
-import fr.eni.ecole.projet.eniEncheres.bll.BLLException;
+import fr.eni.ecole.projet.eniEncheres.bll.util.BLLException;
 import fr.eni.ecole.projet.eniEncheres.bo.Categorie;
 import fr.eni.ecole.projet.eniEncheres.dal.DALException;
 import fr.eni.ecole.projet.eniEncheres.dal.DAOFact;
@@ -20,7 +20,7 @@ public class CategorieManagerImpl implements CategorieManager {
 		try {
 			dao.insert(categorie);
 		} catch (DALException e) {
-			throw new BLLException("Problème à l'insertion de la catégorie");
+			throw new BLLException("Problï¿½me ï¿½ l'insertion de la catï¿½gorie");
 		}
 	}
 
@@ -32,7 +32,7 @@ public class CategorieManagerImpl implements CategorieManager {
 		try {
 			return dao.selectAll();
 		} catch (DALException e) {
-			throw new BLLException("Problème à la sélection des catégories");
+			throw new BLLException("Problï¿½me ï¿½ la sï¿½lection des catï¿½gories");
 		}
 	}
 
@@ -45,7 +45,7 @@ public class CategorieManagerImpl implements CategorieManager {
 			Categorie categorie = dao.selectById(noCategorie);
 			return categorie;
 		} catch (DALException e) {
-			throw new BLLException("Problème à la sélection de la catégorie");
+			throw new BLLException("Problï¿½me ï¿½ la sï¿½lection de la catï¿½gorie");
 		}
 	}
 

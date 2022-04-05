@@ -1,6 +1,7 @@
 package fr.eni.ecole.projet.eniEncheres.bll.ArticleVendu;
 
 import java.time.LocalDate;
+
 import java.util.List;
 
 import fr.eni.ecole.projet.eniEncheres.bll.BLLException;
@@ -16,15 +17,15 @@ public class ArticleVenduManagerImpl implements ArticleVenduManager{
 	@Override
 	public void addArticle(ArticleVendu article) throws BLLException {
 		if (article.getDateFinEncheres().isBefore(article.getDateDebutEncheres())) {
-			throw new BLLException("Date de fin antérieure à date de début de l'enchère");
+			throw new BLLException("Date de fin antÃ©rieure ï¿½ date de dï¿½but de l'enchï¿½re");
 		}
 		if (article.getDateDebutEncheres().isBefore(LocalDate.now())) {
-			throw new BLLException("Date de début d'enchère invalide");
+			throw new BLLException("Date de dÃ©but d'enchï¿½re invalide");
 		}
 		try {
 			dao.insertArticle(article);
 		} catch (DALException e) {
-			throw new BLLException(" Problème dans l'insertion de l'article");
+			throw new BLLException(" ProblÃ¨me dans l'insertion de l'article");
 		}
 		
 	}
@@ -34,7 +35,7 @@ public class ArticleVenduManagerImpl implements ArticleVenduManager{
 		try {
 			dao.update(article);
 		} catch (DALException e) {
-			throw new BLLException(" Problème dans la mise à jour de l'article");		
+			throw new BLLException(" ProblÃ¨me dans la mise ï¿½ jour de l'article");		
 		}
 	}
 
@@ -43,7 +44,7 @@ public class ArticleVenduManagerImpl implements ArticleVenduManager{
 		try {
 			dao.deleteVente(article);
 		} catch (DALException e) {
-			throw new BLLException(" Problème dans la suppression de l'article");		
+			throw new BLLException(" ProblÃ¨me dans la suppression de l'article");		
 		}
 	}
 
@@ -54,7 +55,7 @@ public class ArticleVenduManagerImpl implements ArticleVenduManager{
 			return article;
 			
 		} catch (DALException e) {
-			throw new BLLException(" Problème dans la recherche de l'article");
+			throw new BLLException(" ProblÃ¨me dans la recherche de l'article");
 		}
 	}
 
@@ -63,7 +64,7 @@ public class ArticleVenduManagerImpl implements ArticleVenduManager{
 		try {
 			return dao.selectAllArticles();
 		} catch (DALException e) {
-			throw new BLLException(" Problème dans l'affichage des articles");
+			throw new BLLException(" Problï¿½me dans l'affichage des articles");
 		}
 	}
 
