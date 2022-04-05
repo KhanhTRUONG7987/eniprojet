@@ -1,4 +1,4 @@
-package fr.eni.ecole.projet.eniEncheres.ihm.utilisateur;
+package fr.eni.ecole.projet.eniEncheres.ihm.servlets;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -7,10 +7,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import fr.eni.ecole.projet.eniEncheres.bll.utilisateur.BLLException;
+import fr.eni.ecole.projet.eniEncheres.bll.BLLException;
 import fr.eni.ecole.projet.eniEncheres.bll.utilisateur.UtilisateurManager;
 import fr.eni.ecole.projet.eniEncheres.bll.utilisateur.UtilisateurManagerSing;
 import fr.eni.ecole.projet.eniEncheres.bo.Utilisateur;
+import fr.eni.ecole.projet.eniEncheres.ihm.models.UtilisateurModel;
 
 /**
  * Servlet implementation class MonProfilServlet
@@ -34,6 +35,7 @@ public class MonProfilServlet extends HttpServlet {
 		UtilisateurModel model = new UtilisateurModel();
 		if(request.getParameter("BT_MODIFIER") != null) {
 			Utilisateur utilisateur = new Utilisateur();
+			utilisateur.setNoUtilisateur(Integer.parseInt(request.getParameter("noUtilisateur")));
 			utilisateur.setPseudo(request.getParameter("pseudo"));
 			utilisateur.setNom(request.getParameter("nom"));
 			utilisateur.setPrenom(request.getParameter("prenom"));
@@ -45,9 +47,14 @@ public class MonProfilServlet extends HttpServlet {
 			
 			try {
 				manager.updateUtilisateur(utilisateur);
-			} catch (BLLException e) {
+			} catch (fr.eni.ecole.projet.eniEncheres.bll.util.BLLException e1) {
+				e1.printStackTrace();
+			}
+			
+			try {
+				manager.deleteUtilisateur(utilisateur.getNoUtilisateur());
+			} catch (fr.eni.ecole.projet.eniEncheres.bll.util.BLLException e) {
 				e.printStackTrace();
-				model.setMessage("Erreur!: " + e.getMessage());
 			}
 			
 			model.setCurrent(utilisateur);

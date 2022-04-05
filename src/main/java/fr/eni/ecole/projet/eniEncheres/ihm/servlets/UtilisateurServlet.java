@@ -8,11 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-<<<<<<< HEAD:src/main/java/fr/eni/ecole/projet/eniEncheres/ihm/utilisateur/UtilisateurServlet.java
-import fr.eni.ecole.projet.eniEncheres.bll.utilisateur.BLLException;
-=======
 import fr.eni.ecole.projet.eniEncheres.bll.util.BLLException;
->>>>>>> dc59039531f775364fd66fdc610693cf253bae70:src/main/java/fr/eni/ecole/projet/eniEncheres/ihm/servlets/UtilisateurServlet.java
 import fr.eni.ecole.projet.eniEncheres.bll.utilisateur.UtilisateurManager;
 import fr.eni.ecole.projet.eniEncheres.bll.utilisateur.UtilisateurManagerSing;
 import fr.eni.ecole.projet.eniEncheres.bo.Utilisateur;

@@ -17,15 +17,15 @@ public class ArticleVenduManagerImpl implements ArticleVenduManager{
 	@Override
 	public void addArticle(ArticleVendu article) throws BLLException {
 		if (article.getDateFinEncheres().isBefore(article.getDateDebutEncheres())) {
-			throw new BLLException("Date de fin ant�rieure � date de d�but de l'ench�re");
+			throw new BLLException("Date de fin antérieure � date de d�but de l'ench�re");
 		}
 		if (article.getDateDebutEncheres().isBefore(LocalDate.now())) {
-			throw new BLLException("Date de d�but d'ench�re invalide");
+			throw new BLLException("Date de début d'ench�re invalide");
 		}
 		try {
 			dao.insertArticle(article);
 		} catch (DALException e) {
-			throw new BLLException(" Probl�me dans l'insertion de l'article");
+			throw new BLLException(" Problème dans l'insertion de l'article");
 		}
 		
 	}
@@ -35,7 +35,7 @@ public class ArticleVenduManagerImpl implements ArticleVenduManager{
 		try {
 			dao.update(article);
 		} catch (DALException e) {
-			throw new BLLException(" Probl�me dans la mise � jour de l'article");		
+			throw new BLLException(" Problème dans la mise � jour de l'article");		
 		}
 	}
 
@@ -44,7 +44,7 @@ public class ArticleVenduManagerImpl implements ArticleVenduManager{
 		try {
 			dao.deleteVente(article);
 		} catch (DALException e) {
-			throw new BLLException(" Probl�me dans la suppression de l'article");		
+			throw new BLLException(" Problème dans la suppression de l'article");		
 		}
 	}
 
@@ -55,7 +55,7 @@ public class ArticleVenduManagerImpl implements ArticleVenduManager{
 			return article;
 			
 		} catch (DALException e) {
-			throw new BLLException(" Probl�me dans la recherche de l'article");
+			throw new BLLException(" Problème dans la recherche de l'article");
 		}
 	}
 

@@ -1,4 +1,4 @@
-package fr.eni.ecole.projet.eniEncheres.ihm.enchere;
+package fr.eni.ecole.projet.eniEncheres.ihm.servlets;
 
 import java.io.IOException;
 
@@ -18,6 +18,7 @@ import fr.eni.ecole.projet.eniEncheres.bll.utilisateur.UtilisateurManager;
 import fr.eni.ecole.projet.eniEncheres.bll.utilisateur.UtilisateurManagerSing;
 import fr.eni.ecole.projet.eniEncheres.bo.ArticleVendu;
 import fr.eni.ecole.projet.eniEncheres.bo.Utilisateur;
+import fr.eni.ecole.projet.eniEncheres.ihm.models.ArticleVenduModel;
 
 /**
  * Servlet implementation class LoginServlet

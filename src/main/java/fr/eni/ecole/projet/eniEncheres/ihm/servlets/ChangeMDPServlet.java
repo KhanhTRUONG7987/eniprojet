@@ -54,18 +54,16 @@ public class ChangeMDPServlet extends HttpServlet {
 
 			try {
 				manager.updateUtilisateur(utilisateur);
-			} catch (BLLException e) {
+			} catch (fr.eni.ecole.projet.eniEncheres.bll.util.BLLException e) {
 				e.printStackTrace();
-				model.setMessage("Erreur!: " + e.getMessage());
 			}
 			model.setCurrent(utilisateur);
 		}
 
 		try {
 			model.setLsUtilisateurs(manager.getAllUtilisateurs());
-		} catch (BLLException e) {
+		} catch (fr.eni.ecole.projet.eniEncheres.bll.util.BLLException e) {
 			e.printStackTrace();
-			model.setMessage("!: " + e.getMessage());
 		}
 
 		request.setAttribute("model", model);

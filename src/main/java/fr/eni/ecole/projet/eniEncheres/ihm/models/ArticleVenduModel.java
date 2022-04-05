@@ -1,7 +1,7 @@
 /**
  * 
  */
-package fr.eni.ecole.projet.eniEncheres.ihm.enchere;
+package fr.eni.ecole.projet.eniEncheres.ihm.models;
 
 import java.util.ArrayList;
 import java.util.List;
