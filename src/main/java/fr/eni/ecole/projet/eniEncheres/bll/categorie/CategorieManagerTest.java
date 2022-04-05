@@ -1,6 +1,6 @@
 package fr.eni.ecole.projet.eniEncheres.bll.categorie;
 
-import fr.eni.ecole.projet.eniEncheres.bll.util.BLLException;
+import fr.eni.ecole.projet.eniEncheres.bll.BLLException;
 import fr.eni.ecole.projet.eniEncheres.bo.Categorie;
 
 public class CategorieManagerTest {

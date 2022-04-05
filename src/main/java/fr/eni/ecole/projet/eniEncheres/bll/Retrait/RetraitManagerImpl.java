@@ -1,6 +1,6 @@
 package fr.eni.ecole.projet.eniEncheres.bll.Retrait;
 
-import fr.eni.ecole.projet.eniEncheres.bll.util.BLLException;
+import fr.eni.ecole.projet.eniEncheres.bll.BLLException;
 import fr.eni.ecole.projet.eniEncheres.bo.Retrait;
 import fr.eni.ecole.projet.eniEncheres.dal.DALException;
 import fr.eni.ecole.projet.eniEncheres.dal.DAOFact;
