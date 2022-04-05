@@ -2,7 +2,7 @@ package fr.eni.ecole.projet.eniEncheres.bll.categorie;
 
 import java.util.List;
 
-import fr.eni.ecole.projet.eniEncheres.bll.ArticleVendu.BLLException;
+import fr.eni.ecole.projet.eniEncheres.bll.util.BLLException;
 import fr.eni.ecole.projet.eniEncheres.bo.Categorie;
 import fr.eni.ecole.projet.eniEncheres.dal.DALException;
 import fr.eni.ecole.projet.eniEncheres.dal.DAOFact;
@@ -12,6 +12,9 @@ public class CategorieManagerImpl implements CategorieManager {
 
 	private CategorieDAO dao = DAOFact.getCategorieDAO();
 
+	/**
+	 *
+	 */
 	@Override
 	public void addCategorie(Categorie categorie) throws BLLException {
 		try {
@@ -21,6 +24,9 @@ public class CategorieManagerImpl implements CategorieManager {
 		}
 	}
 
+	/**
+	 *
+	 */
 	@Override
 	public List<Categorie> getAllCategorie() throws BLLException {
 		try {
@@ -30,6 +36,9 @@ public class CategorieManagerImpl implements CategorieManager {
 		}
 	}
 
+	/**
+	 *
+	 */
 	@Override
 	public Categorie getCategorie(Integer noCategorie) throws BLLException {
 		try { 

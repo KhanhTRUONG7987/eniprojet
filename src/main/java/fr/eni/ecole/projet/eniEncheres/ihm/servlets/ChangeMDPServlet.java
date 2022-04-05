@@ -1,17 +1,19 @@
-package fr.eni.ecole.projet.eniEncheres.ihm.utilisateur;
+package fr.eni.ecole.projet.eniEncheres.ihm.servlets;
 
 import java.io.IOException;
 
-import javax.servlet.ServletException;
+
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import fr.eni.ecole.projet.eniEncheres.bll.utilisateur.BLLException;
+import fr.eni.ecole.projet.eniEncheres.bll.BLLException;
 import fr.eni.ecole.projet.eniEncheres.bll.utilisateur.UtilisateurManager;
 import fr.eni.ecole.projet.eniEncheres.bll.utilisateur.UtilisateurManagerSing;
 import fr.eni.ecole.projet.eniEncheres.bo.Utilisateur;
+import fr.eni.ecole.projet.eniEncheres.ihm.models.UtilisateurModel;
 
 /**
  * Servlet implementation class ChangeMDPServlet
@@ -19,20 +21,23 @@ import fr.eni.ecole.projet.eniEncheres.bo.Utilisateur;
 @WebServlet("/ChangeMDPServlet")
 public class ChangeMDPServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private UtilisateurManager manager = UtilisateurManagerSing.getInstance();   
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public ChangeMDPServlet() {
-        super();
-    }
+	private UtilisateurManager manager = UtilisateurManagerSing.getInstance();
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public ChangeMDPServlet() {
+		super();
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		UtilisateurModel model = new UtilisateurModel();
-		if ((request.getParameter("BT_ENREGISTRER"))!=null && (request.getParameter("BT_SUPPRIMER")) != null) {
+		if ((request.getParameter("BT_ENREGISTRER")) != null && (request.getParameter("BT_SUPPRIMER")) != null) {
 			Utilisateur utilisateur = new Utilisateur();
 			utilisateur.setPseudo(request.getParameter("pseudo"));
 			utilisateur.setNom(request.getParameter("nom"));
@@ -45,7 +50,7 @@ public class ChangeMDPServlet extends HttpServlet {
 			utilisateur.setMotDePasse(request.getParameter("motDePasseActuel"));
 			utilisateur.setMotDePasseNouveau(request.getParameter("motDePasseNouveau"));
 			utilisateur.setConfirmation(request.getParameter("confirmation"));
-			//utilisateur.setCredit(request.getParameter("credit"));
+			// utilisateur.setCredit(request.getParameter("credit"));
 
 			try {
 				manager.updateUtilisateur(utilisateur);
@@ -53,9 +58,9 @@ public class ChangeMDPServlet extends HttpServlet {
 				e.printStackTrace();
 				model.setMessage("Erreur!: " + e.getMessage());
 			}
-			model.setCurrent(utilisateur); 
+			model.setCurrent(utilisateur);
 		}
-	
+
 		try {
 			model.setLsUtilisateurs(manager.getAllUtilisateurs());
 		} catch (BLLException e) {
@@ -68,9 +73,11 @@ public class ChangeMDPServlet extends HttpServlet {
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}

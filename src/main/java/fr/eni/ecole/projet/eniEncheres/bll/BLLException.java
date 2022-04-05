@@ -1,7 +1,9 @@
 /**
  * 
  */
-package fr.eni.ecole.projet.eniEncheres.bll.ArticleVendu;
+
+package fr.eni.ecole.projet.eniEncheres.bll;
+
 
 /**
  * Classe en charge de

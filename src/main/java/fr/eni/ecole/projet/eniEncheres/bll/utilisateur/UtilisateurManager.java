@@ -6,6 +6,7 @@ package fr.eni.ecole.projet.eniEncheres.bll.utilisateur;
 
 import java.util.List;
 
+import fr.eni.ecole.projet.eniEncheres.bll.util.BLLException;
 import fr.eni.ecole.projet.eniEncheres.bo.Utilisateur;
 
 /**
@@ -23,11 +24,7 @@ public interface UtilisateurManager {
 	public Utilisateur getUtilisateurByPseudo(String pseudo) throws BLLException;
 	public void updateUtilisateur (Utilisateur utilisateur) throws BLLException;
 	public void deleteUtilisateur (Integer noUtilisateur) throws BLLException;
-	/**
-	 * Méthode en charge de 
-	 * @param pseudo
-	 * @return
-	 */
+
 	
 	
 }

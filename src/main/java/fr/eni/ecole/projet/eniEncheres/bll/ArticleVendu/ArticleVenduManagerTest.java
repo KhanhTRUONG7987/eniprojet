@@ -2,7 +2,7 @@ package fr.eni.ecole.projet.eniEncheres.bll.ArticleVendu;
 
 import java.time.LocalDate;
 
-import fr.eni.ecole.projet.eniEncheres.bll.utilisateur.BLLException;
+import fr.eni.ecole.projet.eniEncheres.bll.BLLException;
 import fr.eni.ecole.projet.eniEncheres.bo.ArticleVendu;
 
 public class ArticleVenduManagerTest {
@@ -11,8 +11,8 @@ public class ArticleVenduManagerTest {
 
 	public static void main(String[] args) throws BLLException {
 		
-			ArticleVendu art1 = new ArticleVendu("Armoire Ikaé", "Armoire Penderie", LocalDate.of(2022, 4, 9), LocalDate.of(2022, 5, 15), 150, 11, 4, "EC");
-			ArticleVendu art2 = new ArticleVendu("Armoire Akié", "Armoire Penderie", LocalDate.of(2022, 4, 9), LocalDate.of(2022, 5, 15), 132, 11, 4, "EC");
+			ArticleVendu art1 = new ArticleVendu("Armoire Ikaï¿½", "Armoire Penderie", LocalDate.of(2022, 4, 9), LocalDate.of(2022, 5, 15), 150, 11, 4, "EC");
+			ArticleVendu art2 = new ArticleVendu("Armoire Akiï¿½", "Armoire Penderie", LocalDate.of(2022, 4, 9), LocalDate.of(2022, 5, 15), 132, 11, 4, "EC");
 			ArticleVendu art3 = new ArticleVendu("Armoire Ekai", "Armoire Penderie", LocalDate.of(2022, 4, 9), LocalDate.of(2022, 4, 11), 113, 11, 4, "EC");
 			
 			manager.addArticle(art1);
