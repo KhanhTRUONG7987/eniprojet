@@ -11,6 +11,7 @@
 <p>${articlemodel.message}</p>
 <body>
 	<h1 style="text-align: center;">Nouvelle Vente</h1>
+	<input type="hidden" name="noUtilisateur" value="${articlemodel.current.noUtilisateur}"><br><br>
 	<form action="">
 		Article : <input type="text" name="articleNom"
 			value="${articlemodel.current.nomArticle}"> <br> <br>
@@ -48,7 +49,7 @@
 		</fieldset>
 
 		<br> <br> <input type="submit" name="BT_ENREGISTRER"
-			value="Enregistrer"> <input type="reset" value="Annuler">
+			value="Enregistrer"> <input type="reset" name="BT_ANNULER" value="Annuler">
 	</form>
 </body>
 </html>
