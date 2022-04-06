@@ -1,6 +1,6 @@
-package fr.eni.ecole.projet.eniEncheres.bll.Retrait;
+package fr.eni.ecole.projet.eniEncheres.bll.retrait;
 
-import fr.eni.ecole.projet.eniEncheres.bll.util.BLLException;
+import fr.eni.ecole.projet.eniEncheres.bll.BLLException;
 import fr.eni.ecole.projet.eniEncheres.bo.Retrait;
 import fr.eni.ecole.projet.eniEncheres.dal.DALException;
 import fr.eni.ecole.projet.eniEncheres.dal.DAOFact;
@@ -34,6 +34,17 @@ public class RetraitManagerImpl implements RetraitManager{
 			dao.deleteRetrait(retrait);
 		} catch (DALException e) {
 			throw new BLLException("Problème dans la suppression du retrait");
+		}
+		
+	}
+
+	@Override
+	public void findAll(Retrait retrait) throws BLLException {
+		try {
+			dao.insertRetrait(retrait);
+		} catch (DALException e) {
+			e.printStackTrace();
+			throw new BLLException("! Erreur "+e.getMessage());
 		}
 		
 	}

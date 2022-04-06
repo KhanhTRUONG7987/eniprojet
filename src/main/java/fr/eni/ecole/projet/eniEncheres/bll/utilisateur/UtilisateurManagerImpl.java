@@ -6,7 +6,7 @@ package fr.eni.ecole.projet.eniEncheres.bll.utilisateur;
 
 import java.util.List;
 
-import fr.eni.ecole.projet.eniEncheres.bll.util.BLLException;
+import fr.eni.ecole.projet.eniEncheres.bll.BLLException;
 import fr.eni.ecole.projet.eniEncheres.bo.Utilisateur;
 import fr.eni.ecole.projet.eniEncheres.dal.DALException;
 import fr.eni.ecole.projet.eniEncheres.dal.DAOFact;
@@ -110,6 +110,18 @@ public class UtilisateurManagerImpl implements UtilisateurManager {
 			e.printStackTrace();
 		}
 		throw new BLLException("");
+
+	}
+
+	@Override
+	public Utilisateur getUtilisateurById(Integer id) throws BLLException {
+		
+		try {
+			Utilisateur utilisateur = dao.getUtilisateurByID(id);
+			return utilisateur;
+		} catch (DALException e) {
+			throw new BLLException("Probleme dans la recherche de l'utilisateur by id");		
+		}	
 
 	}
 

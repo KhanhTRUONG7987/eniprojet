@@ -132,7 +132,7 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 			PreparedStatement stmt = con.prepareStatement(FIND_ALL, Statement.RETURN_GENERATED_KEYS);
 			ResultSet rs = stmt.executeQuery(FIND_ALL);
 			
-			Utilisateur utilisateur = null;
+			Utilisateur utilisateur = new Utilisateur();
 			
 			while (rs.next()) {
 				utilisateur.setNoUtilisateur(rs.getInt("noUtilisateur"));
@@ -154,7 +154,7 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new DALException("Problème de selecter");
+			throw new DALException("Problème de select");
 		}
 		return lstUtilisateurs               ;
 	}
@@ -165,7 +165,7 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 	*/
 	@Override
 	public Utilisateur getUtilisateurByID(Integer noUtilisateur) throws DALException {
-		Utilisateur utilisateur = null;
+		Utilisateur utilisateur = new Utilisateur();
 		
 		try (Connection con = ConnectionProvider.getConnection()){
 			PreparedStatement stmt = con.prepareStatement(FIND_BY_ID, Statement.RETURN_GENERATED_KEYS);
@@ -173,7 +173,6 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 			ResultSet rs = stmt.executeQuery();
 			
 			if(rs.next()) {
-				utilisateur = new Utilisateur();
 				
 				utilisateur.setNoUtilisateur(rs.getInt("noUtilisateur"));
 				utilisateur.setNom(rs.getString("nom"));
@@ -203,7 +202,7 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 	@Override
 	public Utilisateur getUtilisateurByPseudo(String pseudo) throws DALException {
 		
-		Utilisateur utilisateur = null;
+		Utilisateur utilisateur = new Utilisateur();
 		
 		try (Connection con = ConnectionProvider.getConnection()){
 			PreparedStatement stmt = con.prepareStatement(FIND_BY_PSEUDO, Statement.RETURN_GENERATED_KEYS);
@@ -211,7 +210,6 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 			ResultSet rs = stmt.executeQuery();
 			
 			if(rs.next()) {
-				utilisateur = new Utilisateur();
 				
 				utilisateur.setPseudo(rs.getString("pseudo"));
 				utilisateur.setNom(rs.getString("nom"));

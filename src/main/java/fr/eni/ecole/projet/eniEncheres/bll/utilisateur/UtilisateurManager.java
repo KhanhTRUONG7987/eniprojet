@@ -6,7 +6,7 @@ package fr.eni.ecole.projet.eniEncheres.bll.utilisateur;
 
 import java.util.List;
 
-import fr.eni.ecole.projet.eniEncheres.bll.util.BLLException;
+import fr.eni.ecole.projet.eniEncheres.bll.BLLException;
 import fr.eni.ecole.projet.eniEncheres.bo.Utilisateur;
 
 /**
@@ -22,6 +22,7 @@ public interface UtilisateurManager {
 	public boolean authenticate (String email, String motDePasse);
 	public List<Utilisateur> getAllUtilisateurs() throws BLLException;
 	public Utilisateur getUtilisateurByPseudo(String pseudo) throws BLLException;
+	public Utilisateur getUtilisateurById (Integer id) throws BLLException;
 	public void updateUtilisateur (Utilisateur utilisateur) throws BLLException;
 	public void deleteUtilisateur (Integer noUtilisateur) throws BLLException;
 

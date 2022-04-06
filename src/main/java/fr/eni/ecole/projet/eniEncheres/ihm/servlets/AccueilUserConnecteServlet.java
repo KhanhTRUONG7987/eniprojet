@@ -1,6 +1,7 @@
 package fr.eni.ecole.projet.eniEncheres.ihm.servlets;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,6 +14,7 @@ import fr.eni.ecole.projet.eniEncheres.bll.categorie.CategorieManagerSing;
 import fr.eni.ecole.projet.eniEncheres.bo.ArticleVendu;
 import fr.eni.ecole.projet.eniEncheres.bo.Categorie;
 import fr.eni.ecole.projet.eniEncheres.ihm.models.CategorieModel;
+
 
 /**
  * Servlet implementation class AccueilUserConnecteServlet
@@ -43,7 +45,7 @@ public class AccueilUserConnecteServlet extends HttpServlet {
 			categorie.setLibelle(request.getParameter("libelle"));
 			
 			try {
-				categorieManager.getCategorie(categorie);
+				categorieManager.getCategorie(categorie.getNoCategorie());
 			} catch (BLLException e) {
 				e.printStackTrace();
 				categorieModel.setMessage("Erreur ! : " + e.getMessage());

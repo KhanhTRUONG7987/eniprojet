@@ -10,10 +10,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import fr.eni.ecole.projet.eniEncheres.bll.ArticleVendu.ArticleVenduManager;
 import fr.eni.ecole.projet.eniEncheres.bll.ArticleVendu.ArticleVenduManagerSing;
-import fr.eni.ecole.projet.eniEncheres.bll.Retrait.RetraitManager;
-import fr.eni.ecole.projet.eniEncheres.bll.Retrait.RetraitManagerImpl;
-import fr.eni.ecole.projet.eniEncheres.bll.Retrait.RetraitManagerSing;
-import fr.eni.ecole.projet.eniEncheres.bll.util.BLLException;
+import fr.eni.ecole.projet.eniEncheres.bll.retrait.RetraitManager;
+import fr.eni.ecole.projet.eniEncheres.bll.retrait.RetraitManagerImpl;
+import fr.eni.ecole.projet.eniEncheres.bll.retrait.RetraitManagerSing;
+import fr.eni.ecole.projet.eniEncheres.bll.BLLException;
 import fr.eni.ecole.projet.eniEncheres.bll.utilisateur.UtilisateurManager;
 import fr.eni.ecole.projet.eniEncheres.bll.utilisateur.UtilisateurManagerSing;
 import fr.eni.ecole.projet.eniEncheres.bo.ArticleVendu;
