@@ -23,9 +23,9 @@ public class ArticleVenduManagerImpl implements ArticleVenduManager{
 			throw new BLLException("Date de début d'ench�re invalide");
 		}
 		try {
-			dao.insertArticle(article);
+			dao.insertArticle(article);			
 		} catch (DALException e) {
-			throw new BLLException(" Problème dans l'insertion de l'article");
+			throw new BLLException(" Problème dans l'insertion de l'article" + e.getMessage());
 		}
 		
 	}

@@ -51,7 +51,7 @@ public class AccueilNonConnecteServlet extends HttpServlet {
 			lstEncheres = articleManager.selectAll();
 			for(ArticleVendu articleVendu : lstEncheres) {
 				Utilisateur user = utilisateurManager.getUtilisateurById(articleVendu.getNoUtilisateur());
-				System.out.println(articleVendu.getNomArticle() + "Prix :" + articleVendu.getPrixVente() + "Fin de l'enchère : " + articleVendu.getDateFinEncheres()
+				System.out.println(articleVendu.getNomArticle() + "Prix :" + articleVendu.getPrixVente() + "Fin de l'enchï¿½re : " + articleVendu.getDateFinEncheres()
 				+ "Vendeur : " + user.getPseudo());
 			}
 		} catch (BLLException e) {
@@ -71,7 +71,7 @@ public class AccueilNonConnecteServlet extends HttpServlet {
 					if (articleVendu.getNomArticle().contains(motCle) && articleVendu.getNoCategorie() == categorie.getNoCategorie() && articleVendu.getEtatVente() == "En Cours") {
 						Utilisateur utilisateur = utilisateurManager.getUtilisateurById(articleVendu.getNoUtilisateur());
 						
-						System.out.println(articleVendu.getNomArticle() + "Prix : " + articleVendu.getPrixVente() + "Fin de l'enchère : " + articleVendu.getDateFinEncheres() 
+						System.out.println(articleVendu.getNomArticle() + "Prix : " + articleVendu.getPrixVente() + "Fin de l'enchï¿½re : " + articleVendu.getDateFinEncheres() 
 						+ "Vendeur : " + utilisateur.getPseudo());
 					}
 				}

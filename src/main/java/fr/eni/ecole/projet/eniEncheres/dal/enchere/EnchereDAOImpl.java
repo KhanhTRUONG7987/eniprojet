@@ -14,12 +14,13 @@ import fr.eni.ecole.projet.eniEncheres.bo.Enchere;
 import fr.eni.ecole.projet.eniEncheres.dal.DALException;
 import fr.eni.ecole.projet.eniEncheres.dal.util.ConnectionProvider;
 
-public class EnchereDAOImpl {
+public class EnchereDAOImpl implements EnchereDAO {
 
 	private final String SELECT = "SELECT * FROM encheres ORDER BY no_enchere";
 	private final String INSERT = "INSERT montantEnchere FROM encheres";
 	private final String SELECTBYID = "SELECT * FROM encheres WHERE no_enchere = ?";
 	private final String UPDATE = "UPDATE encheres SET date_enchere = ?, montant_enchere = ? WHERE no_enchere =?";
+	private final String DELETE = "DELETE * from ENCHERES WHERE no_enchere=?";
 	
 	public void insert(Enchere enchere) throws DALException {
 		try(Connection con = ConnectionProvider.getConnection()) {
@@ -104,6 +105,19 @@ public class EnchereDAOImpl {
 		} catch (SQLException e) {
 			throw new DALException("Erreur dans la fonction Update enchère");
 		}
+	}
+
+	@Override
+	public void delete(Enchere enchere) throws DALException {
+		try (Connection con = ConnectionProvider.getConnection()) {
+			PreparedStatement stmt = con.prepareStatement(DELETE);
+			stmt.setInt(1, enchere.getNoEnchere());
+
+			stmt.execute();
+
+		} catch (SQLException e) {
+			throw new DALException("Problème dans la fonction DELETE ENCHERE");
+		}		
 	}
 	
 }

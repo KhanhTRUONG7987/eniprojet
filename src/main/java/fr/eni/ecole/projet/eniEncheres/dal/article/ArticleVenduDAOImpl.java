@@ -26,9 +26,10 @@ public class ArticleVenduDAOImpl implements ArticleVenduDAO {
 
 	@Override
 	public void insertArticle(ArticleVendu article) throws DALException {
+		
 		try (Connection con = ConnectionProvider.getConnection()) {
+			
 			PreparedStatement stmt = con.prepareStatement(INSERT, Statement.RETURN_GENERATED_KEYS);
-
 			stmt.setString(1, article.getNomArticle());
 			stmt.setString(2, article.getDescription());
 			stmt.setDate(3, Date.valueOf(article.getDateDebutEncheres()));
@@ -38,6 +39,7 @@ public class ArticleVenduDAOImpl implements ArticleVenduDAO {
 			stmt.setInt(7, article.getNoCategorie());
 
 			int nb = stmt.executeUpdate();
+			System.out.println(article);
 			if (nb > 0) {
 				ResultSet rs = stmt.getGeneratedKeys();
 				if (rs.next()) {
@@ -46,7 +48,7 @@ public class ArticleVenduDAOImpl implements ArticleVenduDAO {
 			}
 
 		} catch (SQLException e) {
-			throw new DALException("Problème dans la fonction INSERT ARTICLE");
+			throw new DALException("Problï¿½me dans la fonction INSERT ARTICLE "+e.getMessage());
 		}
 	}
 
@@ -65,7 +67,7 @@ public class ArticleVenduDAOImpl implements ArticleVenduDAO {
 			stmt.executeUpdate();
 
 		} catch (SQLException e) {
-			throw new DALException("Problème dans la fonction UPDATE ARTICLE");
+			throw new DALException("Problï¿½me dans la fonction UPDATE ARTICLE" + e.getMessage());
 		}
 
 	}
@@ -79,7 +81,7 @@ public class ArticleVenduDAOImpl implements ArticleVenduDAO {
 			stmt.execute();
 
 		} catch (SQLException e) {
-			throw new DALException("Problème dans la fonction DELETE ARTICLE");
+			throw new DALException("Problï¿½me dans la fonction DELETE ARTICLE" + e.getMessage());
 		}
 
 	}
@@ -110,7 +112,7 @@ public class ArticleVenduDAOImpl implements ArticleVenduDAO {
 			}
 
 		} catch (SQLException e) {
-			throw new DALException("Problème dans la fonction SELECT_BY_ID ARTICLE");
+			throw new DALException("Problï¿½me dans la fonction SELECT_BY_ID ARTICLE" + e.getMessage());
 		}
 
 		return article;
@@ -145,7 +147,7 @@ public class ArticleVenduDAOImpl implements ArticleVenduDAO {
 			}
 			
 		} catch (SQLException e) {
-			throw new DALException("Problème dans la fonction SELECT_ALL ARTICLE");
+			throw new DALException("Problï¿½me dans la fonction SELECT_ALL ARTICLE" + e.getMessage());
 		}		
 		return lstArticleVendus;
 	}

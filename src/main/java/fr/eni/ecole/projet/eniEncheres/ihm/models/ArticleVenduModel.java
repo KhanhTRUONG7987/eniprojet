@@ -3,6 +3,7 @@
  */
 package fr.eni.ecole.projet.eniEncheres.ihm.models;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -56,6 +57,14 @@ public class ArticleVenduModel {
 	public void setMessage(String message) {
 		this.message = message;
 	}
+	
+	public void setVenteTermine() {
+		if (current.getDateFinEncheres()==LocalDate.now()) {
+			current.setEtatVente("Terminée");
+		}		
+	}
+	
+
 
 	@Override
 	public String toString() {
