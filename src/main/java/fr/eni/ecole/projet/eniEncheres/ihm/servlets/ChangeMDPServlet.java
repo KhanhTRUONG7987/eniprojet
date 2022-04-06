@@ -53,7 +53,7 @@ public class ChangeMDPServlet extends HttpServlet {
 
 			try {
 				manager.updateUtilisateur(utilisateur);
-			} catch (fr.eni.ecole.projet.eniEncheres.bll.util.BLLException e) {
+			} catch (BLLException e) {
 				e.printStackTrace();
 			}
 			model.setCurrent(utilisateur);
@@ -61,7 +61,7 @@ public class ChangeMDPServlet extends HttpServlet {
 
 		try {
 			model.setLsUtilisateurs(manager.getAllUtilisateurs());
-		} catch (fr.eni.ecole.projet.eniEncheres.bll.util.BLLException e) {
+		} catch (BLLException e) {
 			e.printStackTrace();
 		}
 

@@ -14,7 +14,7 @@ import fr.eni.ecole.projet.eniEncheres.bll.categorie.CategorieManager;
 import fr.eni.ecole.projet.eniEncheres.bll.categorie.CategorieManagerSing;
 import fr.eni.ecole.projet.eniEncheres.bo.ArticleVendu;
 import fr.eni.ecole.projet.eniEncheres.bo.Categorie;
-import fr.eni.ecole.projet.eniEncheres.ihm.models.ArticleModel;
+import fr.eni.ecole.projet.eniEncheres.ihm.models.ArticleVenduModel;
 import fr.eni.ecole.projet.eniEncheres.ihm.models.CategorieModel;
 
 /**
@@ -49,7 +49,7 @@ public class AccueilNonConnecteServlet extends HttpServlet {
 			
 			try {
 				categorieManager.addCategorie(categorie);
-			} catch (fr.eni.ecole.projet.eniEncheres.bll.util.BLLException e) {
+			} catch (BLLException e) {
 				e.printStackTrace();
 			}
 			categorieModel.setCurrent(categorie);

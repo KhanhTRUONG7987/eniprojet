@@ -15,8 +15,11 @@ import fr.eni.ecole.projet.eniEncheres.bll.ArticleVendu.ArticleVenduManager;
 import fr.eni.ecole.projet.eniEncheres.bll.ArticleVendu.ArticleVenduManagerSing;
 import fr.eni.ecole.projet.eniEncheres.bll.Retrait.RetraitManager;
 import fr.eni.ecole.projet.eniEncheres.bll.Retrait.RetraitManagerSing;
+import fr.eni.ecole.projet.eniEncheres.bll.utilisateur.UtilisateurManager;
+import fr.eni.ecole.projet.eniEncheres.bll.utilisateur.UtilisateurManagerSing;
 import fr.eni.ecole.projet.eniEncheres.bll.BLLException;
 import fr.eni.ecole.projet.eniEncheres.bo.ArticleVendu;
+import fr.eni.ecole.projet.eniEncheres.bo.Retrait;
 import fr.eni.ecole.projet.eniEncheres.bo.Utilisateur;
 import fr.eni.ecole.projet.eniEncheres.ihm.models.ArticleVenduModel;
 
@@ -26,8 +29,9 @@ import fr.eni.ecole.projet.eniEncheres.ihm.models.ArticleVenduModel;
 @WebServlet("/NouvelleVenteServlet")
 public class NouvelleVenteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private RetraitManager retraitManger = RetraitManagerSing.getInstance();
+	private RetraitManager retraitManager = RetraitManagerSing.getInstance();
 	private ArticleVenduManager articleManager = ArticleVenduManagerSing.getInstance();
+	private UtilisateurManager userManager = UtilisateurManagerSing.getInstance();
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -40,7 +44,10 @@ public class NouvelleVenteServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ArticleVenduModel articlemodel = new ArticleVenduModel();
+		ArticleVenduModel articlemodel = new ArticleVenduModel();		
+		Retrait retraitArticle = new Retrait();
+		
+		
 		if ((request.getParameter("BT_ENREGISTRER")) != null) {
 			ArticleVendu articleVendu = new ArticleVendu();
 			articleVendu.setNomArticle(request.getParameter("articleNom"));
@@ -60,12 +67,7 @@ public class NouvelleVenteServlet extends HttpServlet {
 			
 		}
 
-		try {
-			articlemodel.setLstArticlesVendus(articleManager.selectAll());
-		} catch (BLLException e) {
-			e.printStackTrace();
-			articlemodel.setMessage("!: " + e.getMessage());
-		}
+
 		
 		
 		request.setAttribute("model", articlemodel);

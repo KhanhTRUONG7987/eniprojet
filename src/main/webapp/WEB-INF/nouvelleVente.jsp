@@ -37,10 +37,9 @@
 		<fieldset>
 			<legend>Retrait</legend>
 
-			<label for="nom">Rue :</label> <input type="text" id="nom" name="nom"
+			<label for="nom">Rue :</label> <input type="text" id="nomRue" name="nomRue"
 				class="macss" autofocus required placeholder=""
-				pattern="(?=.*[1-9])(?=.*[a-z])(?=.*[A-Z])"
-				title="Saisissez votre adresse (3 caractères minimum)"> <br>
+				title="Saisissez votre adresse"> <br>
 			<label for="codePostal">Code postal :</label> <input type="text"
 				id="codePostal" name="codePostal" pattern="{5}[1-9]"
 				title="Saisissez votre code postal"> <br> <label
