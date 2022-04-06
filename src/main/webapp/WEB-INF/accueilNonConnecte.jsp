@@ -11,7 +11,7 @@
 	<a href="http://localhost:8080/eniprojet/LoginServlet" value="S'inscrire - Se connecter">S'inscrire - Se connecter</a>
 	<h1 style="text-align: center;">Liste enchères</h1>
 	<h3 style="text-align : left;"> Filtres :</h3>
-	<input type="text" id="name" name="name" placeholder="Le nom de l'article contient" required minlength="1" maxlength="20" size="20"><br><br>
+	<input type="text" id="keyword" name="keyword" placeholder="Le nom de l'article contient" required minlength="1" maxlength="20" size="20"><br><br>
 	<label for="choix de categorie">Catégorie :</label>
 	<select name="Categories" id="Choix de la catégorie">
 	    <option value="toutes">Toutes</option>

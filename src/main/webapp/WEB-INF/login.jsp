@@ -15,10 +15,10 @@
 	<form action="LoginServlet" method="post">
 	Identifiant:<input type="text" name="pseudo" value="${model.current.pseudo}"><br><br>
 	Mot de passe:<input type="text" name="motDePasse" value="${model.current.motDePasse}"><br><br>
-	<input type="submit" name="BT_CONNEXION" value="Connexion">
+	<a href="http://localhost:8080/eniprojet/AccueilConnecteServlet"><input type="submit" name="BT_CONNEXION" value="Connexion"></a>	
 	<input type="checkbox" name="souvenir"> Se souvenir de moi<br><br>
 	<a href="#mdpOublie">Mot de passe oublié</a><br><br>
-	<input type="button" name="BT_CREER" value="Créer un compte">
+	<a href="http://localhost:8080/eniprojet/UtilisateurServlet"><input type="button" name="BT_CREER" value="Créer un compte"></a>	
 	</form>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>

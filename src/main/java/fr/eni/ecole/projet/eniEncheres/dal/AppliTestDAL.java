@@ -29,5 +29,11 @@ public class AppliTestDAL {
 		daoCategorie.insert(new Categorie(1, "Informatique"));
 		daoEnchere.insert(new Enchere(1, LocalDateTime.of(2022, 4, 22, 10, 14), 227, 1, 4));
 		daoRetrait.insertRetrait(new Retrait("fouy", "35600", "Sainte-Marie"));
+		
+		daoArticle.selectAllArticles().forEach(System.out::println);
+		daoUser.findAll().forEach(System.out::println);
+		daoCategorie.selectAll().forEach(System.out::println);
+		daoEnchere.selectAll().forEach(System.out::println);
+		//daoRetrait.findAll().forEach(System.out::println);
 	}
 }

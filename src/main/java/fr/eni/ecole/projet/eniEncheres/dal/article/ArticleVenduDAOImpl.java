@@ -18,7 +18,7 @@ import fr.eni.ecole.projet.eniEncheres.dal.util.ConnectionProvider;
 
 public class ArticleVenduDAOImpl implements ArticleVenduDAO {
 
-	private final String INSERT = "INSERT INTO ARTICLES_VENDUS (nom_article, description, date_debut_encheres, date_fin_encheres, prix_initial, no_utilisateur, no_categorie) VALUES (?,?,?,?,?,?,?)";
+	private final String INSERT = "INSERT INTO ARTICLES_VENDUS (nom_article, description, date_debut_encheres, date_fin_encheres, prix_initial, no_utilisateur, no_categorie) VALUES (?, ?, ?, ?, ? ,?, ?)";
 	private final String UPDATE = "UPDATE ARTICLES_VENDUS SET nom_article=?, description=?, date_debut_encheres=?, date_fin_encheres=?, prix_initial=?, no_categorie=? WHERE no_article=?";
 	private final String DELETE = "DELETE * from ARTICLES_VENDUS WHERE no_article=?";
 	private final String SELECT_BY_ID = "SELECT * from ARTICLES_VENDUS WHERE no_article=?";
@@ -30,14 +30,12 @@ public class ArticleVenduDAOImpl implements ArticleVenduDAO {
 		try (Connection con = ConnectionProvider.getConnection()) {
 			
 			PreparedStatement stmt = con.prepareStatement(INSERT, Statement.RETURN_GENERATED_KEYS);
-			
-			
 			stmt.setString(1, article.getNomArticle());
 			stmt.setString(2, article.getDescription());
 			stmt.setDate(3, Date.valueOf(article.getDateDebutEncheres()));
 			stmt.setDate(4, Date.valueOf(article.getDateFinEncheres()));
 			stmt.setInt(5, article.getMiseAPrix());
-			stmt.setInt(6, 1);
+			stmt.setInt(6, article.getNoUtilisateur());
 			stmt.setInt(7, article.getNoCategorie());
 
 			int nb = stmt.executeUpdate();
@@ -50,7 +48,7 @@ public class ArticleVenduDAOImpl implements ArticleVenduDAO {
 			}
 
 		} catch (SQLException e) {
-			throw new DALException("Problème dans la fonction INSERT ARTICLE "+e.getMessage());
+			throw new DALException("Problï¿½me dans la fonction INSERT ARTICLE "+e.getMessage());
 		}
 	}
 
@@ -58,19 +56,18 @@ public class ArticleVenduDAOImpl implements ArticleVenduDAO {
 	public void update(ArticleVendu article) throws DALException {
 		try (Connection con = ConnectionProvider.getConnection()) {
 			PreparedStatement stmt = con.prepareStatement(UPDATE);
-			stmt.setString(2, article.getNomArticle());
-			stmt.setString(3, article.getDescription());
-			stmt.setDate(4, Date.valueOf(article.getDateDebutEncheres()));
-			stmt.setDate(5, Date.valueOf(article.getDateFinEncheres()));
-			stmt.setInt(6, article.getMiseAPrix());
-			stmt.setInt(8, article.getNoUtilisateur());
-			stmt.setInt(9, article.getNoCategorie());
-			stmt.setInt(1, article.getNoArticle());
+			stmt.setString(1, article.getNomArticle());
+			stmt.setString(2, article.getDescription());
+			stmt.setDate(3, Date.valueOf(article.getDateDebutEncheres()));
+			stmt.setDate(4, Date.valueOf(article.getDateFinEncheres()));
+			stmt.setInt(5, article.getMiseAPrix());
+			stmt.setInt(6, article.getNoArticle());
+			stmt.setInt(7, article.getNoArticle());
 
 			stmt.executeUpdate();
 
 		} catch (SQLException e) {
-			throw new DALException("Problème dans la fonction UPDATE ARTICLE" + e.getMessage());
+			throw new DALException("Problï¿½me dans la fonction UPDATE ARTICLE" + e.getMessage());
 		}
 
 	}
@@ -84,7 +81,7 @@ public class ArticleVenduDAOImpl implements ArticleVenduDAO {
 			stmt.execute();
 
 		} catch (SQLException e) {
-			throw new DALException("Problème dans la fonction DELETE ARTICLE" + e.getMessage());
+			throw new DALException("Problï¿½me dans la fonction DELETE ARTICLE" + e.getMessage());
 		}
 
 	}
@@ -115,7 +112,7 @@ public class ArticleVenduDAOImpl implements ArticleVenduDAO {
 			}
 
 		} catch (SQLException e) {
-			throw new DALException("Problème dans la fonction SELECT_BY_ID ARTICLE" + e.getMessage());
+			throw new DALException("Problï¿½me dans la fonction SELECT_BY_ID ARTICLE" + e.getMessage());
 		}
 
 		return article;
@@ -150,7 +147,7 @@ public class ArticleVenduDAOImpl implements ArticleVenduDAO {
 			}
 			
 		} catch (SQLException e) {
-			throw new DALException("Problème dans la fonction SELECT_ALL ARTICLE" + e.getMessage());
+			throw new DALException("Problï¿½me dans la fonction SELECT_ALL ARTICLE" + e.getMessage());
 		}		
 		return lstArticleVendus;
 	}

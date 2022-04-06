@@ -47,13 +47,13 @@ public class MonProfilServlet extends HttpServlet {
 			
 			try {
 				manager.updateUtilisateur(utilisateur);
-			} catch (fr.eni.ecole.projet.eniEncheres.bll.util.BLLException e1) {
+			} catch (BLLException e1) {
 				e1.printStackTrace();
 			}
 			
 			try {
 				manager.deleteUtilisateur(utilisateur.getNoUtilisateur());
-			} catch (fr.eni.ecole.projet.eniEncheres.bll.util.BLLException e) {
+			} catch (BLLException e) {
 				e.printStackTrace();
 			}
 			
