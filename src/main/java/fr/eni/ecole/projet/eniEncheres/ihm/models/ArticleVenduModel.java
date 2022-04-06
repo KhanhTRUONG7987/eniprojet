@@ -19,17 +19,17 @@ import fr.eni.ecole.projet.eniEncheres.bo.ArticleVendu;
  */
 public class ArticleVenduModel {
 	private ArticleVendu current;
-	private List<ArticleVendu> lsUtilisateurs = new ArrayList<ArticleVendu>();
+	private List<ArticleVendu> lstArticlesVendus = new ArrayList<ArticleVendu>();
 	private String message;
 	
 	public ArticleVenduModel() {
 		super();
 	}
 
-	public ArticleVenduModel(ArticleVendu current, List<ArticleVendu> lsUtilisateurs, String message) {
+	public ArticleVenduModel(ArticleVendu current, List<ArticleVendu> lstArticlesVendus, String message) {
 		super();
 		this.current = current;
-		this.lsUtilisateurs = lsUtilisateurs;
+		this.lstArticlesVendus = lstArticlesVendus;
 		this.message = message;
 	}
 
@@ -41,12 +41,12 @@ public class ArticleVenduModel {
 		this.current = current;
 	}
 
-	public List<ArticleVendu> getLsUtilisateurs() {
-		return lsUtilisateurs;
+	public List<ArticleVendu> getLstArticlesVendus() {
+		return lstArticlesVendus;
 	}
 
-	public void setLsUtilisateurs(List<ArticleVendu> lsUtilisateurs) {
-		this.lsUtilisateurs = lsUtilisateurs;
+	public void setLstArticlesVendus(List<ArticleVendu> lstArticlesVendus) {
+		this.lstArticlesVendus = lstArticlesVendus;
 	}
 
 	public String getMessage() {
@@ -66,9 +66,9 @@ public class ArticleVenduModel {
 			builder.append(current);
 			builder.append(", ");
 		}
-		if (lsUtilisateurs != null) {
-			builder.append("lsUtilisateurs=");
-			builder.append(lsUtilisateurs);
+		if (lstArticlesVendus != null) {
+			builder.append("lstArticlesVendus=");
+			builder.append(lstArticlesVendus);
 			builder.append(", ");
 		}
 		if (message != null) {
