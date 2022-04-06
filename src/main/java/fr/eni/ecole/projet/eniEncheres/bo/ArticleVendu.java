@@ -27,7 +27,7 @@ public class ArticleVendu {
 	private Integer noUtilisateur;
 	private Integer noCategorie;
 	private String etatVente;
-	private List<Enchere> lstEncheres = new ArrayList<Enchere>();
+	private List<ArticleVendu> lstEncheres = new ArrayList<ArticleVendu>();
 	
 	
 	public ArticleVendu() {
@@ -205,14 +205,14 @@ public class ArticleVendu {
 	/**
 	 * @return the lstEncheres
 	 */
-	public List<Enchere> getLstEncheres() {
+	public List<ArticleVendu> getLstEncheres() {
 		return lstEncheres;
 	}
 	
 	/**
 	 * @param lstEncheres the lstEncheres to set
 	 */
-	public void setLstEncheres(List<Enchere> lstEncheres) {
+	public void setLstEncheres(List<ArticleVendu> lstEncheres) {
 		this.lstEncheres = lstEncheres;
 	}
 

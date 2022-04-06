@@ -1,6 +1,7 @@
 package fr.eni.ecole.projet.eniEncheres.ihm.servlets;
 
 import java.io.IOException;
+
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -44,8 +45,8 @@ public class AccueilNonConnecteServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		CategorieModel categorieModel = new CategorieModel();
-		//ArticleModel articleModel = new ArticleModel();
-		List<ArticleVendu> lstEncheres;
+		ArticleVenduModel articleModel = new ArticleVenduModel();
+		List<ArticleVendu> lstEncheres ;
 		
 		try {
 			lstEncheres = articleManager.selectAll();
@@ -78,7 +79,6 @@ public class AccueilNonConnecteServlet extends HttpServlet {
 			} catch (BLLException e) {
 				e.printStackTrace();
 			}
-
 
 		}
 		request.setAttribute("categorieModel", categorieModel);

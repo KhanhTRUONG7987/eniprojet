@@ -23,8 +23,10 @@
 	    <option value="vêtement">Vêtement</option>
 	    <option value="sport&loisirs">Sport et Loisirs</option>
 	</select>
-	<input type="submit" name="BT_RECHERCHER" class="submit" value="Rechercher">
-	
+	<input type="submit" name="BT_RECHERCHER" class="submit" value="Rechercher">	
 	</form>
+	
+	${articleModel.current.lstEncheres}
+	
 </body>
 </html>

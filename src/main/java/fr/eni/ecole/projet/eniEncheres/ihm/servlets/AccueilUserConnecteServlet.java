@@ -1,6 +1,7 @@
 package fr.eni.ecole.projet.eniEncheres.ihm.servlets;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,10 +10,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import fr.eni.ecole.projet.eniEncheres.bll.BLLException;
+import fr.eni.ecole.projet.eniEncheres.bll.ArticleVendu.ArticleVenduManager;
+import fr.eni.ecole.projet.eniEncheres.bll.ArticleVendu.ArticleVenduManagerSing;
 import fr.eni.ecole.projet.eniEncheres.bll.categorie.CategorieManager;
 import fr.eni.ecole.projet.eniEncheres.bll.categorie.CategorieManagerSing;
+import fr.eni.ecole.projet.eniEncheres.bll.utilisateur.UtilisateurManager;
+import fr.eni.ecole.projet.eniEncheres.bll.utilisateur.UtilisateurManagerSing;
 import fr.eni.ecole.projet.eniEncheres.bo.ArticleVendu;
 import fr.eni.ecole.projet.eniEncheres.bo.Categorie;
+import fr.eni.ecole.projet.eniEncheres.bo.Utilisateur;
 import fr.eni.ecole.projet.eniEncheres.ihm.models.CategorieModel;
 
 
@@ -23,6 +29,8 @@ import fr.eni.ecole.projet.eniEncheres.ihm.models.CategorieModel;
 public class AccueilUserConnecteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private CategorieManager categorieManager = CategorieManagerSing.getInstance();
+	private ArticleVenduManager articleManager = ArticleVenduManagerSing.getInstance();
+	private UtilisateurManager utilisateurManager = UtilisateurManagerSing.getInstance(); 
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -36,24 +44,29 @@ public class AccueilUserConnecteServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		CategorieModel categorieModel = new CategorieModel();
+		List<ArticleVendu> lstEncheres;
 		
 		if(request.getParameter("BT_RECHERCHER") !=null) {
 			Categorie categorie = new Categorie();
-			ArticleVendu article = new ArticleVendu();
-			//categorie.setNoCategorie(request.getParameter("noCategorie"));
-			article.setNomArticle(request.getParameter("nom_article"));
-			categorie.setLibelle(request.getParameter("libelle"));
-			
+			categorie.setNoCategorie(Integer.parseInt(request.getParameter("Categories")));
+			String motCle = request.getParameter("name");
+						
 			try {
-				categorieManager.getCategorie(categorie.getNoCategorie());
+				lstEncheres = articleManager.selectAll();
+				
+				for (ArticleVendu articleVendu : lstEncheres) {
+					if (articleVendu.getNomArticle().contains(motCle) && articleVendu.getNoCategorie() == categorie.getNoCategorie() && articleVendu.getEtatVente() == "En Cours") {
+						Utilisateur utilisateur = utilisateurManager.getUtilisateurById(articleVendu.getNoUtilisateur());
+						
+						System.out.println(articleVendu.getNomArticle() + "Prix : " + articleVendu.getPrixVente() + "Fin de l'ench�re : " + articleVendu.getDateFinEncheres() 
+						+ "Vendeur : " + utilisateur.getPseudo());
+					}
+				}
 			} catch (BLLException e) {
 				e.printStackTrace();
-				categorieModel.setMessage("Erreur ! : " + e.getMessage());
 			}
-			categorieModel.setCurrent(categorie);
+
 		}
-		request.setAttribute("categorieModel", categorieModel);
-		request.getRequestDispatcher("/WEB-INF/accueilConnecte.jsp").forward(request, response);
 	}
 
 	/**
