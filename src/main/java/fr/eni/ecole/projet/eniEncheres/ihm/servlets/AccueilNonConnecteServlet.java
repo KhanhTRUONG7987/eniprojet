@@ -1,7 +1,7 @@
 package fr.eni.ecole.projet.eniEncheres.ihm.servlets;
 
 import java.io.IOException;
-
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -32,6 +32,7 @@ public class AccueilNonConnecteServlet extends HttpServlet {
 	private CategorieManager categorieManager = CategorieManagerSing.getInstance();
 	private ArticleVenduManager articleManager = ArticleVenduManagerSing.getInstance();
 	private UtilisateurManager utilisateurManager = UtilisateurManagerSing.getInstance(); 
+	List<ArticleVendu> lstEncheres;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -46,6 +47,7 @@ public class AccueilNonConnecteServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		CategorieModel categorieModel = new CategorieModel();
 		ArticleVenduModel articleModel = new ArticleVenduModel();
+<<<<<<< HEAD
 		List<ArticleVendu> lstEncheres ;
 		
 		try {
@@ -58,6 +60,8 @@ public class AccueilNonConnecteServlet extends HttpServlet {
 		} catch (BLLException e) {
 			e.printStackTrace();
 		}
+=======
+>>>>>>> d89fd0681bb34e6006d0321640dff2101b505fb5
 		
 		
 		if(request.getParameter("BT_RECHERCHER") !=null) {
@@ -81,7 +85,12 @@ public class AccueilNonConnecteServlet extends HttpServlet {
 			}
 
 		}
-		request.setAttribute("categorieModel", categorieModel);
+		
+		List<Object> modelList = new ArrayList<Object>();
+		modelList.add(articleModel);
+		modelList.add(categorieModel);
+		
+		request.setAttribute("model", modelList);
 		request.getRequestDispatcher("/WEB-INF/accueilNonConnecte.jsp").forward(request, response);
 	}
 
@@ -90,6 +99,16 @@ public class AccueilNonConnecteServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
+		try {
+			lstEncheres = articleManager.selectAll();
+			for(ArticleVendu articleVendu : lstEncheres) {
+				Utilisateur user = utilisateurManager.getUtilisateurById(articleVendu.getNoUtilisateur());
+				System.out.println(articleVendu.getNomArticle() + "Prix :" + articleVendu.getPrixVente() + "Fin de l'ench�re : " + articleVendu.getDateFinEncheres()
+				+ "Vendeur : " + user.getPseudo());
+			}
+		} catch (BLLException e) {
+			e.printStackTrace();
+		}
 	}
 
 }

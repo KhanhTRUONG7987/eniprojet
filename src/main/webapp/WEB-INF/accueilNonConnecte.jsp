@@ -39,5 +39,7 @@
 		</ul>
 		</div>
 </c:forEach>
+	
+	${articleModel.current.lstEncheres}
 </body>
 </html>
