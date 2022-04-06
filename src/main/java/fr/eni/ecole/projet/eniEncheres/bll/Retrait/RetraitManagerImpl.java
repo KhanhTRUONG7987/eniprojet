@@ -38,16 +38,16 @@ public class RetraitManagerImpl implements RetraitManager{
 		
 	}
 
-	@Override
-	public void findAll(Retrait retrait) throws BLLException {
-		try {
-			dao.insertRetrait(retrait);
-		} catch (DALException e) {
-			e.printStackTrace();
-			throw new BLLException("! Erreur "+e.getMessage());
-		}
-		
-	}
+//	@Override
+//	public void findAll(Retrait retrait) throws BLLException {
+//		try {
+//			dao.insertRetrait(retrait);
+//		} catch (DALException e) {
+//			e.printStackTrace();
+//			throw new BLLException("! Erreur "+e.getMessage());
+//		}
+//		
+//	}
 	
 
 }
