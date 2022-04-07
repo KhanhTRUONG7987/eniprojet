@@ -45,25 +45,28 @@ public class UtilisateurServlet extends HttpServlet {
 			utilisateur.setEmail(request.getParameter("email"));
 			utilisateur.setTelephone(request.getParameter("telephone"));
 			utilisateur.setRue(request.getParameter("rue"));
-			utilisateur.setCodePostal(request.getParameter("codePostal"));
+			utilisateur.setCodePostal(request.getParameter("code_postal"));
 			utilisateur.setVille(request.getParameter("ville"));
-			utilisateur.setMotDePasse(request.getParameter("motDePasse"));
+			utilisateur.setMotDePasse(request.getParameter("mot_de_passe"));
 			utilisateur.setConfirmation(request.getParameter("confirmation"));
 
+			if (request.getParameter("mot_de_passe").equals(request.getParameter("confirmation"))) {
+				try {
+					manager.addUtilisateur(utilisateur);
+					request.setAttribute("model", model);
+					request.getRequestDispatcher("/WEB-INF/utilisateur.jsp").forward(request, response);
+				} catch (BLLException e) {
+					e.printStackTrace();
+					model.setMessage("Erreur!: " + e.getMessage());
+				}
+				model.setCurrent(utilisateur);
+			}
 			try {
-				manager.addUtilisateur(utilisateur);
+				model.setLsUtilisateurs(manager.getAllUtilisateurs());
 			} catch (BLLException e) {
 				e.printStackTrace();
 				model.setMessage("Erreur!: " + e.getMessage());
 			}
-			model.setCurrent(utilisateur); 
-		}
-	
-		try {
-			model.setLsUtilisateurs(manager.getAllUtilisateurs());
-		} catch (BLLException e) {
-			e.printStackTrace();
-			model.setMessage("!: " + e.getMessage());
 		}
 
 		request.setAttribute("model", model);

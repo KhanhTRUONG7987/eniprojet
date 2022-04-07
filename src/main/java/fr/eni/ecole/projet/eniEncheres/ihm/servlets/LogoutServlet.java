@@ -11,23 +11,23 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import fr.eni.ecole.projet.eniEncheres.bll.BLLException;
 import fr.eni.ecole.projet.eniEncheres.bll.utilisateur.UtilisateurManager;
 import fr.eni.ecole.projet.eniEncheres.bll.utilisateur.UtilisateurManagerSing;
 
 /**
- * Servlet implementation class LoginServlet
+ * Servlet implementation class LogoutServlet
  */
-@WebServlet("/LoginServlet")
-public class LoginServlet extends HttpServlet {
+@WebServlet("/LogoutServlet")
+public class LogoutServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private UtilisateurManager manager = UtilisateurManagerSing.getInstance();
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public LoginServlet() {
+	public LogoutServlet() {
 		super();
+		// TODO Auto-generated constructor stub
 	}
 
 	/**
@@ -39,24 +39,12 @@ public class LoginServlet extends HttpServlet {
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		try {
-			String email = request.getParameter("email");
-			String motDePasse = request.getParameter("mot_de_passe");
+			HttpSession session = request.getSession();
 
-			boolean isValid = manager.authenticate(email, motDePasse);
+			session.invalidate();
 
-			if (isValid) {
-				HttpSession session = request.getSession();
-
-				session.setAttribute("email", email);
-				session.setAttribute("mot_de_passe", motDePasse);
-
-				RequestDispatcher dispatch = getServletContext().getRequestDispatcher("/AccueilUserConnecteServlet");
-				dispatch.forward(request, response);
-			} else {
-				RequestDispatcher dispatch = getServletContext().getRequestDispatcher("/WEB-INF/login.jsp");
-
-				dispatch.forward(request, response);
-			}
+			RequestDispatcher dispatch = getServletContext().getRequestDispatcher("/WEB-INF/login.jsp");
+			dispatch.forward(request, response);
 		} finally {
 			out.close();
 		}
@@ -68,6 +56,7 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

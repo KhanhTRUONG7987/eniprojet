@@ -1,0 +1,46 @@
+@charset "UTF-8";
+:root {
+	--primary-color: #014982;
+	--secondary-color-1: #E5E5E5;
+	--text-color: #fefefe;
+	--text-color-2: #c5c5c5;
+}
+*{
+	margin: 20px;
+	padding: 0;
+	font-size: 14px;
+	box-sizing: border-box;
+}
+a:-webkit-any-link {
+	cursor: pointer;
+}
+.line {
+	color: var(--text-color);
+}
+header {
+	padding-top: 5px;
+	background-color: var(--primary-color);
+	padding-bottom: 20px;
+}
+header a {
+	text-decoration: none;
+	color: var(--text-color);
+	text-align: center;
+}
+main {
+	font-family: Montserrat, sans-serif;
+	padding-top: 5px;
+	padding-bottom: 20px;
+	background-color: var(--secondary-color-1);
+}
+footer {
+	padding-top: 5px;
+	padding-bottom: 20px;
+	text-align: center;
+	font-style: italic;
+	background-color: var(--primary-color);
+}
+footer a {
+	text-decoration: none;
+	color: var(--text-color);
+}

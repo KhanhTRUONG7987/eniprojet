@@ -42,7 +42,7 @@ public class EncherirServlet extends HttpServlet {
 			LocalDateTime dateEnchere = LocalDateTime.now(); 
 			
 			enchere.setDateEnchere(dateEnchere);
-			enchere.setMontantEnchere(Integer.parseInt( request.getParameter("enchere_proposition")));
+			enchere.setMontantEnchere(Integer.parseInt(request.getParameter("enchere_proposition")));
 			enchere.setNoArticle(Integer.parseInt(request.getParameter("noArticle")));
 			enchere.setNoUtilisateur(Integer.parseInt(request.getParameter("noUtilisateur")));
 			
@@ -54,7 +54,7 @@ public class EncherirServlet extends HttpServlet {
 			}
 		}
 		request.setAttribute("enchereModel", enchereModel);
-		request.getRequestDispatcher("/WEB-INF/utilisateur.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/encherir.jsp").forward(request, response);
 	
 	}
 

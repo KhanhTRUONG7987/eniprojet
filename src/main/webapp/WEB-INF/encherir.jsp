@@ -7,7 +7,7 @@
 <title>Enchérir</title>
 </head>
 <body>
-	<h1 style="text-align: center;">Détails de la vente</h1>
+	<h1 style="text-align: center;">Détail de la vente</h1>
 	<input type="hidden" name="noUtilisateur"
 		value="${usermodel.current.noUtilisateur}">
 	<input type ="hidden" nema="noArticle" value="${articlemodel.current.noArticle}">

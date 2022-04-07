@@ -24,7 +24,7 @@ public class AppliTestDAL {
 
 
 	public static void main(String[] args) throws DALException {
-		daoArticle.insertArticle(new ArticleVendu("Truc", "Truc qui fait qqch", LocalDate.of(2022, 4, 9), LocalDate.of(2022, 4, 18), 150, 2, 3, "Créée"));
+		daoArticle.insertArticle(new ArticleVendu("Truc", "Truc qui fait qqch", LocalDate.of(2022, 4, 9), LocalDate.of(2022, 4, 18), 150, 2, 3, "Crï¿½ï¿½e"));
 		daoUser.insertUtilisateur(new Utilisateur(0,"Pouet", "Fremidoreur", "Jean", "jean-fremi@exemple.fr", "06.pouet", "avenue victor pouet","35600pouet","Pouet-sur-Villaine", "Pouet2022", 1000, false));
 		daoCategorie.insert(new Categorie(1, "Informatique"));
 		daoEnchere.insert(new Enchere(1, LocalDateTime.of(2022, 4, 22, 10, 14), 227, 1, 4));
