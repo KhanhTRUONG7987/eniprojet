@@ -24,10 +24,10 @@ public class ArticleVendu {
 	private LocalDate dateFinEncheres;
 	private Integer miseAPrix;
 	private Integer prixVente;
-	private Integer noUtilisateur;
-	private Integer noCategorie;
+	private Utilisateur utilisateur;
+	private Categorie categorie;
 	private String etatVente;
-	private List<Enchere> lstEncheres = new ArrayList<Enchere>();
+	private List<ArticleVendu> lstEncheres = new ArrayList<ArticleVendu>();
 	
 	
 	public ArticleVendu() {
@@ -35,7 +35,7 @@ public class ArticleVendu {
 	}	
 	
 	public ArticleVendu(String nomArticle, String description, LocalDate dateDebutEncheres, LocalDate dateFinEncheres,
-			Integer miseAPrix, Integer prixVente, Integer noUtilisateur, Integer noCategorie, String etatVente) {
+			Integer miseAPrix, Integer prixVente, Utilisateur utilisateur, Categorie categorie, String etatVente) {
 		super();
 		this.nomArticle = nomArticle;
 		this.description = description;
@@ -43,21 +43,21 @@ public class ArticleVendu {
 		this.dateFinEncheres = dateFinEncheres;
 		this.miseAPrix = miseAPrix;
 		this.prixVente = prixVente;
-		this.noUtilisateur = noUtilisateur;
-		this.noCategorie = noCategorie;
+		this.utilisateur = utilisateur;
+		this.categorie = categorie;
 		this.etatVente = etatVente;
 	}
 
 	public ArticleVendu(String nomArticle, String description, LocalDate dateDebutEncheres, LocalDate dateFinEncheres,
-			Integer miseAPrix, Integer noUtilisateur, Integer noCategorie, String etatVente) {
+			Integer miseAPrix, Utilisateur utilisateur, Categorie categorie, String etatVente) {
 		super();
 		this.nomArticle = nomArticle;
 		this.description = description;
 		this.dateDebutEncheres = dateDebutEncheres;
 		this.dateFinEncheres = dateFinEncheres;
 		this.miseAPrix = miseAPrix;
-		this.noUtilisateur = noUtilisateur;
-		this.noCategorie = noCategorie;
+		this.utilisateur = utilisateur;
+		this.categorie = categorie;
 		this.etatVente = etatVente;
 	}
 
@@ -177,42 +177,42 @@ public class ArticleVendu {
 	/**
 	 * @return the noUtilisateur
 	 */
-	public Integer getNoUtilisateur() {
-		return noUtilisateur;
+	public Utilisateur getUtilisateur() {
+		return utilisateur;
 	}
 	
 	/**
 	 * @param noUtilisateur the noUtilisateur to set
 	 */
-	public void setNoUtilisateur(Integer noUtilisateur) {
-		this.noUtilisateur = noUtilisateur;
+	public void setUtilisateur(Utilisateur noUtilisateur) {
+		this.utilisateur = noUtilisateur;
 	}
 
 	/**
 	 * @return the noCategorie
 	 */
-	public Integer getNoCategorie() {
-		return noCategorie;
+	public Categorie getCategorie() {
+		return categorie;
 	}
 
 	/**
 	 * @param noCategorie the noCategorie to set
 	 */
-	public void setNoCategorie(Integer noCategorie) {
-		this.noCategorie = noCategorie;
+	public void setCategorie(Categorie categorie) {
+		this.categorie = categorie;
 	}
 
 	/**
 	 * @return the lstEncheres
 	 */
-	public List<Enchere> getLstEncheres() {
+	public List<ArticleVendu> getLstEncheres() {
 		return lstEncheres;
 	}
 	
 	/**
 	 * @param lstEncheres the lstEncheres to set
 	 */
-	public void setLstEncheres(List<Enchere> lstEncheres) {
+	public void setLstEncheres(List<ArticleVendu> lstEncheres) {
 		this.lstEncheres = lstEncheres;
 	}
 
@@ -257,14 +257,14 @@ public class ArticleVendu {
 			builder.append(prixVente);
 			builder.append(", ");
 		}
-		if (noUtilisateur != null) {
+		if (utilisateur != null) {
 			builder.append("noUtilisateur=");
-			builder.append(noUtilisateur);
+			builder.append(utilisateur);
 			builder.append(", ");
 		}
-		if (noCategorie != null) {
+		if (categorie != null) {
 			builder.append("noCategorie=");
-			builder.append(noCategorie);
+			builder.append(categorie);
 			builder.append(", ");
 		}
 		if (etatVente != null) {

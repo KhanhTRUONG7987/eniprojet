@@ -47,5 +47,8 @@
 	<input type="submit" name="BT_RECHERCHER" class="submit" value="Rechercher">
 	
 	</form>
+	
+	${articleModel.current.lstEncheres}
+	
 </body>
 </html>

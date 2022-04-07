@@ -145,7 +145,6 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 				utilisateur.setCodePostal(rs.getString("codePostal"));
 				utilisateur.setVille(rs.getString("ville"));
 				utilisateur.setMotDePasse(rs.getString("motDePasse"));
-				utilisateur.setConfirmation(rs.getString("confirmation"));
 				utilisateur.setCredit(rs.getInt("credit"));
 				utilisateur.setAdministrateur(rs.getBoolean("administrateur"));
 			
@@ -154,7 +153,7 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new DALException("ProblÃ¨me de select");
+			throw new DALException("Problème de select");
 		}
 		return lstUtilisateurs               ;
 	}
@@ -174,16 +173,15 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 			
 			if(rs.next()) {
 				
-				utilisateur.setNoUtilisateur(rs.getInt("noUtilisateur"));
+				utilisateur.setNoUtilisateur(rs.getInt("no_utilisateur"));
 				utilisateur.setNom(rs.getString("nom"));
 				utilisateur.setPrenom(rs.getString("prenom"));
 				utilisateur.setEmail(rs.getString("email"));
 				utilisateur.setTelephone(rs.getString("telephone"));
 				utilisateur.setRue(rs.getString("rue"));
-				utilisateur.setCodePostal(rs.getString("codePostal"));
+				utilisateur.setCodePostal(rs.getString("code_postal"));
 				utilisateur.setVille(rs.getString("ville"));
-				utilisateur.setMotDePasse(rs.getString("motDePasse"));
-				utilisateur.setConfirmation(rs.getString("confirmation"));
+				utilisateur.setMotDePasse(rs.getString("mot_de_passe"));
 				utilisateur.setCredit(rs.getInt("credit"));
 				utilisateur.setAdministrateur(rs.getBoolean("administrateur"));
 			}
@@ -217,10 +215,9 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 				utilisateur.setEmail(rs.getString("email"));
 				utilisateur.setTelephone(rs.getString("telephone"));
 				utilisateur.setRue(rs.getString("rue"));
-				utilisateur.setCodePostal(rs.getString("codePostal"));
+				utilisateur.setCodePostal(rs.getString("code_postal"));
 				utilisateur.setVille(rs.getString("ville"));
-				utilisateur.setMotDePasse(rs.getString("motDePasse"));
-				utilisateur.setConfirmation(rs.getString("confirmation"));
+				utilisateur.setMotDePasse(rs.getString("mot_de_passe"));
 				utilisateur.setCredit(rs.getInt("credit"));
 				utilisateur.setAdministrateur(rs.getBoolean("administrateur"));
 			}
