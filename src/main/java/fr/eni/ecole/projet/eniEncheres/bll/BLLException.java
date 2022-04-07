@@ -5,6 +5,7 @@
 package fr.eni.ecole.projet.eniEncheres.bll;
 
 
+
 /**
  * Classe en charge de
  * @author tjolly2022
@@ -23,5 +24,12 @@ public class BLLException extends Exception {
 		super(message);
 		
 	}
+
+	@Override
+	public String getMessage() {
+		// TODO Auto-generated method stub
+		return super.getMessage();
+	}
+	
 	
 }

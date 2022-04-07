@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import fr.eni.ecole.projet.eniEncheres.bll.BLLException;
 import fr.eni.ecole.projet.eniEncheres.bll.utilisateur.UtilisateurManager;
 import fr.eni.ecole.projet.eniEncheres.bll.utilisateur.UtilisateurManagerSing;
 
@@ -49,7 +50,7 @@ public class LoginServlet extends HttpServlet {
 				session.setAttribute("email", email);
 				session.setAttribute("mot_de_passe", motDePasse);
 
-				RequestDispatcher dispatch = getServletContext().getRequestDispatcher("/NouvelleVenteServlet");
+				RequestDispatcher dispatch = getServletContext().getRequestDispatcher("/MonProfilServlet");
 				dispatch.forward(request, response);
 			} else {
 				RequestDispatcher dispatch = getServletContext().getRequestDispatcher("/WEB-INF/login.jsp");

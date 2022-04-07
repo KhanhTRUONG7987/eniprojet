@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import fr.eni.ecole.projet.eniEncheres.bo.ArticleVendu;
 import fr.eni.ecole.projet.eniEncheres.bo.Retrait;
 import fr.eni.ecole.projet.eniEncheres.dal.DALException;
 import fr.eni.ecole.projet.eniEncheres.dal.util.ConnectionProvider;
@@ -15,6 +16,7 @@ public class RetraitDAOImpl implements RetraitDAO{
 	private final String INSERT = "INSERT INTO RETRAITS (no_article, rue, code_postal, ville)";
 	private final String UPDATE = "UPDATE RETRAITS SET rue=?, code_postal=?, ville=? WHERE no_article=?";
 	private final String DELETE = "DELETE * from RETRAITS WHERE no_article=?";
+	
 	
 	@Override
 	public void insertRetrait(Retrait retrait) throws DALException {
@@ -67,5 +69,6 @@ public class RetraitDAOImpl implements RetraitDAO{
 		} catch (SQLException e) {
 			throw new DALException("Problème dans la fonction DELETE ARTICLE");
 		}
-	}
+	}	
+
 }
