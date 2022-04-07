@@ -70,7 +70,7 @@ public class UtilisateurServlet extends HttpServlet {
 		}
 
 		request.setAttribute("model", model);
-		request.getRequestDispatcher("/WEB-INF/utilisateur.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/encherir.jsp").forward(request, response);
 	}
 
 	/**
