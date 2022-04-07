@@ -49,7 +49,7 @@ public class LoginServlet extends HttpServlet {
 				session.setAttribute("email", email);
 				session.setAttribute("mot_de_passe", motDePasse);
 
-				RequestDispatcher dispatch = getServletContext().getRequestDispatcher("/NouvelleVenteServlet");
+				RequestDispatcher dispatch = getServletContext().getRequestDispatcher("/AccueilUserConnecteServlet");
 				dispatch.forward(request, response);
 			} else {
 				RequestDispatcher dispatch = getServletContext().getRequestDispatcher("/WEB-INF/login.jsp");

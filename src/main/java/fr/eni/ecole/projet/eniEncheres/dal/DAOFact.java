@@ -4,15 +4,20 @@
 package fr.eni.ecole.projet.eniEncheres.dal;
 
 import fr.eni.ecole.projet.eniEncheres.dal.article.ArticleVenduDAO;
+import fr.eni.ecole.projet.eniEncheres.dal.article.ArticleVenduDAOImpl;
 import fr.eni.ecole.projet.eniEncheres.dal.article.ArticleVenduDAOMock;
 import fr.eni.ecole.projet.eniEncheres.dal.categorie.CategorieDAO;
+import fr.eni.ecole.projet.eniEncheres.dal.categorie.CategorieDAOImpl;
 import fr.eni.ecole.projet.eniEncheres.dal.categorie.CategorieDAOMock;
 import fr.eni.ecole.projet.eniEncheres.dal.enchere.EnchereDAO;
+import fr.eni.ecole.projet.eniEncheres.dal.enchere.EnchereDAOImpl;
 import fr.eni.ecole.projet.eniEncheres.dal.enchere.EnchereDAOMock;
 import fr.eni.ecole.projet.eniEncheres.dal.retrait.RetraitDAO;
+import fr.eni.ecole.projet.eniEncheres.dal.retrait.RetraitDAOImpl;
 import fr.eni.ecole.projet.eniEncheres.dal.retrait.RetraitDAOMock;
 import fr.eni.ecole.projet.eniEncheres.dal.utilisateur.UtilisateurDAO;
 import fr.eni.ecole.projet.eniEncheres.dal.utilisateur.UtilisateurDAOImpl;
+import fr.eni.ecole.projet.eniEncheres.dal.utilisateur.UtilisateurDAOMock;
 
 /**
  * Classe en charge de
@@ -28,19 +33,19 @@ public class DAOFact {
 	}
 
 	public static CategorieDAO getCategorieDAO() {
-		return new CategorieDAOMock();
+		return new CategorieDAOImpl();
 	}
 	
 	public static EnchereDAO getEnchereDAO() {
-		return new EnchereDAOMock();
+		return new EnchereDAOImpl();
 	}
 	
 	public static ArticleVenduDAO getArticleVenduDAO() {
-		return new ArticleVenduDAOMock();
+		return new ArticleVenduDAOImpl();
 	}
 	
 	public static RetraitDAO getRetraitDAO() {
-		return new RetraitDAOMock();
+		return new RetraitDAOImpl();
 	}
 	
 	

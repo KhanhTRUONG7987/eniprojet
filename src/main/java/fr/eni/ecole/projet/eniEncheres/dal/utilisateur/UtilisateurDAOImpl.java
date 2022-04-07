@@ -136,11 +136,11 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 		try (Connection con = ConnectionProvider.getConnection()) {
 			PreparedStatement stmt = con.prepareStatement(FIND_ALL, Statement.RETURN_GENERATED_KEYS);
 			ResultSet rs = stmt.executeQuery();
-
+			
 			Utilisateur utilisateur = new Utilisateur();
-
-			while (rs.next()) {// de base de données
-				utilisateur.setNoUtilisateur(rs.getInt("no_Utilisateur"));
+			
+			while (rs.next()) {
+				utilisateur.setNoUtilisateur(rs.getInt("noUtilisateur"));
 				utilisateur.setPseudo(rs.getString("pseudo"));
 				utilisateur.setNom(rs.getString("nom"));
 				utilisateur.setPrenom(rs.getString("prenom"));
@@ -149,7 +149,7 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 				utilisateur.setRue(rs.getString("rue"));
 				utilisateur.setCodePostal(rs.getString("code_postal"));
 				utilisateur.setVille(rs.getString("ville"));
-				utilisateur.setMotDePasse(rs.getString("mot_de_passe"));
+				utilisateur.setMotDePasse(rs.getString("motDePasse"));
 				utilisateur.setCredit(rs.getInt("credit"));
 				utilisateur.setAdministrateur(rs.getBoolean("administrateur"));
 
@@ -158,7 +158,7 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new DALException("Problème de selecter");
+			throw new DALException("Probl�me de select");
 		}
 		return lstUtilisateurs;
 	}
@@ -170,17 +170,16 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 	 */
 	@Override
 	public Utilisateur getUtilisateurByID(Integer noUtilisateur) throws DALException {
-		Utilisateur utilisateur = null;
-
-		try (Connection con = ConnectionProvider.getConnection()) {
+		Utilisateur utilisateur = new Utilisateur();
+		
+		try (Connection con = ConnectionProvider.getConnection()){
 			PreparedStatement stmt = con.prepareStatement(FIND_BY_ID, Statement.RETURN_GENERATED_KEYS);
 			stmt.setInt(1, noUtilisateur); // set 1st WHERE to int
 			ResultSet rs = stmt.executeQuery();
-
-			if (rs.next()) {
-				utilisateur = new Utilisateur();
-
-				utilisateur.setNoUtilisateur(rs.getInt("no_Utilisateur"));
+			
+			if(rs.next()) {
+				
+				utilisateur.setNoUtilisateur(rs.getInt("no_utilisateur"));
 				utilisateur.setNom(rs.getString("nom"));
 				utilisateur.setPrenom(rs.getString("prenom"));
 				utilisateur.setEmail(rs.getString("email"));
@@ -208,17 +207,16 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 	 */
 	@Override
 	public Utilisateur getUtilisateurByPseudo(String pseudo) throws DALException {
-
-		Utilisateur utilisateur = null;
-
-		try (Connection con = ConnectionProvider.getConnection()) {
+		
+		Utilisateur utilisateur = new Utilisateur();
+		
+		try (Connection con = ConnectionProvider.getConnection()){
 			PreparedStatement stmt = con.prepareStatement(FIND_BY_PSEUDO, Statement.RETURN_GENERATED_KEYS);
 			stmt.setString(1, pseudo); // set 1st WHERE to String
 			ResultSet rs = stmt.executeQuery();
-
-			if (rs.next()) {
-				utilisateur = new Utilisateur();
-
+			
+			if(rs.next()) {
+				
 				utilisateur.setPseudo(rs.getString("pseudo"));
 				utilisateur.setNom(rs.getString("nom"));
 				utilisateur.setPrenom(rs.getString("prenom"));

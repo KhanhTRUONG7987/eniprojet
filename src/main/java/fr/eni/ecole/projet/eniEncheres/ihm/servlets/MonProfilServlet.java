@@ -48,15 +48,18 @@ public class MonProfilServlet extends HttpServlet {
 			utilisateur.setVille(request.getParameter("ville"));
 			
 			try {
-				String pseudo = null;
-				HttpSession session = request.getSession();
-				try {
-					session.setAttribute("utilisateurConnecte", manager.getUtilisateurByPseudo(pseudo));
-				} catch (fr.eni.ecole.projet.eniEncheres.bll.util.BLLException e) {
-					e.printStackTrace();
-				}
-			}finally {
+				manager.updateUtilisateur(utilisateur);
+			} catch (BLLException e1) {
+				e1.printStackTrace();
 			}
+			
+			try {
+				manager.deleteUtilisateur(utilisateur.getNoUtilisateur());
+			} catch (BLLException e) {
+				e.printStackTrace();
+			}
+			
+			model.setCurrent(utilisateur);
 		}
 //				manager.updateUtilisateur(utilisateur);
 //			} catch (fr.eni.ecole.projet.eniEncheres.bll.util.BLLException e1) {

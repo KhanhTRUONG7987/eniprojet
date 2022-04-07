@@ -13,9 +13,9 @@ import fr.eni.ecole.projet.eniEncheres.dal.DALException;
 import fr.eni.ecole.projet.eniEncheres.dal.util.ConnectionProvider;
 
 public class CategorieDAOImpl implements CategorieDAO {
-	private final String SELECT = "SELECT no_categorie, libelle FROM categories";
-	private final String INSERT = "INSERT libelle FROM categories";
-	private final String SELECTBYID = "SELECT libelle FROM categories WHERE no_categorie = ?";
+	private final String SELECT = "SELECT no_categorie, libelle FROM CATEGORIES";
+	private final String INSERT = "INSERT libelle FROM CATEGORIES";
+	private final String SELECTBYID = "SELECT * FROM CATEGORIES WHERE no_categorie=?";
 
 	@Override
 	public void insert(Categorie categorie) throws DALException {
@@ -46,7 +46,7 @@ public class CategorieDAOImpl implements CategorieDAO {
 				result.add(categorie);
 			}
 		} catch (SQLException e) {
-			throw new DALException("Problème de select all !");
+			throw new DALException("Problème de select all !" + e.getMessage());
 		}
 		return result;
 	}
@@ -54,6 +54,7 @@ public class CategorieDAOImpl implements CategorieDAO {
 	@Override
 	public Categorie selectById(Integer no_categorie) throws DALException {
 		Categorie categorie = new Categorie();
+		
 		try (Connection con = ConnectionProvider.getConnection()) {
 			PreparedStatement stmt = con.prepareStatement(SELECTBYID);
 			stmt.setInt(1, no_categorie);
@@ -65,7 +66,7 @@ public class CategorieDAOImpl implements CategorieDAO {
 			}
 
 		} catch (SQLException e) {
-			throw new DALException("Problème de Select by Id");
+			throw new DALException("Problème de Select by Id" + e.getMessage());
 		}
 
 		return categorie;
