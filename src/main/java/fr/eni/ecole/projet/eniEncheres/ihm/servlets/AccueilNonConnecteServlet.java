@@ -1,6 +1,7 @@
 package fr.eni.ecole.projet.eniEncheres.ihm.servlets;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,6 +23,7 @@ import fr.eni.ecole.projet.eniEncheres.bo.Categorie;
 import fr.eni.ecole.projet.eniEncheres.bo.Utilisateur;
 import fr.eni.ecole.projet.eniEncheres.ihm.models.ArticleVenduModel;
 import fr.eni.ecole.projet.eniEncheres.ihm.models.CategorieModel;
+import fr.eni.ecole.projet.eniEncheres.ihm.models.UtilisateurModel;
 
 /**
  * Servlet implementation class AccueilNonConnecte
@@ -29,10 +31,9 @@ import fr.eni.ecole.projet.eniEncheres.ihm.models.CategorieModel;
 @WebServlet("/AccueilNonConnecte")
 public class AccueilNonConnecteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private CategorieManager categorieManager = CategorieManagerSing.getInstance();
 	private ArticleVenduManager articleManager = ArticleVenduManagerSing.getInstance();
 	private UtilisateurManager utilisateurManager = UtilisateurManagerSing.getInstance(); 
-	List<ArticleVendu> lstEncheres;
+	
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -47,24 +48,20 @@ public class AccueilNonConnecteServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		CategorieModel categorieModel = new CategorieModel();
 		ArticleVenduModel articleModel = new ArticleVenduModel();
-<<<<<<< HEAD
-		List<ArticleVendu> lstEncheres ;
+		UtilisateurModel userModel = new UtilisateurModel();
+		List<ArticleVendu> lstEncheres = new ArrayList<ArticleVendu>();		
+
 		
-		try {
-			lstEncheres = articleManager.selectAll();
-			for(ArticleVendu articleVendu : lstEncheres) {
-				Utilisateur user = utilisateurManager.getUtilisateurById(articleVendu.getNoUtilisateur());
-				System.out.println(articleVendu.getNomArticle() + "Prix :" + articleVendu.getPrixVente() + "Fin de l'ench�re : " + articleVendu.getDateFinEncheres()
-				+ "Vendeur : " + user.getPseudo());
+		if (request.getParameter("BT_RECHERCHER") == null) {
+			try {
+				lstEncheres = articleManager.selectAll();
+				request.setAttribute("lstEncheres", lstEncheres);
+				
+			} catch (BLLException e) {
+				e.printStackTrace();
+				e.getMessage();
 			}
-		} catch (BLLException e) {
-			e.printStackTrace();
-		}
-=======
->>>>>>> d89fd0681bb34e6006d0321640dff2101b505fb5
-		
-		
-		if(request.getParameter("BT_RECHERCHER") !=null) {
+		} else {
 			Categorie categorie = new Categorie();
 			categorie.setNoCategorie(Integer.parseInt(request.getParameter("Categories")));
 			String motCle = request.getParameter("name");
@@ -73,15 +70,16 @@ public class AccueilNonConnecteServlet extends HttpServlet {
 				lstEncheres = articleManager.selectAll();
 				
 				for (ArticleVendu articleVendu : lstEncheres) {
-					if (articleVendu.getNomArticle().contains(motCle) && articleVendu.getNoCategorie() == categorie.getNoCategorie() && articleVendu.getEtatVente() == "En Cours") {
-						Utilisateur utilisateur = utilisateurManager.getUtilisateurById(articleVendu.getNoUtilisateur());
+					if (articleVendu.getNomArticle().contains(motCle) && articleVendu.getCategorie().getNoCategorie() == categorie.getNoCategorie() && articleVendu.getDateFinEncheres().isBefore(LocalDate.now()) ) {
+						Utilisateur utilisateur = utilisateurManager.getUtilisateurById(articleVendu.getUtilisateur().getNoUtilisateur());
 						
-						System.out.println(articleVendu.getNomArticle() + "Prix : " + articleVendu.getPrixVente() + "Fin de l'ench�re : " + articleVendu.getDateFinEncheres() 
+						System.out.println(articleVendu.getNomArticle() + "Prix : " + articleVendu.getPrixVente() + "Fin de l'enchere : " + articleVendu.getDateFinEncheres() 
 						+ "Vendeur : " + utilisateur.getPseudo());
 					}
 				}
 			} catch (BLLException e) {
 				e.printStackTrace();
+				e.getMessage();
 			}
 
 		}
@@ -89,6 +87,7 @@ public class AccueilNonConnecteServlet extends HttpServlet {
 		List<Object> modelList = new ArrayList<Object>();
 		modelList.add(articleModel);
 		modelList.add(categorieModel);
+		modelList.add(userModel);
 		
 		request.setAttribute("model", modelList);
 		request.getRequestDispatcher("/WEB-INF/accueilNonConnecte.jsp").forward(request, response);
@@ -99,16 +98,7 @@ public class AccueilNonConnecteServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
-		try {
-			lstEncheres = articleManager.selectAll();
-			for(ArticleVendu articleVendu : lstEncheres) {
-				Utilisateur user = utilisateurManager.getUtilisateurById(articleVendu.getNoUtilisateur());
-				System.out.println(articleVendu.getNomArticle() + "Prix :" + articleVendu.getPrixVente() + "Fin de l'ench�re : " + articleVendu.getDateFinEncheres()
-				+ "Vendeur : " + user.getPseudo());
-			}
-		} catch (BLLException e) {
-			e.printStackTrace();
-		}
+
 	}
 
 }

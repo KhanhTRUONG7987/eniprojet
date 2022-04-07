@@ -64,7 +64,8 @@ public class ArticleVenduManagerImpl implements ArticleVenduManager{
 		try {
 			return dao.selectAllArticles();
 		} catch (DALException e) {
-			throw new BLLException(" Problème dans l'affichage des articles");
+			throw new BLLException(" Problème dans l'affichage des articles" + e.getMessage());		
+
 		}
 	}
 

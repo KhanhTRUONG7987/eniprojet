@@ -12,8 +12,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import fr.eni.ecole.projet.eniEncheres.bo.ArticleVendu;
+import fr.eni.ecole.projet.eniEncheres.bo.Categorie;
+import fr.eni.ecole.projet.eniEncheres.bo.Utilisateur;
 import fr.eni.ecole.projet.eniEncheres.dal.DALException;
+import fr.eni.ecole.projet.eniEncheres.dal.DAOFact;
+import fr.eni.ecole.projet.eniEncheres.dal.categorie.CategorieDAO;
 import fr.eni.ecole.projet.eniEncheres.dal.util.ConnectionProvider;
+import fr.eni.ecole.projet.eniEncheres.dal.utilisateur.UtilisateurDAO;
 
 public class ArticleVenduDAOImpl implements ArticleVenduDAO {
 
@@ -21,7 +26,7 @@ public class ArticleVenduDAOImpl implements ArticleVenduDAO {
 	private final String UPDATE = "UPDATE ARTICLES_VENDUS SET nom_article=?, description=?, date_debut_encheres=?, date_fin_encheres=?, prix_initial=?, no_categorie=? WHERE no_article=?";
 	private final String DELETE = "DELETE * from ARTICLES_VENDUS WHERE no_article=?";
 	private final String SELECT_BY_ID = "SELECT * from ARTICLES_VENDUS WHERE no_article=?";
-	private final String SELECT_ALL = "SELECT * from ARTICLES_VENDUS ORDER BY no_article";
+	private final String SELECT_ALL = "SELECT * from ARTICLES_VENDUS";
 
 	@Override
 	public void insertArticle(ArticleVendu article) throws DALException {
@@ -34,8 +39,8 @@ public class ArticleVenduDAOImpl implements ArticleVenduDAO {
 			stmt.setDate(3, Date.valueOf(article.getDateDebutEncheres()));
 			stmt.setDate(4, Date.valueOf(article.getDateFinEncheres()));
 			stmt.setInt(5, article.getMiseAPrix());
-			stmt.setInt(6, article.getNoUtilisateur());
-			stmt.setInt(7, article.getNoCategorie());
+			stmt.setInt(6, article.getUtilisateur().getNoUtilisateur());
+			stmt.setInt(7, article.getCategorie().getNoCategorie());
 
 			int nb = stmt.executeUpdate();
 			System.out.println(article);
@@ -60,7 +65,7 @@ public class ArticleVenduDAOImpl implements ArticleVenduDAO {
 			stmt.setDate(3, Date.valueOf(article.getDateDebutEncheres()));
 			stmt.setDate(4, Date.valueOf(article.getDateFinEncheres()));
 			stmt.setInt(5, article.getMiseAPrix());
-			stmt.setInt(6, article.getNoArticle());
+			stmt.setInt(6, article.getCategorie().getNoCategorie());
 			stmt.setInt(7, article.getNoArticle());
 
 			stmt.executeUpdate();
@@ -90,15 +95,21 @@ public class ArticleVenduDAOImpl implements ArticleVenduDAO {
 		ArticleVendu article = new ArticleVendu();
 
 		try (Connection con = ConnectionProvider.getConnection()) {
-			PreparedStatement stmt = con.prepareStatement(SELECT_BY_ID);
+			PreparedStatement stmt = con.prepareStatement(SELECT_BY_ID, Statement.NO_GENERATED_KEYS);
 			stmt.setInt(1, no_article);
 			ResultSet rs = stmt.executeQuery();
 
-			while (rs.next()) {
+			if (rs.next()) {
 				Date dateDebutEncheres = rs.getDate("date_debut_encheres");
 				Date dateFinEncheres = rs.getDate("date_fin_encheres");
+				Integer noUtilisateur = rs.getInt("no_utilisateur");
+				UtilisateurDAO dao = DAOFact.getUtilisateurDAO();
+				Utilisateur user = dao.getUtilisateurByID(noUtilisateur);
+				
+				Integer noCategorie = rs.getInt("no_categorie");
+				CategorieDAO daoCat = DAOFact.getCategorieDAO();
+				Categorie categorie = daoCat.selectById(noCategorie);
 
-				article = new ArticleVendu();
 				article.setNoArticle(rs.getInt("no_article"));
 				article.setNomArticle(rs.getString("nom_article"));
 				article.setDescription(rs.getString("description"));
@@ -106,12 +117,13 @@ public class ArticleVenduDAOImpl implements ArticleVenduDAO {
 				article.setDateFinEncheres(dateFinEncheres.toLocalDate());
 				article.setMiseAPrix(rs.getInt("prix_initial"));
 				article.setPrixVente(rs.getInt("prix_vente"));
-				article.setNoUtilisateur(rs.getInt("no_utilisateur"));
-				article.setNoCategorie(rs.getInt("no_categorie"));
+				article.setUtilisateur(user);
+				article.setCategorie(categorie);
 			}
 
 		} catch (SQLException e) {
 			throw new DALException("Probl�me dans la fonction SELECT_BY_ID ARTICLE" + e.getMessage());
+			
 		}
 
 		return article;
@@ -122,14 +134,22 @@ public class ArticleVenduDAOImpl implements ArticleVenduDAO {
 		List<ArticleVendu> lstArticleVendus = new ArrayList<ArticleVendu>();
 		
 		try (Connection con = ConnectionProvider.getConnection()) 
-		{PreparedStatement stmt = con.prepareStatement(SELECT_ALL);
-		ResultSet rs = stmt.executeQuery(SELECT_ALL);
+		{PreparedStatement stmt = con.prepareStatement(SELECT_ALL, Statement.RETURN_GENERATED_KEYS);
+		ResultSet rs = stmt.executeQuery();
 		
 		ArticleVendu article = new ArticleVendu();
 		
 			while (rs.next()) {
 				Date dateDebutEncheres = rs.getDate("date_debut_encheres");
 				Date dateFinEncheres = rs.getDate("date_fin_encheres");
+				
+				Integer noUtilisateur = rs.getInt("no_utilisateur");
+				UtilisateurDAO dao = DAOFact.getUtilisateurDAO();
+				Utilisateur user = dao.getUtilisateurByID(noUtilisateur);
+				
+				Integer noCategorie = rs.getInt("no_categorie");
+				CategorieDAO daoCat = DAOFact.getCategorieDAO();
+				Categorie categorie = daoCat.selectById(noCategorie);
 				
 				article.setNoArticle(rs.getInt("no_article"));
 				article.setNomArticle(rs.getString("nom_article"));
@@ -138,8 +158,8 @@ public class ArticleVenduDAOImpl implements ArticleVenduDAO {
 				article.setDateFinEncheres(dateFinEncheres.toLocalDate());
 				article.setMiseAPrix(rs.getInt("prix_initial"));
 				article.setPrixVente(rs.getInt("prix_vente"));
-				article.setNoUtilisateur(rs.getInt("no_utilisateur"));
-				article.setNoCategorie(rs.getInt("no_categorie"));
+				article.setUtilisateur(user);
+				article.setCategorie(categorie);
 			
 			System.out.println(article.toString());
 			lstArticleVendus.add(article);

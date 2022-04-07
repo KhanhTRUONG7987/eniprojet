@@ -1,4 +1,4 @@
-package fr.eni.ecole.projet.eniEncheres.bll.Retrait;
+package fr.eni.ecole.projet.eniEncheres.bll.retrait;
 
 
 public class RetraitManagerSing {

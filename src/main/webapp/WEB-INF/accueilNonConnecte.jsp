@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,16 +21,17 @@
 		<br> <label for="choix de categorie">Catégorie :</label> <select
 			name="Categories" id="Choix de la catégorie">
 			<option value="toutes">Toutes</option>
-			<option value="informatique">Informatique</option>
-			<option value="ameublement">Ameublement</option>
-			<option value="vêtement">Vêtement</option>
-			<option value="sport&loisirs">Sport et Loisirs</option>
+			<option value="1">Informatique</option>
+			<option value="2">Ameublement</option>
+			<option value="3">Vêtement</option>
+			<option value="4">Sport et Loisirs</option>
 		</select> <input type="submit" name="BT_RECHERCHER" class="submit"
 			value="Rechercher">
 
 	</form>
-	<c:forEach items="${articleModel.lstArticlesVendus}" var="article">
+	<c:forEach items="${lstEncheres}" var="articleVendu">
 		<div class="col-5 col-sm-4 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
+		 <a href="http://localhost:8080/eniprojet/DetailVenteServlet?num=${articleVendu.noArticle}">${articleVendu.nomArticle}</a>
 		<ul>
 		<li>Description: ${articleVendu.description}</li>
 		<li>Date de Début: ${articleVendu.dateDebutEncheres}</li>
@@ -39,7 +42,5 @@
 		</ul>
 		</div>
 </c:forEach>
-	
-	${articleModel.current.lstEncheres}
 </body>
 </html>

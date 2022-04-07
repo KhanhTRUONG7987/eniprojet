@@ -20,17 +20,17 @@ import fr.eni.ecole.projet.eniEncheres.bo.ArticleVendu;
  */
 public class ArticleVenduModel {
 	private ArticleVendu current;
-	private List<ArticleVendu> lstArticlesVendus = new ArrayList<ArticleVendu>();
+	private List<ArticleVendu> lstEncheres = new ArrayList<ArticleVendu>();
 	private String message;
 	
 	public ArticleVenduModel() {
 		super();
 	}
 
-	public ArticleVenduModel(ArticleVendu current, List<ArticleVendu> lstArticlesVendus, String message) {
+	public ArticleVenduModel(ArticleVendu current, List<ArticleVendu> lstEncheres, String message) {
 		super();
 		this.current = current;
-		this.lstArticlesVendus = lstArticlesVendus;
+		this.lstEncheres = lstEncheres;
 		this.message = message;
 	}
 
@@ -43,11 +43,11 @@ public class ArticleVenduModel {
 	}
 
 	public List<ArticleVendu> getLstArticlesVendus() {
-		return lstArticlesVendus;
+		return lstEncheres;
 	}
 
-	public void setLstArticlesVendus(List<ArticleVendu> lstArticlesVendus) {
-		this.lstArticlesVendus = lstArticlesVendus;
+	public void setLstArticlesVendus(List<ArticleVendu> lstEncheres) {
+		this.lstEncheres = lstEncheres;
 	}
 
 	public String getMessage() {
@@ -75,9 +75,9 @@ public class ArticleVenduModel {
 			builder.append(current);
 			builder.append(", ");
 		}
-		if (lstArticlesVendus != null) {
+		if (lstEncheres != null) {
 			builder.append("lstArticlesVendus=");
-			builder.append(lstArticlesVendus);
+			builder.append(lstEncheres);
 			builder.append(", ");
 		}
 		if (message != null) {
