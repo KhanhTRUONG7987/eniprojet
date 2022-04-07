@@ -3,6 +3,7 @@
  */
 package fr.eni.ecole.projet.eniEncheres.ihm.models;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,17 +20,17 @@ import fr.eni.ecole.projet.eniEncheres.bo.ArticleVendu;
  */
 public class ArticleVenduModel {
 	private ArticleVendu current;
-	private List<ArticleVendu> lsUtilisateurs = new ArrayList<ArticleVendu>();
+	private List<ArticleVendu> lstEncheres = new ArrayList<ArticleVendu>();
 	private String message;
 	
 	public ArticleVenduModel() {
 		super();
 	}
 
-	public ArticleVenduModel(ArticleVendu current, List<ArticleVendu> lsUtilisateurs, String message) {
+	public ArticleVenduModel(ArticleVendu current, List<ArticleVendu> lstEncheres, String message) {
 		super();
 		this.current = current;
-		this.lsUtilisateurs = lsUtilisateurs;
+		this.lstEncheres = lstEncheres;
 		this.message = message;
 	}
 
@@ -41,12 +42,12 @@ public class ArticleVenduModel {
 		this.current = current;
 	}
 
-	public List<ArticleVendu> getLsUtilisateurs() {
-		return lsUtilisateurs;
+	public List<ArticleVendu> getLstArticlesVendus() {
+		return lstEncheres;
 	}
 
-	public void setLsUtilisateurs(List<ArticleVendu> lsUtilisateurs) {
-		this.lsUtilisateurs = lsUtilisateurs;
+	public void setLstArticlesVendus(List<ArticleVendu> lstEncheres) {
+		this.lstEncheres = lstEncheres;
 	}
 
 	public String getMessage() {
@@ -56,6 +57,14 @@ public class ArticleVenduModel {
 	public void setMessage(String message) {
 		this.message = message;
 	}
+	
+	public void setVenteTermine() {
+		if (current.getDateFinEncheres()==LocalDate.now()) {
+			current.setEtatVente("Terminée");
+		}		
+	}
+	
+
 
 	@Override
 	public String toString() {
@@ -66,9 +75,9 @@ public class ArticleVenduModel {
 			builder.append(current);
 			builder.append(", ");
 		}
-		if (lsUtilisateurs != null) {
-			builder.append("lsUtilisateurs=");
-			builder.append(lsUtilisateurs);
+		if (lstEncheres != null) {
+			builder.append("lstArticlesVendus=");
+			builder.append(lstEncheres);
 			builder.append(", ");
 		}
 		if (message != null) {

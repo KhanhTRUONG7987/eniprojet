@@ -25,10 +25,10 @@ import fr.eni.ecole.projet.eniEncheres.ihm.models.ArticleVenduModel;
 import fr.eni.ecole.projet.eniEncheres.ihm.models.RetraitModel;
 
 /**
- * Servlet implementation class LoginServlet
+ * Servlet implementation class ModifierVenteServlet
  */
-@WebServlet("/NouvelleVenteServlet")
-public class NouvelleVenteServlet extends HttpServlet {
+@WebServlet("/ModifierVenteServlet")
+public class ModifierVenteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private RetraitManager retraitManager = RetraitManagerSing.getInstance();
 	private ArticleVenduManager articleManager = ArticleVenduManagerSing.getInstance();
@@ -37,8 +37,9 @@ public class NouvelleVenteServlet extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public NouvelleVenteServlet() {
+    public ModifierVenteServlet() {
         super();
+        // TODO Auto-generated constructor stub
     }
 
 	/**
@@ -47,18 +48,21 @@ public class NouvelleVenteServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ArticleVenduModel articlemodel = new ArticleVenduModel();	
 		RetraitModel retraitModel = new RetraitModel();
-		
-		Retrait retraitArticle = new Retrait();
 		ArticleVendu articleVendu = new ArticleVendu();
 		
-		Utilisateur user = new Utilisateur();
-		
-
-		retraitArticle.setRue(user.getRue());
-		retraitArticle.setCodePostal(user.getCodePostal());
-		retraitArticle.setVille(user.getVille());
-		
 		if ((request.getParameter("BT_ENREGISTRER")) != null) {
+			
+			Retrait retraitArticle = new Retrait();
+
+			
+			
+			Utilisateur user = new Utilisateur();
+			
+			try {
+				user = userManager.getUtilisateurById(articleVendu.getNoUtilisateur());
+			} catch (BLLException e1) {
+				e1.getMessage();
+			}
 			
 			articleVendu.setNomArticle(request.getParameter("articleNom"));
 			articleVendu.setDescription(request.getParameter("description"));
@@ -73,14 +77,14 @@ public class NouvelleVenteServlet extends HttpServlet {
 			retraitArticle.setVille(request.getParameter("ville"));
 		
 			try {
-				articleManager.addArticle(articleVendu);
+				articleManager.updateArticle(articleVendu);
 			} catch (BLLException e) {
 				e.printStackTrace();
 				articlemodel.setMessage("!: " + e.getMessage());
 			}
 			
 			try {
-				retraitManager.addRetrait(retraitArticle);
+				retraitManager.updateRetrait(retraitArticle);
 			} catch (Exception e) {
 				e.printStackTrace();
 				retraitModel.setMessage(e.getMessage());
@@ -88,20 +92,33 @@ public class NouvelleVenteServlet extends HttpServlet {
 			articlemodel.setCurrent(articleVendu);
 			
 		}		
-
+		
+		if (request.getParameter("BT_ANNULERVENTE") != null) {
+			
+			
+			try {
+				articleManager.deleteArticle(articleVendu);
+			} catch (BLLException e) {
+				e.printStackTrace();
+				articlemodel.setMessage("!: " + e.getMessage());
+			}
+			
+		}
 		
 		List<Object> modelList = new ArrayList<Object>();
 		modelList.add(articlemodel);
 		modelList.add(retraitModel);
 		
-		request.setAttribute("model", modelList);
-		request.getRequestDispatcher("/WEB-INF/nouvelleVente.jsp").forward(request, response);
+		request.setAttribute("modelList", modelList);
+		request.getRequestDispatcher("/WEB-INF/modifierVente.jsp").forward(request, response);
 	}
+	
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

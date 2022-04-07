@@ -3,6 +3,7 @@ package fr.eni.ecole.projet.eniEncheres.dal.retrait;
 import java.util.ArrayList;
 import java.util.List;
 
+import fr.eni.ecole.projet.eniEncheres.bo.ArticleVendu;
 import fr.eni.ecole.projet.eniEncheres.bo.Retrait;
 import fr.eni.ecole.projet.eniEncheres.dal.DALException;
 

@@ -2,13 +2,14 @@ package fr.eni.ecole.projet.eniEncheres.ihm.servlets;
 
 import java.io.IOException;
 
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import fr.eni.ecole.projet.eniEncheres.bll.util.BLLException;
+import fr.eni.ecole.projet.eniEncheres.bll.BLLException;
 import fr.eni.ecole.projet.eniEncheres.bll.utilisateur.UtilisateurManager;
 import fr.eni.ecole.projet.eniEncheres.bll.utilisateur.UtilisateurManagerSing;
 import fr.eni.ecole.projet.eniEncheres.bo.Utilisateur;
@@ -69,7 +70,7 @@ public class UtilisateurServlet extends HttpServlet {
 		}
 
 		request.setAttribute("model", model);
-		request.getRequestDispatcher("/WEB-INF/utilisateur.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/encherir.jsp").forward(request, response);
 	}
 
 	/**

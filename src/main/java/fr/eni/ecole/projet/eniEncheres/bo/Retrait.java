@@ -17,6 +17,12 @@ public class Retrait {
 	private String rue;
 	private String codePostal;
 	private String ville;
+	
+	
+	
+	public Retrait() {
+		super();
+	}
 	/**
 	 * Constructeur.
 	 * @param rue

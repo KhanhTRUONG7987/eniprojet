@@ -50,13 +50,11 @@ public class ChangeMDPServlet extends HttpServlet {
 			utilisateur.setMotDePasseNouveau(request.getParameter("motDePasseNouveau"));
 			utilisateur.setConfirmation(request.getParameter("confirmation"));
 			// utilisateur.setCredit(request.getParameter("credit"));
-			if (request.getParameter("motDePasseNouveau").equals(request.getParameter("confirmation"))) {
-				try {
-					manager.updateUtilisateur(utilisateur);
-				} catch (fr.eni.ecole.projet.eniEncheres.bll.util.BLLException e) {
-					e.printStackTrace();
-				}
-				model.setCurrent(utilisateur);
+
+			try {
+				manager.updateUtilisateur(utilisateur);
+			} catch (BLLException e) {
+				e.printStackTrace();
 			}
 
 		}
@@ -76,7 +74,7 @@ public class ChangeMDPServlet extends HttpServlet {
 
 		try {
 			model.setLsUtilisateurs(manager.getAllUtilisateurs());
-		} catch (fr.eni.ecole.projet.eniEncheres.bll.util.BLLException e) {
+		} catch (BLLException e) {
 			e.printStackTrace();
 		}
 
