@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
@@ -15,17 +15,17 @@
 			value="S'inscrire - Se connecter">S'inscrire - Se connecter</a>
 		<h1 style="text-align: center;">Liste enchères</h1>
 		<h3 style="text-align: left;">Filtres :</h3>
-		<input type="text" id="keyword" name="keyword"
+		<input type="search" id="keyword" name="keyword"
 			placeholder="Le nom de l'article contient" required minlength="1"
 			maxlength="20" size="20"><br>
 		<br> <label for="choix de categorie">Catégorie :</label> <select
 			name="Categories" id="Choix de la catégorie">
-			<option value="toutes">Toutes</option>
+			<option value="0">Toutes</option>
 			<option value="1">Informatique</option>
 			<option value="2">Ameublement</option>
 			<option value="3">Vêtement</option>
 			<option value="4">Sport et Loisirs</option>
-		</select> <input type="submit" name="BT_RECHERCHER" class="submit"
+		</select> <input type="submit" name="BT_RECHERCHER"
 			value="Rechercher">
 
 	</form>

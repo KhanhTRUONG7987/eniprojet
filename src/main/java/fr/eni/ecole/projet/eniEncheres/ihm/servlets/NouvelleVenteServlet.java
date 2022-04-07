@@ -19,8 +19,13 @@ import fr.eni.ecole.projet.eniEncheres.bll.retrait.RetraitManagerSing;
 import fr.eni.ecole.projet.eniEncheres.bll.utilisateur.UtilisateurManager;
 import fr.eni.ecole.projet.eniEncheres.bll.utilisateur.UtilisateurManagerSing;
 import fr.eni.ecole.projet.eniEncheres.bo.ArticleVendu;
+import fr.eni.ecole.projet.eniEncheres.bo.Categorie;
 import fr.eni.ecole.projet.eniEncheres.bo.Retrait;
 import fr.eni.ecole.projet.eniEncheres.bo.Utilisateur;
+import fr.eni.ecole.projet.eniEncheres.dal.DALException;
+import fr.eni.ecole.projet.eniEncheres.dal.DAOFact;
+import fr.eni.ecole.projet.eniEncheres.dal.categorie.CategorieDAO;
+import fr.eni.ecole.projet.eniEncheres.dal.utilisateur.UtilisateurDAO;
 import fr.eni.ecole.projet.eniEncheres.ihm.models.ArticleVenduModel;
 import fr.eni.ecole.projet.eniEncheres.ihm.models.RetraitModel;
 
@@ -32,7 +37,6 @@ public class NouvelleVenteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private RetraitManager retraitManager = RetraitManagerSing.getInstance();
 	private ArticleVenduManager articleManager = ArticleVenduManagerSing.getInstance();
-	private UtilisateurManager userManager = UtilisateurManagerSing.getInstance();
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -51,18 +55,31 @@ public class NouvelleVenteServlet extends HttpServlet {
 		Retrait retraitArticle = new Retrait();
 		ArticleVendu articleVendu = new ArticleVendu();
 		
-		Utilisateur user = new Utilisateur();
-		
-
-		retraitArticle.setRue(user.getRue());
-		retraitArticle.setCodePostal(user.getCodePostal());
-		retraitArticle.setVille(user.getVille());
-		
+		Integer noUser = Integer.parseInt(request.getParameter("noUtilisateur"));
+		UtilisateurDAO daoUser = DAOFact.getUtilisateurDAO();
+		try {
+			Utilisateur user = daoUser.getUtilisateurByID(noUser);
+			retraitArticle.setRue(user.getRue());
+			retraitArticle.setCodePostal(user.getCodePostal());
+			retraitArticle.setVille(user.getVille());
+		} catch (DALException e) {
+			e.getMessage();
+		}
+				
 		if ((request.getParameter("BT_ENREGISTRER")) != null) {
+			
+			Integer noCategorie = Integer.parseInt(request.getParameter("categorie"));
+			CategorieDAO daoCat = DAOFact.getCategorieDAO();
+			Categorie categorie = new Categorie();
+			try {
+				categorie = daoCat.selectById(noCategorie);
+			} catch (DALException e1) {
+				e1.getMessage();
+			}
 			
 			articleVendu.setNomArticle(request.getParameter("articleNom"));
 			articleVendu.setDescription(request.getParameter("description"));
-			articleVendu.setNoCategorie(Integer.parseInt(request.getParameter("categorie")));
+			articleVendu.setCategorie(categorie);
 			articleVendu.setMiseAPrix(Integer.parseInt(request.getParameter("miseAPrix")));
 			articleVendu.setDateDebutEncheres(LocalDate.parse(request.getParameter("bid-start")));
 			articleVendu.setDateFinEncheres(LocalDate.parse(request.getParameter("bid-end")));

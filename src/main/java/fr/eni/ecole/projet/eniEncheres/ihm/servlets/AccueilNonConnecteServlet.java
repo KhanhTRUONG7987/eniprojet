@@ -28,11 +28,10 @@ import fr.eni.ecole.projet.eniEncheres.ihm.models.UtilisateurModel;
 /**
  * Servlet implementation class AccueilNonConnecte
  */
-@WebServlet("/AccueilNonConnecte")
+@WebServlet("/AccueilNonConnecteServlet")
 public class AccueilNonConnecteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private ArticleVenduManager articleManager = ArticleVenduManagerSing.getInstance();
-	private UtilisateurManager utilisateurManager = UtilisateurManagerSing.getInstance(); 
 	
        
     /**
@@ -49,40 +48,40 @@ public class AccueilNonConnecteServlet extends HttpServlet {
 		CategorieModel categorieModel = new CategorieModel();
 		ArticleVenduModel articleModel = new ArticleVenduModel();
 		UtilisateurModel userModel = new UtilisateurModel();
-		List<ArticleVendu> lstEncheres = new ArrayList<ArticleVendu>();		
+		List<ArticleVendu> lstEncheres = new ArrayList<ArticleVendu>();			
 
 		
 		if (request.getParameter("BT_RECHERCHER") == null) {
 			try {
 				lstEncheres = articleManager.selectAll();
 				request.setAttribute("lstEncheres", lstEncheres);
+
 				
 			} catch (BLLException e) {
 				e.printStackTrace();
 				e.getMessage();
 			}
-		} else {
+		} else if (request.getParameter("BT_RECHERCHER") != null) {
 			Categorie categorie = new Categorie();
 			categorie.setNoCategorie(Integer.parseInt(request.getParameter("Categories")));
-			String motCle = request.getParameter("name");
+			String motCle = request.getParameter("keyword").toLowerCase();
 						
 			try {
-				lstEncheres = articleManager.selectAll();
+				List<ArticleVendu> lstEncheresParMotCle = new ArrayList<ArticleVendu>();	
+				lstEncheresParMotCle = articleManager.selectAll();
 				
-				for (ArticleVendu articleVendu : lstEncheres) {
-					if (articleVendu.getNomArticle().contains(motCle) && articleVendu.getCategorie().getNoCategorie() == categorie.getNoCategorie() && articleVendu.getDateFinEncheres().isBefore(LocalDate.now()) ) {
-						Utilisateur utilisateur = utilisateurManager.getUtilisateurById(articleVendu.getUtilisateur().getNoUtilisateur());
-						
-						System.out.println(articleVendu.getNomArticle() + "Prix : " + articleVendu.getPrixVente() + "Fin de l'enchere : " + articleVendu.getDateFinEncheres() 
-						+ "Vendeur : " + utilisateur.getPseudo());
+				for (ArticleVendu articleVendu : lstEncheresParMotCle) {
+					if (articleVendu.getNomArticle().toLowerCase().contains(motCle) || articleVendu.getCategorie().getNoCategorie() == categorie.getNoCategorie()) {
+						lstEncheres.add(articleVendu);
 					}
-				}
+				}		
+				request.setAttribute("lstEncheres", lstEncheres);
+				
 			} catch (BLLException e) {
 				e.printStackTrace();
 				e.getMessage();
 			}
-
-		}
+		} 
 		
 		List<Object> modelList = new ArrayList<Object>();
 		modelList.add(articleModel);
