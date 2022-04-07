@@ -1,6 +1,5 @@
 package fr.eni.ecole.projet.eniEncheres.dal;
 
-import fr.eni.ecole.projet.eniEncheres.bo.ArticleVendu;
 import fr.eni.ecole.projet.eniEncheres.bo.Utilisateur;
 import fr.eni.ecole.projet.eniEncheres.dal.article.ArticleVenduDAO;
 import fr.eni.ecole.projet.eniEncheres.dal.categorie.CategorieDAO;
@@ -18,8 +17,9 @@ public class AppliTestDAL {
 
 
 	public static void main(String[] args) throws DALException {
-		daoArticle.insert(new ArticleVendu(0, "Truc", "Truc qui fait qqch", setLocalDate))
-		daoUser.insert(new Utilisateur(0,"Pouet", "Fremidoreur", "Jean", "jean-fremi@exemple.fr", "06.pouet", "avenue victor pouet","35600pouet","Pouet-sur-Villaine", "Pouet2022", 1000, TODO,));		
+//		daoArticle.insert(new ArticleVendu(0, "Truc", "Truc qui fait qqch", setLocalDate))
+		daoUser.insertUtilisateur(new Utilisateur(0,"Pouet", "Fremidoreur", "Jean", "jean-fremi@exemple.fr", "06.pouet", "avenue victor pouet","35600pouet","Pouet-sur-Villaine", "Pouet2022", 1000, false));		
 		
+		daoUser.findAll().forEach(System.out::println);
 	}
 }

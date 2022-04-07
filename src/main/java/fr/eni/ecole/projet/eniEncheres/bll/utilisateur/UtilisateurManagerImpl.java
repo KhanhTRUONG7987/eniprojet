@@ -30,10 +30,13 @@ public class UtilisateurManagerImpl implements UtilisateurManager {
 	
 	@Override
 	public void addUtilisateur(Utilisateur utilisateur) throws BLLException {
-		if(!(utilisateur.getMotDePasse()).equalsIgnoreCase((utilisateur).getConfirmation())) {
-			throw new BLLException("Password incorrect !");
-		}
+//		if(!(utilisateur.getMotDePasse()).equalsIgnoreCase((utilisateur).getConfirmation())) {
+//			throw new BLLException("Password incorrect !");
+//		}
+
 		try {
+			utilisateur.setAdministrateur(false);
+			utilisateur.setCredit(1000);
 			dao.insertUtilisateur(utilisateur);
 		} catch (DALException e) {
 			e.printStackTrace();
@@ -48,6 +51,11 @@ public class UtilisateurManagerImpl implements UtilisateurManager {
 	@Override
 	public boolean authenticate(String email, String motDePasse) {
 		Boolean result = false;
+		try {
+			result = dao.authenticate(email, motDePasse);
+		} catch (DALException e) {
+			e.printStackTrace();
+		}
 		return result;
 	}
 
@@ -61,8 +69,8 @@ public class UtilisateurManagerImpl implements UtilisateurManager {
 			return dao.findAll();
 		} catch (DALException e) {
 			e.printStackTrace();
+			throw new BLLException("Erreur ! " + e.getMessage());
 		}
-		throw new BLLException("");
 	}
 
 	/**
@@ -79,8 +87,8 @@ public class UtilisateurManagerImpl implements UtilisateurManager {
 		} catch (DALException e) {
 			
 			e.printStackTrace();
+			throw new BLLException("Erreur !" + e.getMessage());
 		}
-		throw new BLLException("");
 	
 	}
 
@@ -94,8 +102,9 @@ public class UtilisateurManagerImpl implements UtilisateurManager {
 			dao.updateUtilisateur(utilisateur);
 		} catch (DALException e) {
 			e.printStackTrace();
+			throw new BLLException("Erreur !" + e.getMessage());
 		}
-		throw new BLLException("");
+		
 	}
 
 	/**
@@ -108,8 +117,9 @@ public class UtilisateurManagerImpl implements UtilisateurManager {
 			dao.deleteUtilisateur(noUtilisateur);
 		} catch (DALException e) {
 			e.printStackTrace();
+			throw new BLLException("Erreur !" + e.getMessage());
 		}
-		throw new BLLException("");
+		
 
 	}
 

@@ -2,7 +2,6 @@ package fr.eni.ecole.projet.eniEncheres.ihm.servlets;
 
 import java.io.IOException;
 
-
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -37,7 +36,7 @@ public class ChangeMDPServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		UtilisateurModel model = new UtilisateurModel();
-		if ((request.getParameter("BT_ENREGISTRER")) != null && (request.getParameter("BT_SUPPRIMER")) != null) {
+		if ((request.getParameter("BT_ENREGISTRER")) != null) {
 			Utilisateur utilisateur = new Utilisateur();
 			utilisateur.setPseudo(request.getParameter("pseudo"));
 			utilisateur.setNom(request.getParameter("nom"));
@@ -45,19 +44,34 @@ public class ChangeMDPServlet extends HttpServlet {
 			utilisateur.setEmail(request.getParameter("email"));
 			utilisateur.setTelephone(request.getParameter("telephone"));
 			utilisateur.setRue(request.getParameter("rue"));
-			utilisateur.setCodePostal(request.getParameter("codePostal"));
+			utilisateur.setCodePostal(request.getParameter("code_postal"));
 			utilisateur.setVille(request.getParameter("ville"));
-			utilisateur.setMotDePasse(request.getParameter("motDePasseActuel"));
+			utilisateur.setMotDePasse(request.getParameter("mot_de_passe"));
 			utilisateur.setMotDePasseNouveau(request.getParameter("motDePasseNouveau"));
 			utilisateur.setConfirmation(request.getParameter("confirmation"));
 			// utilisateur.setCredit(request.getParameter("credit"));
-
-			try {
-				manager.updateUtilisateur(utilisateur);
-			} catch (fr.eni.ecole.projet.eniEncheres.bll.util.BLLException e) {
-				e.printStackTrace();
+			if (request.getParameter("motDePasseNouveau").equals(request.getParameter("confirmation"))) {
+				try {
+					manager.updateUtilisateur(utilisateur);
+				} catch (fr.eni.ecole.projet.eniEncheres.bll.util.BLLException e) {
+					e.printStackTrace();
+				}
+				model.setCurrent(utilisateur);
 			}
-			model.setCurrent(utilisateur);
+
+		}
+		if (request.getParameter("BT_SUPPRIMER") != null) {
+			Utilisateur utilisateur = new Utilisateur();
+			Integer noUtilisateur = Integer.parseInt(request.getParameter("no_Utilisateur"));
+			if (noUtilisateur == Integer.parseInt(request.getParameter("no_Utilisateur")))  {
+				try {
+					manager.deleteUtilisateur(noUtilisateur);
+				} catch (fr.eni.ecole.projet.eniEncheres.bll.util.BLLException e) {
+					e.printStackTrace();
+				}
+				model.setCurrent(utilisateur);
+			}
+
 		}
 
 		try {
@@ -76,7 +90,6 @@ public class ChangeMDPServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

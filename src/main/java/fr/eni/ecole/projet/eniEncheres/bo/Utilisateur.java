@@ -16,9 +16,9 @@ public class Utilisateur {
 	private String ville;
 	private String motDePasse;
 	private String motDePasseNouveau;
-	private String confirmation;
 	private Integer credit;
 	private Boolean administrateur;
+	private String confirmation;
 	
 	private List<ArticleVendu> lstArticlesVendus = new ArrayList<ArticleVendu>();
 	private List<Enchere> lstEncheres = new ArrayList<Enchere>();
@@ -47,8 +47,8 @@ public class Utilisateur {
 	 * @param administrateur
 	 */
 	public Utilisateur(Integer noUtilisateur, String pseudo, String nom, String prenom, String email, String telephone,
-			String rue, String codePostal, String ville, String motDePasse, String confirmation, Integer credit,
-			Boolean administrateur) {
+			String rue, String codePostal, String ville, String motDePasse, Integer credit,
+			Boolean administrateur, String confirmation) {
 		super();
 		this.noUtilisateur = noUtilisateur;
 		this.pseudo = pseudo;
@@ -60,9 +60,9 @@ public class Utilisateur {
 		this.codePostal = codePostal;
 		this.ville = ville;
 		this.motDePasse = motDePasse;
-		this.confirmation = confirmation;
 		this.credit = credit;
 		this.administrateur = administrateur;
+		this.confirmation = confirmation;
 	}
 	/**
 	 * Constructeur.
@@ -116,8 +116,8 @@ public class Utilisateur {
 	 * @param administrateur
 	 */
 	public Utilisateur(String pseudo, String nom, String prenom, String email, String telephone, String rue,
-			String codePostal, String ville, String motDePasse, String confirmation, Integer credit,
-			Boolean administrateur) {
+			String codePostal, String ville, String motDePasse, Integer credit,
+			Boolean administrateur, String confirmation) {
 
 		super();
 		this.pseudo = pseudo;
@@ -129,9 +129,9 @@ public class Utilisateur {
 		this.codePostal = codePostal;
 		this.ville = ville;
 		this.motDePasse = motDePasse;
-		this.confirmation = confirmation;
 		this.credit = credit;
 		this.administrateur = administrateur;
+		this.confirmation = confirmation;
 	}
 	/**
 	 * Constructeur.

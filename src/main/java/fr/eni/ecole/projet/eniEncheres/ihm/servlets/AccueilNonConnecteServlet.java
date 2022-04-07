@@ -7,14 +7,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import fr.eni.ecole.projet.eniEncheres.bll.BLLException;
 import fr.eni.ecole.projet.eniEncheres.bll.ArticleVendu.ArticleVenduManager;
 import fr.eni.ecole.projet.eniEncheres.bll.ArticleVendu.ArticleVenduManagerSing;
 import fr.eni.ecole.projet.eniEncheres.bll.categorie.CategorieManager;
 import fr.eni.ecole.projet.eniEncheres.bll.categorie.CategorieManagerSing;
 import fr.eni.ecole.projet.eniEncheres.bo.ArticleVendu;
 import fr.eni.ecole.projet.eniEncheres.bo.Categorie;
-import fr.eni.ecole.projet.eniEncheres.ihm.models.ArticleModel;
 import fr.eni.ecole.projet.eniEncheres.ihm.models.CategorieModel;
 
 /**

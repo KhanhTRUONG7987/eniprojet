@@ -12,7 +12,7 @@ import fr.eni.ecole.projet.eniEncheres.dal.enchere.EnchereDAOMock;
 import fr.eni.ecole.projet.eniEncheres.dal.retrait.RetraitDAO;
 import fr.eni.ecole.projet.eniEncheres.dal.retrait.RetraitDAOMock;
 import fr.eni.ecole.projet.eniEncheres.dal.utilisateur.UtilisateurDAO;
-import fr.eni.ecole.projet.eniEncheres.dal.utilisateur.UtilisateurDAOMock;
+import fr.eni.ecole.projet.eniEncheres.dal.utilisateur.UtilisateurDAOImpl;
 
 /**
  * Classe en charge de
@@ -24,7 +24,7 @@ import fr.eni.ecole.projet.eniEncheres.dal.utilisateur.UtilisateurDAOMock;
  */
 public class DAOFact {
 	public static UtilisateurDAO getUtilisateurDAO() {
-		return new UtilisateurDAOMock();
+		return new UtilisateurDAOImpl();
 	}
 
 	public static CategorieDAO getCategorieDAO() {
