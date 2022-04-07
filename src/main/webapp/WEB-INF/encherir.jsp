@@ -4,13 +4,13 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Enchérir</title>
+<title>Enchï¿½rir</title>
 </head>
 <body>
 	<%
 	String email = (String) session.getAttribute("email");
 	if (session != null) {
-		out.print("Bienvenue au Enchères.org, " + email);
+		out.print("Bienvenue au Enchï¿½res.org, " + email);
 	} else {
 		out.print("Salut, login s.v.p");
 	}
@@ -22,32 +22,32 @@
 		<header>
 			<div class="logo">
 				<a href="<%=request.getContextPath()%>/AccueilUserConnecteServlet"
-					style="font-size: 40px;">ENI-Enchères</a>
+					style="font-size: 40px;">ENI-Enchï¿½res</a>
 			</div>
 			<div class="menu">
 				<div>
 					<a href="<%=request.getContextPath()%>/EncherirServlet"
-						style="font-size: 23px;">Enchères</a> <span class="line">--</span>
+						style="font-size: 23px;">Enchï¿½res</a> <span class="line">--</span>
 					<a href="<%=request.getContextPath()%>/NouvelleVenteServlet"
 						style="font-size: 23px;">Vendre un article</a> <span class="line">--</span>
 					<a href="<%=request.getContextPath()%>/MonProfilServlet"
 						style="font-size: 23px;">Mon profil</a> <span class="line">--</span>
 					<a href="<%=request.getContextPath()%>/LogoutServlet"
-						style="font-size: 23px;">Déconnexion</a>
+						style="font-size: 23px;">Dï¿½connexion</a>
 				</div>
 			</div>
 		</header>
-		<h1 style="text-align: center;">Détail de la vente</h1>
+		<h1 style="text-align: center;">Dï¿½tail de la vente</h1>
 		<input type="hidden" name="noUtilisateur"
 			value="${usermodel.current.noUtilisateur}"> <input
 			type="hidden" nema="noArticle"
 			value="${articlemodel.current.noArticle}"> <br> <br>
 		${articlemodel.current.nomArticle} <br> <br> Description :
-		${articlemodel.current.description} <br> <br> Catégorie :
+		${articlemodel.current.description} <br> <br> Catï¿½gorie :
 		${articlemodel.current.noCategorie.libelle} <br> <br>
 		Meilleure offre : ${encheremodel.current.montantEnchere} <br> <br>
-		Mise à prix : ${articlemodel.current.miseAPrix} <br> <br>
-		Fin de l'enchère : ${articlemodel.current.dateFinEncheres} <br> <br>
+		Mise ï¿½ prix : ${articlemodel.current.miseAPrix} <br> <br>
+		Fin de l'enchï¿½re : ${articlemodel.current.dateFinEncheres} <br> <br>
 		Retrait : ${retraitmodel.current.rue} <br>
 		${retraitmodel.current.codePostal} ${retraitmodel.current.ville} <br>
 		<br> Vendeur : ${usermodel.current.pseudo} <br> <br> Ma
@@ -58,15 +58,15 @@
 		<footer>
 			<div>
 				<a href="<%=request.getContextPath()%>/AccueilUserConnecteServlet"
-					style="font-size: 20px;">ENI-Enchères</a> <span class="line">--</span>
+					style="font-size: 20px;">ENI-Enchï¿½res</a> <span class="line">--</span>
 				<a href="<%=request.getContextPath()%>/NouvelleVenteServlet"
 					style="font-size: 20px;">Vendre un article</a> <span class="line">--</span>
 				<a href="<%=request.getContextPath()%>/DetailVenteServlet"
-					style="font-size: 20px;">Enchères</a> <span class="line">--</span>
+					style="font-size: 20px;">Enchï¿½res</a> <span class="line">--</span>
 				<a href="<%=request.getContextPath()%>/MonProfilServlet"
 					style="font-size: 20px;">Mon profil</a> <span class="line"></span>
 			</div>
-			<a style="text-align: center; color: #fefefe;">2022 ENI-Enchères.
+			<a style="text-align: center; color: #fefefe;">2022 ENI-Enchï¿½res.
 				All Rights Reserved.</a>
 		</footer>
 		<script

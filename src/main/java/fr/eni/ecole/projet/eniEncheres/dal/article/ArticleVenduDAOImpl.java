@@ -93,7 +93,6 @@ public class ArticleVenduDAOImpl implements ArticleVenduDAO {
 	@Override
 	public ArticleVendu selectById(Integer no_article) throws DALException {
 		ArticleVendu article = new ArticleVendu();
-
 		try (Connection con = ConnectionProvider.getConnection()) {
 			PreparedStatement stmt = con.prepareStatement(SELECT_BY_ID, Statement.NO_GENERATED_KEYS);
 			stmt.setInt(1, no_article);
@@ -125,21 +124,28 @@ public class ArticleVenduDAOImpl implements ArticleVenduDAO {
 			throw new DALException("Probl�me dans la fonction SELECT_BY_ID ARTICLE" + e.getMessage());
 			
 		}
-
 		return article;
 	}
 
 	@Override
 	public List<ArticleVendu> selectAllArticles() throws DALException {
 		List<ArticleVendu> lstArticleVendus = new ArrayList<ArticleVendu>();
+		lstArticleVendus.clear();
 		
 		try (Connection con = ConnectionProvider.getConnection()) 
+<<<<<<< HEAD
 		{PreparedStatement stmt = con.prepareStatement(SELECT_ALL, Statement.RETURN_GENERATED_KEYS);
 		ResultSet rs = stmt.executeQuery();
 		
 		ArticleVendu article = new ArticleVendu();
 		
+=======
+		{PreparedStatement stmt = con.prepareStatement(SELECT_ALL);
+		ResultSet rs = stmt.executeQuery();
+				
+>>>>>>> 269ef3b14a5af8feef620dec6ae9f7f4b595a3e5
 			while (rs.next()) {
+				ArticleVendu article = new ArticleVendu();
 				Date dateDebutEncheres = rs.getDate("date_debut_encheres");
 				Date dateFinEncheres = rs.getDate("date_fin_encheres");
 				
@@ -161,10 +167,13 @@ public class ArticleVenduDAOImpl implements ArticleVenduDAO {
 				article.setUtilisateur(user);
 				article.setCategorie(categorie);
 			
-			System.out.println(article.toString());
 			lstArticleVendus.add(article);
+			System.out.println(lstArticleVendus.toString());
+
 			}
-			
+			for (ArticleVendu articleVendu : lstArticleVendus) {
+				System.out.println(articleVendu.toString());
+			}
 		} catch (SQLException e) {
 			throw new DALException("Probl�me dans la fonction SELECT_ALL ARTICLE" + e.getMessage());
 		}		

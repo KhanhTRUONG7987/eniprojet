@@ -137,9 +137,8 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 			PreparedStatement stmt = con.prepareStatement(FIND_ALL, Statement.RETURN_GENERATED_KEYS);
 			ResultSet rs = stmt.executeQuery();
 			
-			Utilisateur utilisateur = new Utilisateur();
-			
 			while (rs.next()) {
+				Utilisateur utilisateur = new Utilisateur();
 				utilisateur.setNoUtilisateur(rs.getInt("noUtilisateur"));
 				utilisateur.setPseudo(rs.getString("pseudo"));
 				utilisateur.setNom(rs.getString("nom"));
